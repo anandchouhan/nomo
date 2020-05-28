@@ -1,0 +1,92 @@
+<div class="left-bar">
+  <div class="user-detail blue">
+    <div class="container">
+      <div class="avatar">
+        <div class="avatar-details">
+          <%= user_circle_image_tag @user %>
+          <h3><%= @user.name %></h3>
+          <em><%= "@#{@user.username}" unless @user.username.blank? %></em>
+        </div>
+        
+        <div class="bio row" style="margin-bottom: 16px;">
+          <div class="col-12" style="padding: 32px;">
+            <% if @user.bio.present? %>
+              <%= simple_format @user.bio %>
+            <% elsif current_user == @user %>
+              Go to <%= link_to "settings", my_settings_path %> to add your bio and let people know a little bit about yourself!
+            <% else %>
+              <%= @user.name %> has not entered a bio.
+            <% end %>
+          </div>
+        </div>
+
+        <% if current_user == @user && @user.location.present? %>
+          <div class="row d-flex justify-content-center">
+            <a class="trip-btn show-trips-form-btn add-trip" href="#" data-toggle="modal" data-target="#living-here-modal" style="text-transform: none;">Currently Living In</a>
+          </div>
+          <%= render "modal_friends_living" %>
+        <% end %>
+
+        <% if user_signed_in? && current_user != @user %>
+          <% if current_user.friend_of?(@user) %>
+            <%= link_to "Unfriend", unfriend_user_path(current_user, @user), { method: :delete, class: "cancel-request-btn btn btn-sm cancel-friend-btn" } %>
+          <% else %>
+            <% if friend_request = current_user.sent_friend_requests.where(recipient: @user).take %>
+              <%= link_to("Cancel Friend Request", friend_request, { method: :delete, class: "cancel-request-btn btn btn-sm cancel-friend-btn cancel-sent-friend-request" }) %>
+            <% elsif friend_request = current_user.friend_requests.where(sender: @user).take %>
+              <p><%= @user.name %> has sent you a friend request</p>
+              <%= link_to("Confirm", accept_friend_request_path(friend_request), { method: :post, class: 'btn btn-sm main-btn margin-right approve-friend-request-btn' }) %>
+              <%= link_to("Decline", friend_request, { method: :delete, class: 'cancel-request-btn btn btn-sm cancel-friend-btn decline-friend-request' }) %>
+            <% else %>
+              <%= form_tag(FriendRequest.new, { method: :post }) do %>
+                <%= hidden_field_tag(:recipient_user_id, @user.id) %>
+                <%= submit_tag("Add Friend", { class: "trip-btn show-trips-form-btn add-trip add-connected-btn" }) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+    <% if @user.friend_of? current_user %>
+      <div class="action">
+        <div class="social-icons">
+          <% if @user.phone_number.present? %>
+            <i class='text-white fa fa-2x fa-phone-square' tabindex='0' aria-hidden='true' data-toggle='popover' data-content='Phone: <%= @user.phone_number %>'></i>
+          <% end %>
+          <% if @user.email.present? %>
+            <i hidden class="text-white fa fa-2x fa-envelope-o" tabindex='0' data-toggle='popover' data-content='Email: <%= @user.email %>'></i>
+          <% end %>
+          <% if @user.website.present? %>
+            <%= link_to "#{@user.website}", target: "_blank" do %>
+              <i class="text-white fa fa-2x fa-rss-square" title="Website"></i>
+            <% end %>
+          <% end %>
+          <% if @youtube_id.present? %>
+            <%= link_to "#{@youtube_id} " ,target: "_blank" do %>
+              <i class="text-white fa fa-2x fa-youtube-play" title="YouTube"></i>
+            <% end %>
+          <% end %>
+          <% if @blog_id.present? %>
+            <%= link_to "#{@blog_id} " ,target: "_blank" do %>
+              <i class="text-white fa fa-2x fa-pencil-square" title="Blog"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="profile-links">
+    <ul>
+      <li>
+        <span class="click-reveal active" id="trips">Trips</span>
+      </li>
+
+      <li>
+        <span class="click-reveal" id="friends">Friends</span>
+      </li>
+    </ul>
+  </div>
+</div>

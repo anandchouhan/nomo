@@ -1,0 +1,30 @@
+<table class="table">
+  <tbody class="connected-friends-list">
+    <% @users.each do |user| %>
+      <% if user != current_user %>
+        <tr class="list-group-item friend-list-item" data-user-id="<%= user.id %>">
+          <td class="connected-friend-pic searched-user-pic">
+            <%= link_to user do %>
+              <%= user_photo user, class: 'rounded-circle lshift', style: 'height: 35px;' %>
+            <% end %>
+          </td>
+          <td class="user-name">
+            <b>
+              <%= link_to user do %>
+                <%= user.name %>
+              <% end %>
+            </b>
+          </td>
+          <% unless current_user.friend_of?(user) || current_user.friend_request_sent?(user) || current_user.friend_request_received?(user) %>
+            <td class="text-right add-searched-friend">
+              <%= form_tag(FriendRequest.new, { method: :post }) do %>
+                <%= hidden_field_tag(:recipient_user_id, user.id) %>
+                <%= submit_tag("Add Friend", { class: "btn btn-sm btn-default pull-right add-connected-btn" }) %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

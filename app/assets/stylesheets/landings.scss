@@ -1,0 +1,142 @@
+@import "config/*";
+
+h6 {
+  color: $alto;
+  overflow: hidden;
+  text-align: center;
+
+  ::before,
+  ::after {
+    background-color: $alto;
+    color: $alto;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  ::before {
+    color: $alto;
+    margin-left: -50%;
+    right: 0.5em;
+  }
+
+  ::after {
+    color: $alto;
+    left: 0.5em;
+    margin-right: -50%;
+  }
+}
+
+.one {
+  &:link {
+    color: $tangerine;
+  }
+
+  &:visited {
+    color: $tangerine;
+  }
+
+  &:active {
+    color: $tangerine;
+  }
+}
+
+.separator {
+  color: $gallery;
+  margin: 0 10px;
+}
+
+.strike {
+  align-items: center;
+  color: $black-alpha-25;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  justify-content: center;
+  margin: 30px auto;
+  position: relative;
+  width: 364px;
+
+  &::before {
+    border-top: 1px solid $black-alpha-25;
+    content: "";
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  span {
+    background: $white;
+    padding: 0 20px;
+    position: relative;
+  }
+}
+
+.extra-actions {
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.btn-info.login-button {
+  background-color: $orange;
+  border: 0;
+
+  &:hover {
+    background-color: $orange-hover;
+  }
+}
+
+.sign-in-facebook {
+  background: $facebook-blue;
+  border-radius: 3px;
+  color: $white;
+  display: flex;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 24px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+  width: 364px;
+  cursor: pointer;
+
+  &:hover {
+    background: $facebook-blue-hover;
+    color: $white;
+    text-decoration: none;
+  }
+
+  i {
+    border-right: 1px solid $white-alpha-25;
+    font-size: 36px;
+    height: 36px;
+    margin: 20px 0;
+    padding-right: 20px;
+    text-align: center;
+    width: 56px;
+  }
+
+  span {
+    border-left: 1px solid $black-alpha-25;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    margin: 20px 0;
+    padding-left: 20px;
+  }
+}
+
+.login-form {
+  .form-control {
+    border-color: $gallery;
+    margin-bottom: 10px;
+
+    &::-webkit-input-placeholder {
+      color: $black-alpha-5;
+    }
+  }
+}

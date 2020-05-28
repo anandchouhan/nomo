@@ -1,0 +1,945 @@
+//colors
+$pickled-bluewood: #314459;
+$white: #fff;
+$color-mountain-mist-approx: #979797;
+$color-modal-approx: rgba(0, 0, 0, 0.5);
+$color-white: #ffffff;
+$color-border: #979797;
+$color-havelock-blue-approx: #4a90e2;
+$color-stack-approx: #8b8a8a;
+$color-shark-approx: #252525;
+$color-chicago-approx: #595858;
+$color-river-bed-approx: #414f5f;
+$color-gallery-approx: #f1efef;
+$color-outrageous-orange-approx: #ef5f45;
+$color-iron-approx: #d8d8d8;
+$color-french-gray-approx: #b7bbc0;
+$color-cod-gray-64-approx: rgba(12, 12, 12, 0.64);
+$color-fiord-approx: #385268;
+$color-celeste-approx: #ccc;
+$color-oxford-blue-approx: #354052;
+$color-dodger-blue-approx: #1991eb;
+$color-mystic-approx: #e2e7ee;
+$color-black-haze-approx: #f7f7f7;
+$black: #000;
+$orange: #f15f3e;
+
+//fonts
+$font-0: Roboto;
+$font-1: sans-serif;
+$font-2: CenturyGothic;
+
+//@extend-elements
+//original selectors
+//.popover-parent .popover.popover-top::after, .popover-parent .popover-parent .popover.bs-tether-element-attached-bottom::after
+%extend-1 {
+  bottom: -69px !important;
+  margin-left: -35px !important;
+  border-top-color: $color-oxford-blue-approx !important;
+  border-width: 35px !important;
+}
+
+
+@import "https://fonts.googleapis.com/css?family=Roboto:400,500,700,900";
+
+.hidden {
+  display: none;
+}
+
+.nf--wizard-wrapper {
+  background-color: $pickled-bluewood;
+  min-height: 760px;
+  height: 100vh;
+
+  .nf--wizard {
+    font-family: $font-0, $font-1;
+    width: 684px;
+    min-height: 505px;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 8px;
+    background-color: $white;
+    border: solid 1px $color-mountain-mist-approx;
+    margin: auto;
+    margin-top: 50px;
+    padding: 50px 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: translate(-50%, -50%);
+
+    .btn {
+      font-size: 18px;
+      border-radius: 8px;
+    }
+
+    .btn-primary {
+      color: $white;
+      background-color: $color-havelock-blue-approx;
+      border: solid 1px $color-mountain-mist-approx;
+      cursor: pointer;
+
+      &:hover {
+        color: $white;
+        background-color: $color-havelock-blue-approx;
+        border: solid 1px $color-mountain-mist-approx;
+      }
+    }
+
+    .btn-circle {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding: 6px 0;
+      font-size: 12px;
+      line-height: 1.42857;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 15px;
+    }
+
+    .btn-link {
+      font-family: $font-0;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: $color-stack-approx;
+      cursor: pointer;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .nf--wizard--step-one {
+      width: 100%;
+      max-width: 465px;
+      margin: auto;
+
+      label {
+        font-family: $font-0;
+        font-size: 18px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: $color-shark-approx;
+      }
+
+      .text-muted {
+        font-family: $font-0;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: $color-chicago-approx;
+      }
+    }
+
+    .nf--profile--avtar {
+      width: 126px;
+      margin: 0 auto 18px;
+    }
+
+    .nf--profile--img {
+      width: 126px;
+      height: 126px;
+      border: solid 2px $color-river-bed-approx;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 100px;
+    }
+
+    .progress--section {
+      width: 100%;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .progress--next--btn {
+      text-align: right;
+    }
+
+    .progress--custom {
+      margin: 46px 0 12px;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 7.5px;
+      background-color: $color-gallery-approx;
+
+      .progress-bar {
+        height: 0.9rem;
+        background-color: $color-outrageous-orange-approx;
+      }
+    }
+
+    .progress--steps--text {
+      font-family: $font-0;
+      font-size: 14px;
+      color: $color-shark-approx;
+    }
+
+    .nf--friends--list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      > li {
+        width: 283px;
+        height: 75px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 9px;
+        background-color: $color-iron-approx;
+        border: solid 1px $color-mountain-mist-approx;
+        margin: 0 0 31px;
+        padding: 12px 17px;
+        display: inline-block;
+
+        &:nth-child(n + 1) {
+          margin-left: 33px;
+        }
+      }
+    }
+
+    .nf--friends-avtar {
+      width: 53px;
+      height: 53px;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 100px;
+      border: solid 1px $color-french-gray-approx;
+      overflow: hidden;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .nf--friends--img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    .nf--friends-info {
+      float: left;
+      width: 120px;
+
+      h1 {
+        font-family: $font-0;
+        font-size: 18px;
+        font-weight: 500;
+        color: $color-cod-gray-64-approx;
+        margin: 0;
+      }
+
+      p {
+        font-family: $font-0;
+        font-size: 14px;
+        font-weight: 500;
+        color: $color-cod-gray-64-approx;
+        margin: 0;
+      }
+    }
+
+    .btn--add--friends {
+      font-family: $font-0;
+      font-size: 12px;
+      color: $white;
+      padding: 0;
+      width: 67px;
+      height: 21px;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 11px;
+      background-color: $orange;
+      line-height: 18px;
+      cursor: pointer;
+    }
+
+    .stepwizard-step {
+      display: table-cell;
+      text-align: center;
+      position: relative;
+
+      p {
+        margin-top: 10px;
+      }
+
+      button [disabled] {
+        opacity: 1 !important;
+      }
+    }
+
+    .stepwizard-row {
+      display: table-row;
+
+      &::before {
+        top: 14px;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 100%;
+        height: 1px;
+        background-color: $color-celeste-approx;
+      }
+    }
+
+    .stepwizard {
+      display: table;
+      width: 100%;
+      position: relative;
+    }
+
+    #step-1 {
+      .progress--section {
+        max-width: 70%;
+      }
+
+      .control-group {
+        width: 100%;
+          
+        input {
+          //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+          border-radius: 9px;
+          border: solid 1px $color-mountain-mist-approx;
+        }
+      }
+    }
+
+    .nf--welcome--text h1 {
+      font-family: $font-0;
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+      color: $color-shark-approx;
+      margin: 0 0 50px;
+    }
+
+    .nf--wizard--step-three .nf--wizard--step-three-inner {
+      padding-bottom: 15px;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    #step-2 .progress--section {
+      max-width: 70%;
+    }
+
+    #step-3 .progress--section {
+      max-width: 100%;
+    }
+  }
+}
+
+#tour-0 {
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+#onloading-popup {
+
+  h1 {
+    font-family: $font-2;
+    font-size: 31px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $color-oxford-blue-approx;
+    padding-top: 25px;
+  }
+
+  p {
+    font-family: $font-2;
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $color-oxford-blue-approx;
+  }
+
+  .modal-dialog {
+    max-width: 684px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: translate(-50%, -50%) !important;
+    margin: 0;
+
+    .modal-content {
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 14px;
+      box-shadow: 0 2px 4px 0 $color-modal-approx;
+      background-color: $color-white;
+      border: solid 1px $color-border;
+
+      .modal-body {
+        padding: 30px 80px;
+      }
+    }
+  }
+
+  .modal-footer {
+    border-top: 0;
+    padding: 0 10% 20px;
+  }
+
+  .btn-link {
+    font-family: $font-2;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $color-havelock-blue-approx;
+    width: 34px;
+    margin-right: 47px;
+    text-decoration: underline;
+  }
+
+  button {
+    opacity: 0.85;
+    background-color: $color-dodger-blue-approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100px;
+    width: 200px;
+    height: 45px;
+  }
+}
+
+
+.popover-parent {
+  padding: 0 !important;
+  width: 100%;
+  border-radius: 10px 10px 7px 7px !important;
+
+  .dottes-item {
+    text-align: center;
+    margin: 0;
+    display: block;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 48px;
+
+    li {
+      display: inline-block;
+
+      a {
+        width: 7px;
+        height: 7px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 100px;
+        background-color: $color-fiord-approx;
+        display: inline-block;
+        margin: 0 3px;
+      }
+
+      .btn-back {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+
+      .btn-next {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+    }
+  }
+
+  .popover-title {
+    font-size: 26px;
+    background: $color-black-haze-approx;
+    border-bottom: 0;
+    //border-bottom: 1px solid $color-mountain-mist-approx;
+    text-align: center;
+    padding: 15px 26px;
+    position: relative;
+    border-radius: 10px 10px 0 0 !important;
+  }
+
+  .popover-title::after {
+    content: "";
+    width: 90%;
+    margin: 0 5%;
+    background: $color-mountain-mist-approx;
+    height: 1px;
+    float: left;
+    margin-top: 15px;
+  }
+
+  .travel-feed {
+    padding: 20px 25px;
+    background: $color-black-haze-approx;
+
+    p {
+      font-family: $font-2;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: $color-oxford-blue-approx;
+    }
+  }
+
+  .popover-content {
+    padding: 0 !important;
+
+    .bs-tether-element-attached-bottom::after {
+      bottom: -11px;
+      margin-left: -11px;
+      border-top-color: !important;
+    }
+
+    .bs-tether-element-attached-bottom::before {
+      bottom: -10px;
+      margin-left: -10px;
+      border-top-color: $black !important;
+    }
+  }
+
+  button {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 7px 20px;
+    margin-top: 7px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .popover-footer {
+    background-color: $color-oxford-blue-approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 7px 7px 4px 4px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &::after {
+    bottom: -69px !important;
+    margin-left: -33px !important;
+    border-width: 35px !important;
+    border-top-color: $color-oxford-blue-approx !important;
+  }
+
+  &::before {
+    bottom: -69px !important;
+    margin-left: -33px !important;
+    border-width: 35px !important;
+    border-top-color: $color-oxford-blue-approx !important;
+  }
+
+  .popover.popover-top::after {
+    @extend %extend-1;
+  }
+
+  .popover-parent .popover.bs-tether-element-attached-bottom::after {
+    @extend %extend-1;
+  }
+}
+
+.friend-parent {
+  padding: 0 !important;
+  width: 100%;
+  top: 20px !important;
+  left: 0 !important;
+  position: absolute;
+  border-radius: 10px 10px 7px 7px !important;
+
+  .dottes-item {
+    text-align: center;
+    margin: 0;
+    display: block;
+    height: 54px;
+    vertical-align: middle;
+    line-height: 48px;
+
+    li {
+      display: inline-block;
+
+      a {
+        width: 7px;
+        height: 7px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 100px;
+        background-color: $color-fiord-approx;
+        display: inline-block;
+        margin: 0 3px;
+      }
+
+      .btn-back {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+
+      .btn-next {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+    }
+  }
+
+  .popover-title {
+    font-size: 26px;
+    background: transparent;
+    border-bottom: 1px solid $color-mountain-mist-approx;
+    text-align: center;
+    padding: 15px 26px;
+    border-radius: 10px 10px 0 0 !important;
+  }
+
+  .travel-feed {
+    padding: 20px 25px;
+    background: $color-black-haze-approx;
+
+    p {
+      font-family: $font-2;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: $color-oxford-blue-approx;
+    }
+  }
+
+  .popover-content {
+    padding: 0 !important;
+  }
+
+  button {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 7px 20px;
+    margin-top: 7px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .popover-footer {
+    background-color: $color-oxford-blue-approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 7px 7px 4px 4px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.friend-parent::after {
+  top: -60px !important;
+  margin-left: -35px !important;
+  border-bottom-color: $color-black-haze-approx !important;
+  border-width: 30px !important;
+}
+
+.cal-parent {
+  padding: 0 !important;
+  width: 100%;
+  top: 20px !important;
+  left: 0 !important;
+  position: absolute;
+  border-radius: 10px 10px 7px 7px !important;
+
+  .dottes-item {
+    text-align: center;
+    margin: 0;
+    display: block;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 48px;
+
+    li {
+      display: inline-block;
+
+      a {
+        width: 7px;
+        height: 7px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 100px;
+        background-color: $color-fiord-approx;
+        display: inline-block;
+        margin: 0 3px;
+      }
+
+      .btn-back {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+
+      .btn-next {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+    }
+  }
+
+  .popover-title {
+    font-size: 26px;
+    background: transparent;
+    border-bottom: 0;
+    //border-bottom: 1px solid $color-mountain-mist-approx;
+    text-align: center;
+    position: relative;
+    padding: 15px 26px;
+    border-radius: 10px 10px 0 0 !important;
+  }
+
+  .popover-title::after {
+    content: "";
+    width: 90%;
+    margin: 0 5%;
+    background: $color-mountain-mist-approx;
+    height: 1px;
+    float: left;
+    margin-top: 15px;
+  }
+
+  .travel-feed {
+    padding: 20px 25px;
+    background: $color-black-haze-approx;
+
+    p {
+      font-family: $font-2;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: $color-oxford-blue-approx;
+    }
+  }
+
+  .popover-content {
+    padding: 0 !important;
+  }
+
+  button {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 7px 20px;
+    margin-top: 7px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .popover-footer {
+    background-color: $color-oxford-blue-approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 7px 7px 4px 4px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.cal-parent::after {
+  top: -60px !important;
+  left: 145px !important;
+  margin-left: -35px !important;
+  border-bottom-color: $color-black-haze-approx !important;
+  border-width: 30px !important;
+}
+
+.explor-parent {
+  padding: 0 !important;
+  width: 100%;
+  top: 20px !important;
+  left: -6px !important;
+  position: absolute;
+  border-radius: 10px 10px 7px 7px !important;
+
+  .dottes-item {
+    text-align: center;
+    margin: 0;
+    display: block;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 48px;
+    
+    li {
+      display: inline-block;
+
+      a {
+        width: 7px;
+        height: 7px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 100px;
+        background-color: $color-fiord-approx;
+        display: inline-block;
+        margin: 0 3px;
+      }
+
+      .btn-back {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+
+      .btn-next {
+        background-color: $color-mystic-approx;
+        padding: 11px 38px;
+        margin-left: 50px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 40px;
+        margin-right: 40px;
+        color: $color-fiord-approx;
+        font-size: 14px;
+        font-family: $font-2;
+      }
+    }
+  }
+
+  .popover-title {
+    font-size: 26px;
+    background: transparent;
+    border-bottom: 0;
+    //border-bottom: 1px solid $color-mountain-mist-approx;
+    text-align: center;
+    padding: 15px 26px;
+    position: relative;
+    border-radius: 10px 10px 0 0 !important;
+  }
+
+  .popover-title::after {
+    content: "";
+    width: 90%;
+    margin: 0 5%;
+    background: $color-mountain-mist-approx;
+    height: 1px;
+    float: left;
+    margin-top: 15px;
+  }
+
+  .travel-feed {
+    padding: 20px 25px;
+    background: $color-black-haze-approx;
+
+    p {
+      font-family: $font-2;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: $color-oxford-blue-approx;
+    }
+  }
+
+  .popover-content {
+    padding: 0 !important;
+  }
+
+  button {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 7px 20px;
+    margin-top: 7px;
+    height: 34px;
+    font-size: 14px;
+  }
+  
+  .popover-footer {
+    background-color: $color-oxford-blue-approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 7px 7px 4px 4px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.explor-parent::after {
+  top: -60px !important;
+  margin-left: -35px !important;
+  border-bottom-color: $color-black-haze-approx !important;
+  border-width: 30px !important;
+}
+
+.active-btn {
+  background: $color-black-haze-approx !important;
+}
+
+
+.trip-form {
+  margin: 0 8%;
+}
+

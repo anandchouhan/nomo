@@ -1,0 +1,23 @@
+<%= link_to trip_path(trip) do %>
+  <li class="trip-block trip-list-item" id="trip-<%= trip.id %>" data-id="<%= trip.id %>">
+    <h3 class="trip-name"><%= trip.name %></h3>
+
+    <% trip.trip_locations.each do |trip_location| %>
+      <% if trip_location.participant?(current_user) %>
+        <p class="trip-location"><%= trip_location.location.city_signature_or_formatted_address %></p>
+        <p class="date">
+          <i class="fa fa-calendar"></i>
+          <%= trip_location.start_at.strftime("%b %d") %> - <%= trip_location.end_at.strftime("%b %d") %>
+        </p>
+        <p class="duration">
+          <%= trip_location.start_at > DateTime.now ? "Leaving in #{time_ago_in_words trip_location.start_at}" : "Left #{time_ago_in_words trip_location.start_at} ago" %>
+        </p>
+      <% end %>
+    <% end %>
+
+    <% if trip.user == current_user %>
+      <%= link_to 'Edit', edit_trip_path(trip), class: "edit-trip trip-options", remote: true %>
+      <%= link_to 'Delete', trip_path(trip), method: :delete, data: { confirm: 'Are you sure?' }, class: "trip-options" %>
+    <% end %>
+  </li>
+<% end %>

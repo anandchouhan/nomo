@@ -1,0 +1,157 @@
+$(document).ready ->
+  # Save Changes on Exit and Form Change
+  $('#notifications-settings-form').dirty preventLeaving: true
+  $('#privacy-settings-form').dirty preventLeaving: true
+  window.active_form_id = $(".settings-group-option.selected-settings-group").find('a').attr("data-attached-element")
+  window.displayUserSettingsForm = (element) ->
+    window.active_form_id = $(".settings-group-option.selected-settings-group").find('a').attr("data-attached-element")
+    window.new_active_form_id = $(element).attr("data-attached-element")
+    if $("#" + window.active_form_id).find("form").dirty("isDirty")
+      $("#unsaved-alert").modal 'show'
+      window.event_type = "form_change"
+    else
+      $(".settings-group").removeClass 'display-none'
+      $(".settings-group").addClass 'display-none'
+      $("#" + window.new_active_form_id).removeClass 'display-none'
+      $(".settings-group-option").removeClass 'selected-settings-group'
+      $(element).closest('.settings-group-option').addClass 'selected-settings-group'
+    return
+  window.saveUserSettings = () ->
+    if (typeof window.active_form_id != 'undefined') && (typeof window.event_type != 'undefined')
+      active_form_json = $("#" + window.active_form_id).find("form").serializeJSON({parseBooleans: true, parseNumbers: true, checkboxUncheckedValue: "false"})
+      switch window.active_form_id
+        when "notifications-settings"
+          settings_obj = notifications: active_form_json
+          settings_obj.notifications.notified_trip_ids = _.keys(_.pick(settings_obj.notifications.notified_trip_ids, _.identity))
+          if(! $("#" + window.active_form_id).find("form")[0].checkValidity())
+            $("#" + window.active_form_id).find("form").find('[type="submit"]').trigger('click')
+            return
+        when "privacy-settings"
+          settings_obj = privacy: active_form_json
+      $("#" + window.active_form_id).find("form").dirty("setAsClean")
+      switch window.event_type
+        when "form_change"
+          window.displayUserSettingsForm($("a[data-attached-element='" + (window.new_active_form_id) + "']").first())
+          $("#unsaved-alert").modal 'hide'
+        when "modal_exit"
+          $("#unsaved-alert").modal 'hide'
+          $("#user-settings").modal 'hide'
+    return
+  window.discardChanges = () ->
+    if (typeof window.active_form_id != 'undefined')
+      active_form = $("#" + window.active_form_id).find("form")
+      active_form.dirty("resetForm")
+      window.set_switchery()
+      pressed_switch = $(".js-switch.proximity-setting").next('.switchery')
+      current_switch = _.filter(window.user_settings_switchers, (o) ->
+        _.includes pressed_switch, o.switcher
+      )
+      if current_switch[0].isChecked()
+        $(".proximity-value").prop 'disabled', false
+      else
+        $(".proximity-value").prop 'disabled', true
+      $("#unsaved-alert").modal 'hide'
+    return
+  window.triggerSave = () ->
+    window.event_type = "user_triggered"
+    window.active_form_id = $(".settings-group-option.selected-settings-group").find('a').attr("data-attached-element")
+    window.saveUserSettings()
+    return
+  window.openSettingsModal = () ->
+    $("#unsaved-alert").modal 'hide'
+    $("#user-settings").modal 'show'
+    return
+  $('#user-settings').on 'hide.bs.modal', (e) ->
+    window.active_form_id = $(".settings-group-option.selected-settings-group").find('a').attr("data-attached-element")
+    if $("#" + window.active_form_id).find("form").dirty("isDirty")
+      $("#unsaved-alert").modal 'show'
+      window.event_type = "modal_exit"
+    return
+  # Switchers
+  window.set_switchery = ->
+    window.user_settings_switchers = []
+    elems = []
+    elems = elems.concat(Array::slice.call(document.querySelectorAll('.js-switch.scheduled-trips-switchers-group')))
+    elems = elems.concat(Array::slice.call(document.querySelectorAll('.js-switch.email-notifications-switchers-group')))
+    elems = elems.concat(Array::slice.call(document.querySelectorAll('.js-switch.scheduled-options-switchers-group')))
+    elems = elems.concat(Array::slice.call(document.querySelectorAll('.js-switch.proximity-setting')))
+    elems.forEach (html) ->
+      switchery = new Switchery(html, window.switchery_options)
+      window.user_settings_switchers.push(switchery)
+      return
+    $('.toggle-all-switcher').closest('div').find('.switchery').click ->
+      switches_in_group = $(this).closest('.switchers-container').find('.switchers-group').find(".switchery")
+      switches = _.filter(window.user_settings_switchers, (o) ->
+        _.includes switches_in_group, o.switcher
+      )
+      pressed_switch = $(this)
+      current_switch = _.filter(window.user_settings_switchers, (o) ->
+        _.includes pressed_switch, o.switcher
+      )
+      if current_switch[0].isChecked()
+        switches.forEach (element) ->
+          if !element.isChecked()
+            element.setPosition true
+          return
+      else
+        switches.forEach (element) ->
+          if element.isChecked()
+            element.setPosition true
+          return
+      return
+    $(".js-switch.proximity-setting").next('.switchery').click ->
+      pressed_switch = $(this)
+      current_switch = _.filter(window.user_settings_switchers, (o) ->
+        _.includes pressed_switch, o.switcher
+      )
+      if current_switch[0].isChecked()
+        $(".proximity-value").prop 'disabled', false
+      else
+        $(".proximity-value").prop 'disabled', true
+      return
+    return
+
+  window.dropdownSelectClick = (element) ->
+    text = $(element).find(".dropdown-select-text").html()
+    $(element).closest(".dropdown").find("button").find(".button-text").html(text)
+    value = $(element).attr("data-item")
+    id = $(element).attr("data-id")
+    $("#" + id).val(value).change()
+    return
+#showFrequencySelector running from inputs
+  window.showFrequencySelector = (a) ->
+    if $(a).prop("checked")
+      $(a).parent().children("select").removeAttr("hidden")
+    else
+      $(a).parent().children("select").prop("hidden", "hidden")
+    return
+
+  window.showGroupsOfSelectors = (a) ->
+    obj = $(a).closest(".switchers-container").find("select")
+    options = $(a).closest(".switchers-container").find("option")
+    if $(a).prop("checked")
+      $(b).prop("checked", false) for b in options
+      x.value = "automatically" for x in obj
+#     window.activateSwitches(y) for y in obj
+#     window.showFrequencySelector(y) for y in obj
+    else
+      $(b).prop("checked", false) for b in options
+      x.value = "off" for x in obj
+#     window.deactivateSwitches(y) for y in obj
+#     window.showFrequencySelector(y) for y in obj
+    return
+
+  window.activateSwitches = (obj) ->
+    $(obj).next("span").css("box-shadow", "0px 0px 0px 11.5px #Afc6c1 inset")
+    $(obj).next("span").contents().css("left", "12px")
+    $(obj).next("span").contents().css("background-color", "#689187")
+    return
+
+  window.deactivateSwitches = (obj) ->
+    $(obj).next("span").css("box-shadow", "0px 0px 0px 0px #d4d4d4 inset")
+    $(obj).next("span").contents().css("left", "0px")
+    $(obj).next("span").contents().css("background-color", "#f1f1f1")
+    return
+
+  window.set_switchery()
+  return

@@ -1,0 +1,27 @@
+<div class="notifications-container">
+  <div class="container notifications-page" >
+    <div class="d-flex justify-content-between">
+      <h2 class="trip-title">Your Notifications</h2>
+
+      <div class="align-self-end noselect">
+        <%= link_to "#", data: { toggle: "modal", target: "#user-settings"}, title: "Settings", class: "settings-link" do %>
+          <i class="fa fa-cog fa-2x " aria-hidden="true "></i>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+
+    <% @notifications.each do |notification| %>
+      <% if notification.sender.present? %>
+          <%= render "notifications/notification", { notification: notification } %>
+      <% end %>
+    <% end %>
+
+  </div>
+
+  <p class="hidden" id="next-offset"><%= @notifications.length %></p>
+  <div class="d-flex justify-content-center pb-3">
+    <button id="btn-load-more-notifications" type="button" class="btn btn-secondary">Load More</button>
+  </div>
+</div>

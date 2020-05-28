@@ -1,0 +1,2 @@
+$('#friend-requests-modal-body').html("<%= j render partial: 'friend_requests_modal_body', locals: { received_friend_requests: @received_friend_requests, sent_friend_requests: @sent_friend_requests, fb_friends: @fb_friends, friends: @friends, waitlist_id: @waitlist_id } %>");
+$('#friend-requests-modal').modal('show');

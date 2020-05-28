@@ -1,0 +1,30 @@
+<% trip_locations.each do |trip_location| %>
+  <div style="padding-top:11px" class="itinerary-item row">
+    <div class="col-2 date-label">
+      <p><%= trip_location.start_at.strftime("%d") %></p>
+      <p><%= trip_location.start_at.strftime("%B") %></p>
+    </div>
+
+    <div class="col-1 d-flex align-items-top">
+      <p class="dates-separator">-</p>
+    </div>
+
+    <div class="col-2 date-label">
+      <p><%= trip_location.end_at.strftime("%d") %></p>
+      <p><%= trip_location.end_at.strftime("%B") %></p>
+    </div>
+
+    <div class="col-7">
+      <h3 class="block-name">
+        <%= trip_location.location.city_signature_or_formatted_address %>
+      </h3>
+    </div>
+    <span id="trip_locations_first" class="hidden">
+      <%=trip_locations.first.start_at.to_date.strftime("%Y/%m/%d")%>
+    </span>
+    <span id="trip_locations_last" class="hidden">
+      <%=trip_locations.last.end_at.to_date.strftime("%Y/%m/%d")%>
+    </span>
+  </div>
+
+<% end %>

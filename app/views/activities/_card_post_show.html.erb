@@ -1,0 +1,45 @@
+<div class="feed-trip-post clearfix">
+  <div class="white-container">
+    <div class="card">
+      <% post = activity.trackable %>
+      
+      <div class="card-block">
+        <h3 class="card-title">
+          <div class="activity-owner-text">
+            <%= link_to post.user do %>
+              <%= user_photo post.user, size: "48x48", class: "rounded-circle activity-user-picture" %>
+            <% end %>
+            
+            <span class="activity-user-name">
+              <%= link_to post.user, class: "activity-owner-text" do %>
+                <%= post.user.name %>
+              <% end %>
+            
+              <span class="activity-trip-info light-font">
+                Created a new post
+              </span>
+            </span>
+          </div>
+          
+          <span class="activity-timestamp light-font" data-livestamp="<%= post.created_at.to_time.to_i %>"></span>
+        </h3>
+
+        <div>
+          <% if post.body.present? %>
+            <p><%= post.body %></p>
+          <% end %>
+        </div>
+        
+        <% if post.picture.attached? %>
+          <img class="card-img-top" src="<%= url_for(post.picture) %>" />
+        <% end %>
+      </div>
+      
+      <hr style="margin:0px;" />
+      
+      <div>
+        <%= render partial: "activities/comments", locals: { activity: activity } %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+@import "../config/*";
+@import "../mixins/*";
+
+.notifications {
+  align-items: center;
+  background: $background-blue center center url("https://s3.us-east-2.amazonaws.com/nomofomo-assets/static/images/email.png");
+  background-attachment: fixed;
+  color: $white;
+  display: flex;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  justify-content: space-between;
+  width: 100%;
+
+  .wrapper {
+    @include bp(iphone-5-landscape) {
+      flex-direction: column;
+    }
+  }
+
+  img {
+    margin: 120px 0 100px;
+
+    @include bp(ipad-mini-landscape) {
+      width: 400px;
+    }
+
+    @include bp(ipad-mini) {
+      width: 300px;
+    }
+
+    @include bp(iphone-5-landscape) {
+      margin-bottom: 30px;
+    }
+  }
+
+  article {
+    text-align: center;
+    width: 430px;
+
+    @include bp(iphone-5-landscape) {
+      margin-bottom: 100px;
+      width: 100%;
+    }
+  }
+
+  h2 {
+    font-size: 36px;
+
+    @include bp(iphone-5-landscape) {
+      font-size: 24px;
+    }
+  }
+
+  a {
+    background-color: $orange;
+    border-radius: 3px;
+    color: $white;
+    display: inline-block;
+    font-size: 24px;
+    margin-top: 50px;
+    padding: 15px 40px;
+
+    @include bp(iphone-5-landscape) {
+      font-size: 18px;
+    }
+
+    &:hover {
+      background-color: $orange-hover;
+      color: $white;
+    }
+  }
+}

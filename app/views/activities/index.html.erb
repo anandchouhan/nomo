@@ -1,0 +1,144 @@
+<% if user_signed_in? %>
+  <div id="activity-main">
+    <div class="container" id="activity-main">
+      <div class="row" id="supercontainer">
+        <div id="activities_left" class="col-md-6">
+          <div class="card-columns">
+
+            <div id="new-post-container" class="container-fluid w-100 bg-white p-3 mb-3">
+              <%= form_with url: posts_path do |f| %>
+                <div class="row mb-1">
+                  <div class="col-sm-3">
+                    <span id="new-post-label">New Post</span>
+                  </div>
+                  <div class="col-sm-9">
+                    <%= f.text_area :body, class: "w-100 form-control post-text-area", placeholder: "Looking for people to take a trip with?  Need some inspiration?  Have a cool Nomo FOMO meetup story?  Go ahead and post it!", rows: 4 %>
+                  </div>
+                </div>
+                <div class="row mb-1">
+                  <div class="col-sm-3">
+                  </div>
+                  <div class="col-sm-9">
+                    <%= f.file_field :picture, class: "form-control-file" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 d-flex flex-row-reverse">
+                    <%= f.submit "Create", class: "create-post-btn" %>
+
+                    <div class="dropdown mr-2">
+                      <button class="btn btn-sm community-btn community-submit-btn dropdown-toggle" type="button" id="postPrivacyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i id="privacy-post-icon" class="fa fa-globe" aria-hidden="true"></i>
+                        <span id="privacy-post-label">Public</span>
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                      </button>
+
+                      <div class="dropdown-menu community-privacy-dropdown" aria-labelledby="postPrivacyDropdown">
+                        <a class="dropdown-item dropdown-item-post-privacy" data-privacy="3">
+                          <i class="fa fa-globe" aria-hidden="true"></i> Public
+                          <p>Anyone on or off Nomo FOMO</p>
+                        </a>
+                        <a class="dropdown-item dropdown-item-post-privacy" data-privacy="2">
+                          <i class="fa fa-unlock-alt" aria-hidden="true"></i> Friends of Friends
+                          <p>Your friends and their friends's on Nomo FOMO</p>
+                        </a>
+                        <a class="dropdown-item dropdown-item-post-privacy" data-privacy="1">
+                          <i class="fa fa-lock" aria-hidden="true"></i> Friends
+                          <p>Only your friends's on Nomo FOMO</p>
+                        </a>
+                        <a class="dropdown-item dropdown-item-post-privacy" data-privacy="0">
+                          <i class="fa fa-user" aria-hidden="true"></i> Only Me
+                          <p>Only me</p>
+                        </a>
+                      </div>
+                    </div>
+
+                    <%= f.hidden_field :privacy, value: 3, id: "privacy-post" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div id="activities-filter-container" class="container-fluid">
+              <div class="row">
+                <div class="col-sm-9">
+                  <span id="activities-filter-container-label">Viewing</span>
+                </div>
+                <div class="col-sm-3">
+                  <div class="dropdown">
+                    <button class="btn btn-sm community-btn community-submit-btn dropdown-toggle" type="button" id="activitiesFilterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <% if @filter == "public" %>
+                        <i id="activities-filter-icon" class="fa fa-globe" aria-hidden="true"></i>
+                        <span id="activities-filter-label">Public</span>
+                      <% elsif @filter == "friends-of-friends" %>
+                        <i id="activities-filter-icon" class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        <span id="activities-filter-label">Friends of Friends</span>
+                      <% else %>
+                        <i id="activities-filter-icon" class="fa fa-lock" aria-hidden="true"></i>
+                        <span id="activities-filter-label">Friends</span>
+                      <% end %>
+
+                      <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="dropdown-menu community-privacy-dropdown" aria-labelledby="activitiesFilterDropdown">
+                      <a class="dropdown-item dropdown-item-activities-filter" href="/feed?filter=public" data-filter="public">
+                        <i class="fa fa-globe" aria-hidden="true"></i> Public
+                        <p>Anyone on or off Nomo FOMO</p>
+                      </a>
+                      <a class="dropdown-item dropdown-item-activities-filter" href="/feed?filter=friends-of-friends" data-filter="friends-of-friends">
+                        <i class="fa fa-unlock-alt" aria-hidden="true"></i> Friends of Friends
+                        <p>Your friends and their friends's activities on Nomo FOMO</p>
+                      </a>
+                      <a class="dropdown-item dropdown-item-activities-filter" href="/feed?filter=friends" data-filter="friends">
+                        <i class="fa fa-lock" aria-hidden="true"></i> Friends
+                        <p>Only your friends's activities on Nomo FOMO</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <div id="activities_left_list">
+              <% @activities.each_with_index do |activity, index| %>
+                <% if index.even? %>
+                  <% if activity.trackable_type == "TripLocation" %>
+                    <%= render partial: 'activities/card_trip_location_index', locals: { activity: activity } %>
+                  <% elsif activity.trackable_type == "Post" %>
+                    <%= render partial: 'activities/card_post_index', locals: { activity: activity } %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div id="activities_right" class="col-md-6">
+          <div class="card-columns">
+              <div id="activities_right_list">
+                <% @activities.each_with_index do |activity, index| %>
+                  <% if index.odd? %>
+                    <% if activity.trackable_type == "TripLocation" %>
+                      <%= render partial: 'activities/card_trip_location_index', locals: { activity: activity } %>
+                    <% elsif activity.trackable_type == "Post" %>
+                      <%= render partial: 'activities/card_post_index', locals: { activity: activity } %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="hidden" id="next-offset"><%= @activities.length %></p>
+    <div class="d-flex justify-content-center pb-3">
+      <button id="btn-load-more-feed" type="button" class="btn btn-secondary">Load More</button>
+    </div>
+  </div>
+
+  <div id="shared-activity-form"></div>
+  <div id="activitiy-likes-list"></div>
+  <div id="edit-activity-form"></div>
+<% end %>

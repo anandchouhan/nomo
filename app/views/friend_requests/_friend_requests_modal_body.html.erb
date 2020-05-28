@@ -1,0 +1,160 @@
+<div class="container">
+  <div class='row'>
+    <div class='col-12'>
+      <input id="search-friends" class="form-control" type="text" placeholder="Search for Nomo FOMO friends" autocomplete="off">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group" id="friends-search-list"></ul>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <ul class="nav nav-pills d-flex justify-content-between" role="tablist">
+    <li class="nav-item" style="width: 33.33%;">
+      <a class="nav-link text-center active" data-toggle="tab" href="#friend-requests-section" role="tab">My Friends</a>
+    </li>
+    <li class="nav-item" style="width: 33.33%;">
+      <a class="nav-link text-center" data-toggle="tab" href="#facebook-section" role="tab">Facebook</a>
+    </li>
+    <li class="nav-item" style="width: 33.33%;">
+      <a class="nav-link text-center" data-toggle="tab" href="#invite-section" role="tab">Invite</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="tab-content">
+
+  <section class="tab-pane fade show active" id="friend-requests-section" role="tabpanel">
+    <div class="container">
+      <div class="mb-4">
+        <div clas="row">
+          <h5>Friend Requests</h5>
+        </div>
+
+        <% if received_friend_requests.any? || sent_friend_requests.any? %>
+          <% received_friend_requests.each do |friend_request| %>
+            <div class="row mb-1 mt-1">
+          
+              <div class="col-6 pl-0 d-flex align-items-center">
+                <%= link_to friend_request.sender do %>
+                  <%= user_photo friend_request.sender, size: "36x36", class: "rounded-circle activity-user-picture" %>
+                <% end %>
+                <%= link_to friend_request.sender.name, friend_request.sender, class: "text" %>
+              </div>
+
+              <div class="col-3 d-flex justify-content-end">
+                <%= link_to("Reject", friend_request, { method: :delete, class: 'btn btn-sm reject-friend-btn decline-friend-request' }) %>
+              </div>
+
+              <div class="col-3 d-flex justify-content-end">
+                <%= link_to("Accept", accept_friend_request_path(friend_request), { method: :post, class: 'btn btn-sm btn-default approve-friend-btn approve-friend-request-btn' }) %>
+              </div>
+              
+            </div>
+          <% end %>
+
+          
+          <% sent_friend_requests.each do |friend_request| %>
+            <div class="row mb-1 mt-1">
+          
+              <div class="col-6 pl-0 d-flex align-items-center">
+                <%= link_to friend_request.recipient do %>
+                  <%= user_photo friend_request.recipient, size: "36x36", class: "rounded-circle activity-user-picture" %>
+                <% end %>
+                <%= link_to friend_request.recipient.name, friend_request.recipient, class: "text" %>
+              </div>
+
+              <div class="col-6 d-flex justify-content-end">
+                <%= link_to("Cancel", friend_request, { method: :delete, class: "cancel-request-btn btn btn-sm cancel-friend-btn cancel-sent-friend-request" }) %>
+              </div>
+              
+            </div>
+          <% end %>
+        <% else %>
+          You don't have any pending friend requests
+        <% end %>
+      </div>
+
+      <div>
+        <div clas="row">
+          <h5>Friends</h5>
+        </div>
+
+        <% if friends.any? %>
+          <% friends.each do |user| %>
+            <div class="row mb-1 mt-1">
+          
+              <div class="col-6 pl-0 d-flex align-items-center">
+                <%= link_to user do %>
+                  <%= user_photo user, size: "36x36", class: "rounded-circle activity-user-picture" %>
+                <% end %>
+                <%= link_to user.name, user, class: "text" %>
+              </div>
+              
+            </div>
+          <% end %>
+        <% else %>
+          <p> You don't have friends on Nomo FOMO. Try adding some friends to improve your experience.</p>
+          <p>Invite on:
+          <a href="https://www.facebook.com/sharer/sharer.php?u=nomo-fomo.com/?refcode=<%= waitlist_id %>" target="_blank">Facebook</a>
+          <a href="https://twitter.com/home?status=Join%20me%20on%20%40NomoFOMO%20so%20we%20never%20miss%20an%20opportunity%20to%20meet%20up%20for%20a%20coffee!%20nomo-fomo.com/?ref=findfriendsmodule" target="_blank">, Twitter</a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=nomo-fomo.com/?ref=findfriendsmodule&title=Join%20me%20on%20Nomo%20FOMO&summary=Hi,%20%0A%0AI've%20started%20using%20Nomo%20FOMO%20to%20enhance%20my%20networking%20and%20meetup%20opportunities%20while%20traveling.%20Would%20love%20to%20add%20you%20to%20my%20Nomo%20FOMO%20network%20so%20we%20don't%20miss%20a%20chance%20to%20meet-up%20when%20our%20paths%20overlap.%20&source=" target="_blank">, LinkedIn</a>
+          <a href="mailto:?&bcc=referrals@nomo-fomo.com&subject=Join me on Nomo FOMO&body=Hi,%20%0A%0AI've%20started%20using%20Nomo%20FOMO%20to%20enhance%20my%20networking%20and%20meetup%20opportunities%20while%20traveling.%20Would%20love%20to%20add%20you%20to%20my%20Nomo%20FOMO%20network%20so%20we%20don't%20miss%20a%20chance%20to%20meet-up%20when%20our%20paths%20overlap.%20%0A%0AJoin%20me%20here%3A%20nomo-fomo.com%20">, Email</a> </p>
+          <p> or share your referral link: <a href="https://nomo-fomo.com/?refcode=<%= waitlist_id %>" class="p-2 referral-link" onclick="return false">https://nomo-fomo.com/?refcode=<%= waitlist_id %></a> </p>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab-pane fade show" id="facebook-section" role="tabpanel">
+    <div class="container">
+      <% numer_of_fb_users = 0 %>
+      <% fb_friends.each do |user| %>
+        <% unless current_user.friend_of?(user) || current_user.friend_request_sent?(user) || current_user.friend_request_received?(user) %>
+          <% numer_of_fb_users = numer_of_fb_users + 1 %>
+          <div class="row mb-1 mt-1">
+          
+            <div class="col-6 pl-0 d-flex align-items-center">
+              <%= link_to user do %>
+                <%= user_photo user, size: "36x36", class: "rounded-circle activity-user-picture" %>
+              <% end %>
+              <%= link_to user.name, user, class: "text" %>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+              <%= form_tag(FriendRequest.new, { method: :post }) do %>
+                <%= hidden_field_tag(:recipient_user_id, user.id) %>
+                <%= submit_tag("Add Friend", { class: "btn btn-sm btn-default approve-friend-btn add-connected-btn" }) %>
+              <% end %>
+            </div>
+            
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if numer_of_fb_users == 0 %>
+        <p> You don't have friends on Nomo FOMO. Try adding some friends to improve your experience.</p>
+        <p>Invite on:
+        <a href="https://www.facebook.com/sharer/sharer.php?u=nomo-fomo.com/?refcode=<%= waitlist_id %>" target="_blank">Facebook</a>
+        <a href="https://twitter.com/home?status=Join%20me%20on%20%40NomoFOMO%20so%20we%20never%20miss%20an%20opportunity%20to%20meet%20up%20for%20a%20coffee!%20nomo-fomo.com/?ref=findfriendsmodule" target="_blank">, Twitter</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=nomo-fomo.com/?ref=findfriendsmodule&title=Join%20me%20on%20Nomo%20FOMO&summary=Hi,%20%0A%0AI've%20started%20using%20Nomo%20FOMO%20to%20enhance%20my%20networking%20and%20meetup%20opportunities%20while%20traveling.%20Would%20love%20to%20add%20you%20to%20my%20Nomo%20FOMO%20network%20so%20we%20don't%20miss%20a%20chance%20to%20meet-up%20when%20our%20paths%20overlap.%20&source=" target="_blank">, LinkedIn</a>
+        <a href="mailto:?&bcc=referrals@nomo-fomo.com&subject=Join me on Nomo FOMO&body=Hi,%20%0A%0AI've%20started%20using%20Nomo%20FOMO%20to%20enhance%20my%20networking%20and%20meetup%20opportunities%20while%20traveling.%20Would%20love%20to%20add%20you%20to%20my%20Nomo%20FOMO%20network%20so%20we%20don't%20miss%20a%20chance%20to%20meet-up%20when%20our%20paths%20overlap.%20%0A%0AJoin%20me%20here%3A%20nomo-fomo.com%20">, Email</a> </p>
+        <p> or share your referral link: <a href="https://nomo-fomo.com/?refcode=<%= waitlist_id %>" class="p-2 referral-link" onclick="return false">https://nomo-fomo.com/?refcode=<%= waitlist_id %></a> </p>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="tab-pane fade show" id="invite-section" role="tabpanel">
+    <p class="mb-4 invite-title">Increase your networking and meetup opportunities while on the road by inviting others to share their trips with you on Nomo FOMO</p>
+    <p>Invite on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=nomo-fomo.com/?refcode=<%= waitlist_id %>" target="_blank">Facebook</a>
+    <a href="https://twitter.com/home?status=Join%20me%20on%20%40NomoFOMO%20so%20we%20never%20miss%20an%20opportunity%20to%20meet%20up%20for%20a%20coffee!%20nomo-fomo.com/?ref=findfriendsmodule" target="_blank">, Twitter</a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=nomo-fomo.com/?ref=findfriendsmodule&title=Join%20me%20on%20Nomo%20FOMO&summary=Hi,%20%0A%0AI've%20started%20using%20Nomo%20FOMO%20to%20enhance%20my%20networking%20and%20meetup%20opportunities%20while%20traveling.%20Would%20love%20to%20add%20you%20to%20my%20Nomo%20FOMO%20network%20so%20we%20don't%20miss%20a%20chance%20to%20meet-up%20when%20our%20paths%20overlap.%20&source=" target="_blank">, LinkedIn</a>
+    <a href="mailto:?&bcc=referrals@nomo-fomo.com&subject=Join me on Nomo FOMO&body=Hi,%20%0A%0AI've%20started%20using%20Nomo%20FOMO%20to%20enhance%20my%20networking%20and%20meetup%20opportunities%20while%20traveling.%20Would%20love%20to%20add%20you%20to%20my%20Nomo%20FOMO%20network%20so%20we%20don't%20miss%20a%20chance%20to%20meet-up%20when%20our%20paths%20overlap.%20%0A%0AJoin%20me%20here%3A%20nomo-fomo.com%20">, Email</a></p>
+    <p> or share your referral link: <a href="https://nomo-fomo.com/?refcode=<%= waitlist_id %>" class="p-2 referral-link" onclick="return false">https://nomo-fomo.com/?refcode=<%= waitlist_id %></a> </p>
+  </section>
+
+</div>

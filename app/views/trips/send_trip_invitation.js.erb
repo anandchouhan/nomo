@@ -1,0 +1,3 @@
+$("#friend-" + <%= @recipient.id %>).remove();
+$("#list-pending-requests").append("<%= j render partial: 'list_item_pending_request', locals: { trip: @trip, recipient: @recipient, sender: @sender, trip_invitation_request: @trip_invitation_request } %>");
+$('#quantity-trip-invited').text("<%= @trip.trip_invitation_requests.length %> Invited");

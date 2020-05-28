@@ -1,0 +1,28 @@
+<div class="outer p-0">
+  <ul class="comments-wrapper" data-activity-id="<%= activity.id %>" style="max-height: 250px; overflow-y: scroll;">
+    <% activity.comments.order("created_at").each_with_index do |comment, index| %>
+      <% if comment.user == current_user %>
+        <%= render "activities/comment_user", comment: comment %>
+      <% else %>
+        <li>
+          <div class="for-img">
+            <%= user_photo comment.user %>
+          </div>
+
+          <div class="white-chat-outer">
+            <div class="white-chat-box">
+              <div class="white-chat-inner">
+                <span class="for-name"><%= comment.body %></span>
+              </div>
+              <span class="white-time"><%= "#{time_ago_in_words(comment.created_at)} ago" %></span>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  
+  <hr style="margin:0px;" />
+
+  <%= render partial: "activities/comment_form", locals: { activity: activity } %>
+</div>

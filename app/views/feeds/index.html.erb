@@ -1,0 +1,9 @@
+<%= form_for [@post, @user.posts.build], url: posts_path, html: {class: 'form' }, remote: true do |f| %>
+  <p><%= f.text_area :body, class: 'form-control', placeholder: 'Write your post' %></p>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="btn-wrap">
+    <%= f.submit "Post", class: 'btn btn-primary pull-right' %>
+  </div>
+<% end %>
+<br />
+<div class="clear-fix"></div>

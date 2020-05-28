@@ -1,0 +1,226 @@
+//= require jquery
+//= require jquery-migrate/jquery-migrate-3.0.0.min
+//= require tether
+//= require bootstrap-sprockets
+//= require datetimepicker
+//= require jquery_ujs
+//= require jquery-ui
+//= require underscore
+//= require modernizr
+//= require moment/moment
+//= require fullcalendar
+//= require jquery-autosize/jquery.autosize.min
+//= require perfect-scrollbar
+//= require switchery
+//= require bootstrap/alert
+//= require bootstrap/dropdown
+//= require bootstrap-select/dist/js/bootstrap-select.min
+//= require livestamp/livestamp.min
+//= require list.js/dist/list.min
+//= require jquery-serializejson/jquery.serializejson.min
+//= require jquery.caret/dist/jquery.caret.min
+//= require at.js/dist/js/jquery.atwho.min
+//= require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar
+//= require jquery.dirty.custom/jquery.dirty
+//= require parsleyjs/dist/parsley
+//= require accommodations
+//= require activities
+//= require bootstrap-select
+//= require bootstrap
+//= require cable
+//= require comments
+//= require common
+//= require communities
+//= require explorer
+//= require friend_requests
+//= require landings
+//= require load-fallback
+//= require google-maps-api
+//= require notifications
+//= require travels
+//= require trips-calendar
+//= require trips
+//= require user_settings
+//= require users
+//= require onboardings
+//= require events
+//= require posts
+//= require user_current_location
+//= require google-analytics
+
+$(document).ready(function(){
+
+  if (window.location.hash == '#_=_') {
+    history.replaceState ? history.replaceState(null, null, window.location.href.split('#')[0]) : window.location.hash = '';
+  }
+
+  if (window.location.pathname == "/" && NF) {
+    window.location.href = "/feed";
+  }
+
+  $('#videoWalkthroughModal').on('shown.bs.modal', function () {
+    $(this).find('iframe').attr('src', "https://www.youtube.com/embed/6MngS6dIGW4?autoplay=1")
+  });
+
+  $('#videoWalkthroughModal .close').click(function() {
+    $('#videoWalkthroughModal').modal('hide');
+    $('#videoWalkthroughModal').find('iframe').attr('src', "");
+    if(!!($('.walkthrough-dropdown li').is('#not-viewed-walkthrough'))) {
+      window.location.assign('/feed?walkthrough=1');
+    }
+  });
+
+  $('.walkthrough-dropdown').click(function() {
+    $('#videoWalkthroughModal').modal({backdrop: 'static', keyboard: false});
+    $('#videoWalkthroughModal').modal('show');
+  });
+
+  NF.Comments.removeDuplicateDetails();
+
+  $(".map-search-toggle-btn").on('click', function(){
+    $(".map-sidebar").toggleClass("map-search-show");
+  });
+
+  $(function () {
+    $('[data-toggle="popover"]').popover();
+  });
+
+  $(function () {
+    $('[data-toggle="popover"]').popover();
+  });
+
+  $(function() {
+    $(window).scroll(function() {
+      if ($('.hero')) {
+        var distanceFromTop = $(this).scrollTop();
+        if (distanceFromTop >= $('.hero').height()) {
+          $('#main-menu').addClass('fixed');
+        } else {
+          $('#main-menu').removeClass('fixed');
+        }
+      }
+    });
+  });
+  
+  $(document.body).on('click', '#close-notification', function() {
+    $(this).parent().hide();
+  });
+});
+
+$(".alert" ).fadeOut(5000);
+
+// Convert dates to the format YYYY/mm/dd, the format used by the date picker to set the min date
+function formatToMinDate(currentTime) {
+  var dateString = currentTime.toDateString();
+  var dateParts = dateString.split(' ');
+
+  var year = dateParts[3];
+  var day = dateParts[2];
+
+  var monthString = dateParts[1];
+  var month = getMonthNumber(monthString);
+
+  return year + '/' + month + '/' + day;
+}
+
+// Convert dates to the format mm/dd/YYYY, the format used to show the date to users
+function formatToShowDate(currentTime) {
+  var dateString = currentTime.toDateString();
+  var dateParts = dateString.split(' ');
+
+  var year = dateParts[3];
+  var day = dateParts[2];
+
+  var monthString = dateParts[1];
+  var month = getMonthNumber(monthString);
+
+  return month + '/' + day + '/' + year;
+}
+
+function getMonthNumber(name) {
+  var month = null;
+  switch (name) {
+    case 'Jan':
+      month = '01';
+      break;
+    case 'Feb':
+      month = '02';
+      break;
+    case 'Mar':
+      month = '03';
+      break;
+    case 'Apr':
+      month = '04';
+      break;
+    case 'May':
+      month = '05';
+      break;
+    case 'Jun':
+      month = '06';
+      break;
+    case 'Jul':
+      month = '07';
+      break;
+    case 'Aug':
+      month = '08';
+      break;
+    case 'Sep':
+      month = '09';
+      break;
+    case 'Oct':
+      month = '10';
+      break;
+    case 'Nov':
+      month = '11';
+      break;
+    case 'Dec':
+      month = '12';
+      break;
+  }
+  return month;
+}
+
+// Removes the timezone and return an ISO String
+function toISOString(currentTime) {
+  var dateString = currentTime.toDateString();
+  var dateStringParts = dateString.split(' ');
+  var month = getMonthNumber(dateStringParts[1]);
+  var dayOfMonth = dateStringParts[2];
+  var year = dateStringParts[3];
+
+  var timeString = currentTime.toTimeString();
+  var timeStringParts = timeString.split(' ');
+  var time = timeStringParts[0];
+
+  return year + '-' + month + '-' + dayOfMonth + 'T' + time + '.000Z';
+}
+
+// Implements a delay and executes a function when the time elapsed.
+// It is used mainly for text fields where a function must be executed after
+// the time elapsed, like AJAX calls.
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout(timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
+
+// Gets a URL query parameter from an URL.
+function getUrlParameter(url, queryParam) {
+  var parts = url.split('?');
+  if (parts.length > 1) {
+    var queryParams = parts[1].split('&');
+    for (var i = 0; i < queryParams.length; i++) {
+      var queryParamParts = queryParams[i].split('=');
+      var name = queryParamParts[0];
+      var value = queryParamParts[1];
+
+      if (name === queryParam) {
+        return value;
+      }
+    }
+  } else {
+    return '';
+  }
+};

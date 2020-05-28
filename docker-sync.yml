@@ -1,0 +1,8 @@
+version: '2'
+options:
+  verbose: false
+syncs:
+  nomofomo:
+    notify_terminal: true
+    src: '.'
+    sync_excludes: ['tmp/*', '.git/*', 'public/*', 'node_modules/*']

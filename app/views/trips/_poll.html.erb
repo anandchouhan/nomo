@@ -1,0 +1,32 @@
+    <span class="pull-right">
+    <% if current_user == question.trip.user %>
+      <%= link_to poll_path(question), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash-o"></i>
+      <% end %>
+    <% end %>
+    </span>
+    <h4><%= question.title %></h4>
+    <ul class="list-group">
+    <% question.answers.each do |answer| %>
+      <li class="list-group-item justify-content-between">
+        <%= link_to (current_user.liked?(answer) ? dislike_poll_path(answer) : like_poll_path(answer) ), method: :put, remote: true do %>
+          <i class="fa fa<%= '-check' if current_user.liked? answer %>-square-o"></i> <%= answer.description %>
+        <% end %>
+        <span class="pull-right">
+        <% if current_user == answer.trip.user %>
+          <%= link_to poll_path(answer), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+        <% end %>
+        </span>
+        </li>
+    <% end %>
+    </ul>
+    
+    <%= form_for :poll, url: polls_path(), html: {class: 'form-inline', remote: true} do |f| %>
+      <%= f.text_field :description, class: 'form-control', placeholder: 'Write New Answer' %>
+      <%= f.hidden_field :trip_id, value: question.trip.id %>
+      <%= f.hidden_field :parent_type, value: 'Answer' %>
+      <%= f.hidden_field :parent_id, value: question.id %>
+      <%= f.submit "Add Answer", class: 'btn btn-primary' %> 
+    <% end %>

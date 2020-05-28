@@ -1,0 +1,6 @@
+<% @notifications.each do |notification| %>
+  $('.notifications-page').append("<%= j render partial: 'notifications/notification', locals: { notification: notification } %>");
+<% end %>
+
+var offset = $('#next-offset').text();
+$('#next-offset').text(parseInt(offset) + <%= @notifications.length %>);

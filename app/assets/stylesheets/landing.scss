@@ -1,0 +1,92 @@
+@import "config/*";
+
+.waitlist-form {
+  margin-bottom: 30px;
+}
+
+.welcome {
+  background: url("https://s3.us-east-2.amazonaws.com/nomofomo-assets/static/images/welcome-background.jpg") center center no-repeat;
+  background-size: cover;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  height: 100vh;
+  padding-top: 12vh;
+  width: 100vw;
+
+  h1 {
+    color: $white;
+    font-weight: $normal;
+  }
+
+  a {
+    margin-top: 20vh;
+  }
+}
+
+.trip-btn {
+  background: $orange;
+  border: 0;
+  border-radius: 4px;
+  color: $white;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: $normal;
+  letter-spacing: 2px;
+  padding: 15px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background: $orange-hover;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.waitlist {
+  background-color: $black;
+  color: $white;
+  padding: 50px 0;
+  text-align: center;
+
+  h2 {
+    line-height: 1;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.wlist-text {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: $normal;
+  margin-bottom: 20px;
+}
+
+.check-wlist-position {
+  margin-top: 10px;
+}
+
+.waitlist-position-text {
+  border-bottom: 1px solid $dusty-gray;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.share-waitlist-text {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.twitter-waitlist {
+  margin-left: 10px;
+}
+
+.ref-link {
+  width: 60%;
+}
+
+.wlist-email {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,77 @@
+<div class="nf--wizard-wrapper"> 
+  <div class="nf--wizard">
+  
+    <div class="row setup-content" id="step-1">      
+ 
+       <div class="col-md-12">
+        <div class="nf--wizard--step-one">
+          <div class="nf--profile--avtar">
+            <%= user_photo current_user, { class: 'nf--profile--img' } %>
+          </div>
+          <div class="nf--welcome--text">
+            <h1>Welcome <%= current_user.name %>! <br/> Lets get your account set up :)</h1>
+          </div>
+          <%= render partial: "onboardings/form_user", locals: { user: @current_user } %>
+        </div>
+      </div> 
+      <div class="col-md-12">
+        <div class="progress--section">           
+          <div class="progress progress--custom">
+            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+          </div>
+          <div class="progress--steps--text">
+              Step 1/3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row setup-content" id="step-2">
+       
+        <div class="col-md-12">
+          <div class="nf--welcome--text">
+            <h1>Great! Now lets add friends already on Nomo FOMO:</h1>
+          </div>
+          <ul class="nf--friends--list" style="max-height: 200px; overflow-y: scroll;">
+            <% @fb_freinds.each do |friend| %>
+              <li >
+                <%= render partial: "friend", locals: { friend: friend } %>
+              </li>
+            <% end %>
+          </ul>
+
+          <div class="col-md-12">
+            <div class="progress--section">
+              <div class="progress--next--btn">
+                  <%= form_tag('/onboardings/step2', remote: true) do %>
+                    <button type="submit" class="btn btn-primary nextBtn">Continue</button>
+                  <% end %>
+              </div>
+              <div class="progress progress--custom">
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+              </div>
+              <div class="progress--steps--text">
+                  Step 2/3
+              </div>
+            </div>
+          </div>
+        </div>
+     
+    </div>
+    <div class="row setup-content" id="step-3">
+      <div class="col-xs-12">    
+        <div class="nf--wizard--step-three">
+          <div class="nf--wizard--step-three-inner">
+            <div class="nf--form-section">
+              <div class="nf--welcome--text">
+                <h1>Almost there! Lets add a trip to share with your network:</h1>
+              </div>
+              <%= render partial: 'trip' %>
+
+            </div>
+          </div>
+        </div>        
+      </div>     
+    </div>
+  
+</div>
+</div>

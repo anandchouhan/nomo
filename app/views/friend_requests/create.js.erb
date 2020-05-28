@@ -1,0 +1,3 @@
+$(".connected-friends-list tr[data-user-id='<%= @friend_request.recipient_user_id %>']").remove();
+$('.pending-invites').append("<%= j render partial: 'sent_friend_request', locals: { friend_request: @friend_request } %>");
+$(".user-<%= @friend_request.recipient_user_id %>").remove();

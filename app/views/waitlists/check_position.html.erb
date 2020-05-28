@@ -1,0 +1,8 @@
+<div class="wlist-text">
+  <h1>Check your position</h1>
+  <p>Find out how far you are from getting access.</p>
+</div>
+<%= form_tag(waitlists_path, :method => "get", id: "search-form") do %>
+  <%= email_field_tag :search, params[:search], placeholder: "Email", class: "form-control custom wlist-email" %>
+  <%= submit_tag "Check position", class: "btn btn-info login-button" %>
+<% end %>

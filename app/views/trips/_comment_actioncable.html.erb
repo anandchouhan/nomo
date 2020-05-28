@@ -1,0 +1,21 @@
+<span class="comment-selector" data-comment-id="<%= comment.id %>">
+  <div class="row">
+    <div class="col-sm-12 comment">
+      <div class="message-user">
+        <%= link_to comment.user do %>
+          <p><%= comment.user.name %></p>
+        <% end %>
+      </div>
+      <div class="message-details" data-id="<%= comment.user.id %>">
+        <div class="message-body">
+          <div class="message-content">
+            <p><%= comment.body %></p>
+          </div>
+        </div>
+        <div class="message-time">
+          <small><%= comment.created_at.strftime("%H:%M") %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</span>

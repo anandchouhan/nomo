@@ -1,0 +1,207 @@
+var map = null;
+var autocompleteService = null;
+
+var locations = [];
+var userId = null;
+var startAt = null;
+var endAt = null;
+
+function initGoogleMapsAPI() {
+  var element = document.getElementById("map");
+  if (element !== null) {
+    if (map === null) {
+      map = new google.maps.Map(element, {
+        center: {lat: 40.7128, lng: -74.0060},
+        zoom: 3,
+        streetViewControl: false,
+        mapTypeId: 'roadmap',
+        disableDefaultUI: true,
+        zoomControl: true,
+        styles: [{"featureType": "all","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative","elementType": "labels.text.fill","stylers": [{"color": "#444444"}]},{"featureType": "administrative.country","elementType": "all","stylers": [{"visibility": "on"}]},{"featureType": "administrative.country","elementType": "geometry.stroke","stylers": [{"color": "#999999"}]},{"featureType": "administrative.country","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType": "administrative.province","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative.province","elementType": "geometry","stylers": [{"visibility": "on"}]},{"featureType": "administrative.province","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType": "administrative.locality","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative.neighborhood","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative.land_parcel","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "landscape","elementType": "all","stylers": [{"color": "#f2f2f2"},{"visibility": "off"}]},{"featureType": "landscape.man_made","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "landscape.natural","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "landscape.natural.landcover","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "landscape.natural.terrain","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.attraction","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.business","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.government","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.medical","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.park","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.place_of_worship","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.school","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.sports_complex","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "road","elementType": "all","stylers": [{"saturation": -100},{"lightness": 45},{"visibility": "off"}]},{"featureType": "road.highway","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "road.highway.controlled_access","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "road.arterial","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "road.arterial","elementType": "labels.icon","stylers": [{"visibility": "off"}]},{"featureType": "road.local","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "transit","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "transit.line","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "transit.station","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "transit.station.airport","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "transit.station.bus","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "transit.station.rail","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "water","elementType": "all","stylers": [{"color": "#6683a3"},{"visibility": "on"}]}]
+      });
+    }
+
+    addMarkersToMap();
+  }
+
+  autocompleteService = new google.maps.places.AutocompleteService();
+}
+
+function addMarkersToMap() {
+  if (map != null) {
+    var markers = locations.map(function(location, i) {
+      var position = location.position;
+      var type = location.type;
+
+      if (type === "user") {
+        var marker = new google.maps.Marker({
+          position: position,
+          icon: "<%= asset_path 'marker-blue.png' %>"
+        });
+        addClickListener(marker, location.locationId);
+      } else if (type === "circle") {
+        var marker = new google.maps.Marker({
+          position: position,
+          icon: "<%= asset_path 'marker-red.png' %>"
+        });
+        addClickListener(marker, location.locationId);
+      } else if (type == "circle_and_user") {
+        var marker = new google.maps.Marker({
+          position: position,
+          icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+        });
+        addClickListener(marker, location.locationId);
+      } else if (type == "user_profile") {
+        var marker = new google.maps.Marker({
+          position: position,
+          icon: "<%= asset_path 'marker-blue.png' %>"
+        });
+        addClickListenerProfile(marker, location.locationId);
+      }
+
+      return marker;
+    });
+
+    var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  }
+}
+
+function addClickListener(marker, locationId) {
+  var url = "/users/" + userId + "/trip_locations_for_map?location_id=" + locationId + "&show_friend_locations=true";
+  
+  if (startAt !== null) {
+    url += "&start_at=" + encodeURIComponent(startAt);
+  }
+
+  if (endAt !== null) {
+    url += "&end_at=" + encodeURIComponent(endAt);
+  }
+
+  marker.addListener("click", function() {
+    $.ajax({
+      url: url,
+      dataType: "html",
+      success: function success(data) {
+        var infoWindow = new google.maps.InfoWindow({
+          content: data,
+          maxWidth: 320
+        });
+        infoWindow.open(map, marker);
+      }
+    });
+  });
+}
+
+function addClickListenerProfile(marker, locationId) {
+  var url = "/users/" + userId + "/trip_locations_for_map?location_id=" + locationId + "&show_friend_locations=false";
+  
+  if (startAt !== null) {
+    url += "&start_at=" + encodeURIComponent(startAt);
+  }
+
+  if (endAt !== null) {
+    url += "&end_at=" + encodeURIComponent(endAt);
+  }
+
+  marker.addListener("click", function() {
+    $.ajax({
+      url: url,
+      dataType: "html",
+      success: function success(data) {
+        var infoWindow = new google.maps.InfoWindow({
+          content: data,
+          maxWidth: 320
+        });
+        infoWindow.open(map, marker);
+      }
+    });
+  });
+}
+
+function addLocation(lat, lng, locationId, type) {
+  var position = {
+    lat: lat,
+    lng: lng
+  };
+
+  var location = {
+    position: position,
+    locationId: locationId,
+    type: type
+  };
+
+  locations.push(location);
+}
+
+// Realizes the autocompletion of places for specific inputs.
+// When a new set of places are retrived by Google Maps API, it shows a popup below
+// the input with the most similar places.
+function autocomplete(event, types) {
+  // Reset value for location_id when user changes the value.
+  var target = event.target;
+  target.nextElementSibling.value = '';
+
+  // Waits for 750 milliseconds before sending the Ajax request.
+  // This is to avoid too many hits to the Google API.
+  delay(function() {
+    var value = target.value.trim();
+    if (value !== '') {
+      var request = {
+        types: types,
+        input: value
+      };
+
+      autocompleteService.getPlacePredictions(request, function(predictions, status) {
+        $('.autocomplete-items').remove();
+
+        var autocompleteItems = document.createElement('div');
+        autocompleteItems.setAttribute('class', 'autocomplete-items');
+
+        predictions.forEach(function(prediction) {
+          var item = document.createElement('div');
+          item.innerHTML = prediction.description;
+          autocompleteItems.appendChild(item);
+
+          item.addEventListener('click', function() {
+            target.value = prediction.description;
+            $('.autocomplete-items').remove();
+            
+            data = {
+              place_id: prediction.place_id
+            }
+
+            // Creates the new location in our database for future use.
+            // These locations are used to store frequently accessed information like latitutes,
+            // longitudes, addresses, names, etc.
+            $.ajax({
+              url: '/locations',
+              type: 'post',
+              dataType: 'json',
+              contentType: 'application/json',
+              data: JSON.stringify(data),
+              success: function success(data) {
+                target.nextElementSibling.value = data.id;
+              }
+            });
+          });
+        });
+
+        target.parentNode.appendChild(autocompleteItems);
+      });
+    } else {
+      $('.autocomplete-items').remove();
+    }
+  }, 750);
+}
+
+$(document).ready(function() {
+  // This autocomplete shows only cities.
+  $(document).on('keyup', '.autocomplete-places', function(event) {
+    autocomplete(event, ['(cities)']);
+  });
+
+  // This autocomplete shows only geocoding and establishment results.
+  $(document).on('keyup', '.autocomplete-geocode', function(event) {
+    autocomplete(event, ['geocode', 'establishment']);
+  });
+});

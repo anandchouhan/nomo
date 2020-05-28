@@ -1,0 +1,305 @@
+<section class="banner-area" id="home">
+  <div class="container">
+    <div class="row flexbox-center">
+      <div class="col-lg-7">
+        <div class="single-banner pr-5">
+          <h1>Build and strengthen lasting relationships, one trip at a time</h1>
+
+          <p>See where your friends will be, get notified when your travel plans intersect, and plan group trips with ease</p>
+        
+          <%= link_to "Sign Up for Free", new_user_registration_path, { class: "appbox-btn mb-2" } %>
+          
+          <p class="mt-3 mb-3">Or Download Our App</p>
+          
+          <a href="https://itunes.apple.com/us/app/nomo-fomo-meet-up-offline/id1289398417?mt=8" class="appbox-btn">
+            <i class="fab fa-app-store"></i> App Store
+          </a>
+
+          <%= link_to(new_user_registration_path, { class: "appbox-btn appbox-btn2" }) do  %>
+            <i class="fab fa-google-play"></i> Coming Soon
+          <% end %>
+            
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="single-banner text-lg-left text-center">
+          <%= image_tag("landing/appbox-img-1/banner.png", alt: "banner") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-area ptb-100" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="sec-title">
+          <h2>About Nomo FOMO</h2>
+          <p>
+            We enhance your networking and meet-up opportunities while on the road. 
+            Nothing compares with the value of in-person interactions and we are here to help!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="single-about-box">
+          <%= image_tag("landing/icons/add-your-travel-details.png", alt: "Add your travel details", width: "100px" ) %>
+          <h4>Add your travel details</h4>
+          <p>
+            Manually add them them or forward us your reservation emails so we can add it to your travel itinerary
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="single-about-box">
+          <%= image_tag("landing/icons/connect-with-your-friends.png", alt: "Connect with your friends", width: "100px" ) %>
+          <h4>Connect with your friends</h4>
+          <p>
+            Add or invite friends on Nomo FOMO so you can keep each other updated with travel plans or ideas
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="single-about-box">
+          <%= image_tag("landing/icons/get-notified-when-your-paths-cross.png", alt: "Get notified when your paths cross", width: "100px" ) %>
+          <h4>Get notified when your paths cross</h4>
+          <p>
+            Be the first to know when you and one of your friends will be in the same location so you can plan to meet up and strengthen your relationship
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-area" id="features">
+  <div class="container">
+    <div class="row flexbox-center">
+      <div class="col-lg-4">
+        <div class="single-feature-box text-lg-right text-center">
+          <ul>
+            <li class="left-1">
+              <div class="feature-box-info">
+                <h4>Smart Notifications</h4>
+                <p>So you can have no more FOMO, we’ll let you know when someone will be in your same location so you can meet up!</p>
+              </div>
+              <div class="feature-box-icon">
+                <i class="fas fa-bell"></i>
+              </div>
+            </li>
+            <li class="left-2">
+              <div class="feature-box-info">
+                <h4>Itinerary Planner</h4>
+                <p>Keep all travel details in one place, perfect for group trips!</p>
+              </div>
+              <div class="feature-box-icon">
+                <i class="far fa-calendar-alt""></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div id="feature-image" class="single-feature-box text-center">
+          <%= image_tag("landing/appbox-img-1/smart-notifications.png", alt: "Smart Notifications", id:"leftimg-1" ) %>
+          <%= image_tag("landing/appbox-img-1/itinerary-planner.png", alt: "Itinerary Planner", id:"leftimg-2" ) %>
+          <%= image_tag("landing/appbox-img-1/trip-explorer.png", alt: "Trip Explorer", id:"rightimg-1" ) %>
+          <%= image_tag("landing/appbox-img-1/travel-feed.png", alt: "Travel Feed", id:"rightimg-2" ) %>
+          
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="single-feature-box text-lg-left text-center">
+          <ul>
+            <li class="right-1">
+              <div class="feature-box-icon">
+                <i class="fas fa-map-marked-alt""></i>
+              </div>
+              <div class="feature-box-info">
+                <h4>Trip Explorer</h4>
+                <p>See where your friends are planning to go next and join in on their adventure</p>
+              </div>
+            </li>
+            <li class="right-2">
+              <div class="feature-box-icon">
+                <i class="fas fa-list-ul"></i>
+              </div>
+              <div class="feature-box-info">
+                <h4>Travel Feed</h4>
+                <p>Stay up to date with the newest trips within your network</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feedback-area ptb-80" id="feedback">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="sec-title">
+          <h2>USER FEEDBACK</h2>
+          <p>See how some of our users are making travel social again with Nomo FOMO.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="feedback-slider">
+          <div class="author-single-slide">
+            <div class="author-img">
+              <%= image_tag("landing/feedback-users/julie.png", alt: "Julie") %>
+            </div>
+            <h4>Julie</h4>
+            <p>
+              It was great to coordinate my cousin’s bachelorette party on the app but even better when I found out my friend was going to be there as well
+            </p>
+            <div class="author-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="author-single-slide">
+            <div class="author-img">
+              <%= image_tag("landing/feedback-users/sasha.png", alt: "Sasha") %>
+            </div>
+            <h4>Sasha</h4>
+            <p>
+              As a spontaneous traveler it can be hard to plan last minute trips and keep up with my friends but with this app, I am able to see all of my options to meet others abroad!
+            </p>
+            <div class="author-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="author-single-slide">
+            <div class="author-img">
+              <%= image_tag("landing/feedback-users/scott.png", alt: "Scott") %>
+            </div>
+            <h4>Scott</h4>
+            <p>
+              Being based in NYC I know a lot of people who are always coming into town but forget I’m here.  Now we know ahead of time so we can actually plan to meet up!
+            </p>
+            <div class="author-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="author-single-slide">
+            <div class="author-img">
+              <%= image_tag("landing/feedback-users/clare.png", alt: "Clare") %>
+            </div>
+            <h4>Clare</h4>
+            <p>
+              I LOVE the concept and have been wanting something like this for awhile - it's easy on the eyes and so easy to use
+            </p>
+            <div class="author-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="author-single-slide">
+            <div class="author-img">
+              <%= image_tag("landing/feedback-users/reid.png", alt: "Reid") %>
+            </div>
+            <h4>Reid</h4>
+            <p>
+              I love this app! I would have missed the chance to meet up with my friend while on my backpacking trip to Colombia
+            </p>
+            <div class="author-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-slider-thumb">
+          <div class="thumb-prev">
+            <div class="author-img">
+              <%= image_tag("landing/feedback-users/reid.png", alt: "Reid") %>
+            </div>
+            <h4>Reid</h4>
+            <p>
+              I love this app! I would have missed the chance to meet up with my friend while on my backpacking trip to Colombia
+            </p>
+            <div class="author-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="thumb-next">
+            <div class="author-img">
+              <%= image_tag("landing/feedback-users/sasha.png", alt: "Sasha") %>
+            </div>
+            <h4>Sasha</h4>
+            <p>
+              As a spontaneous traveler it can be hard to plan last minute trips and keep up with my friends but with this app, I am able to see all of my options to meet others abroad!
+            </p>
+            <div class="author-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="download-area ptb-100" id="download">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="single-download-box">
+          <h1>Sign up now to start planning your next trip!</h1>
+          <p>
+            There is something special about a serendipitous meet-up.  We all love telling stories about running into a friend in Paris or bumping into a cousin at the airport.  The only problem is we never have enough time to enjoy them.  With Nomo FOMO we let you know about these serendipitous opportunities before they happen so you can make the most out of them!
+          </p>
+          <p>
+            Say Nomo to FOMO and connect online so you can meetup offline
+          </p>
+          
+          <%= link_to "Sign Up for Free", new_user_registration_path, { class: "appbox-btn mb-2" } %>
+        
+          <p class="mt-3 mb-3">Or Download Our App</p>
+          
+          <%= link_to(new_user_registration_path, { class: "appbox-btn" }) do  %>
+            <i class="fab fa-app-store"></i> App Store
+          <% end %>
+
+          <%= link_to(new_user_registration_path, { class: "appbox-btn appbox-btn2" }) do  %>
+            <i class="fab fa-google-play"></i> Coming Soon
+          <% end %>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

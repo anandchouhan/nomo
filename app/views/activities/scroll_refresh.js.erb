@@ -1,0 +1,22 @@
+<% @activities.each_with_index do |activity, index| %>
+  <% if index.even? %>
+    <% if activity.trackable_type == "TripLocation" %>
+      $('#activities_left_list').append("<%= j render partial: 'activities/card_trip_location_index', locals: { activity: activity } %>");
+    <% elsif activity.trackable_type == "Post" %>
+      $('#activities_left_list').append("<%= j render partial: 'activities/card_post_index', locals: { activity: activity } %>");
+    <% end %> 
+  <% end %>
+<% end %>
+
+<% @activities.each_with_index do |activity, index| %>
+  <% if index.odd? %>
+    <% if activity.trackable_type == "TripLocation" %>
+      $('#activities_right_list').append("<%= j render partial: 'activities/card_trip_location_index', locals: { activity: activity } %>");
+    <% elsif activity.trackable_type == "Post" %>
+      $('#activities_right_list').append("<%= j render partial: 'activities/card_post_index', locals: { activity: activity } %>");
+    <% end %> 
+  <% end %>
+<% end %>
+
+var offset = $('#next-offset').text();
+$('#next-offset').text(parseInt(offset) + <%= @activities.length %>);

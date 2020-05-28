@@ -1,0 +1,100 @@
+@import "../config/*";
+@import "../mixins/*";
+
+.email-newsletter {
+  align-items: center;
+  background-color: $pickled-bluewood;
+  color: $white;
+  display: flex;
+  height: 150px;
+  width: 100%;
+
+  @include bp(ipad-mini) {
+    height: auto;
+  }
+
+  .wrapper {
+    @include bp(ipad-mini) {
+      flex-direction: column;
+    }
+  }
+
+  h2 {
+    margin: 0;
+
+    @include bp(ipad-mini) {
+      margin: 30px 0 15px;
+    }
+
+    @include bp(iphone-5) {
+      font-size: 26px;
+    }
+  }
+
+  form {
+    align-items: center;
+    display: flex;
+    width: 563px;
+
+    @include bp(ipad-mini) {
+      margin: 0 0 30px;
+      width: 100%;
+    }
+
+    @include bp(iphone-5) {
+      flex-direction: column;
+    }
+  }
+
+  [type="email"] {
+    background: $white;
+    border: 1px solid transparent;
+    border-radius: 3px 0 0 3px;
+    box-sizing: border-box;
+    height: 50px;
+    outline: 0;
+    padding: 0 20px;
+    width: 420px;
+
+    @include bp(ipad-mini) {
+      width: calc(100% - 163px);
+    }
+
+    @include bp(iphone-5) {
+      border-radius: 3px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    &:focus {
+      border-color: $orange;
+      box-shadow: 0 0 0 0.125em rgba($orange, 0.25);
+      color: $orange;
+    }
+  }
+
+  [type="submit"] {
+    background: $orange;
+    border: 0;
+    border-radius: 0 3px 3px 0;
+    color: $white;
+    cursor: pointer;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    height: 50px;
+    outline: 0;
+    padding: 10px 30px;
+    text-decoration: none;
+    width: 163px;
+
+    @include bp(iphone-5) {
+      border-radius: 3px;
+      width: 100%;
+    }
+
+    &:hover {
+      background: $orange-hover;
+    }
+  }
+}

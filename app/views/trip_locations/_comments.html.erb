@@ -1,0 +1,25 @@
+<div class="strike">
+  <span>Group Chat</span>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="messages-block" id="scroll">
+      <% @trip_location.comments.order("created_at DESC").each do |comment| %>
+        <%= render partial: 'trip_locations/comment', locals: { comment: comment } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if @trip_location.can_see?(current_user) %>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= form_with(model: [@trip_location, Comment.new], local: false) do |f| %>
+        <%= f.text_area :body, class: 'form-control', id: "trip-comment-area", placeholder: 'Write a comment' %>
+        <%= f.submit "Comment", class: 'poll-comment-btn pull-right' %>
+      <% end %>
+      <a id="comment_section"></a>
+    </div>
+  </div>
+<% end %>

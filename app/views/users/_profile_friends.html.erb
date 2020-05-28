@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12 friends">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="friend-list">
+          <% if @user.friends.any? %>
+            <ul>
+              <% @user.friends.each do |friend| %>
+                <div data-friend-id="<%= friend.id %>">
+                  <%= link_to friend, method: :get do %>
+                    <li class="pv-10">
+                      <%= user_photo friend, class: 'rounded-circle', height: '50px', width: '50px' %>
+                      <span style="margin-right: 16px;"><%= friend.name %></span>
+                    </li>
+                  <% end %>
+
+                  <% if @user == current_user %>
+                    <%= link_to "Unfriend", unfriend_user_path(current_user, friend), { method: :delete, remote: true } %>
+                  <% end %>
+                  <hr>
+                </div>
+              <% end %>
+            </ul>
+          <% else %>
+            <div class="text-center add-location">
+              <%= @user.name %> has no friends.
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

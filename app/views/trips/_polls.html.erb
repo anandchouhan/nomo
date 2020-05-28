@@ -1,0 +1,25 @@
+<div class="top-right">
+  <a class="poll-comment-btn more" href="#"> Add Poll</a>
+  <a class="poll-comment-btn" href="#comment_section" role="button"> Add Comments</a>
+</div>
+<div class="strike">
+ <span>POLLS</span>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <% @trip.questions.each do |question| %>
+    <div class="row">
+      <div class="col-sm-12 poll" id="poll_<%= question.id %>">
+      <%= render partial: 'trips/poll', locals: {question: question} %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<hr />
+<%= form_for :poll, url: trip_polls_path(@trip), html: {class: 'form', remote: true, style: 'display: none;' } do |f| %>
+  <p><%= f.text_field :title, class: 'form-control', placeholder: 'Ask A Question' %></p>
+  <%= f.hidden_field :trip_id, value: @trip.id %>
+  <%= f.hidden_field :parent_type, value: 'Question' %>
+  <%= f.submit "Add Poll", class: 'poll-comment-btn pull-right' %>
+<% end %>

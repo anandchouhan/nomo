@@ -1,0 +1,118 @@
+@import "config/*";
+
+.create-community-content {
+  border-radius: 0 !important;
+}
+
+.create-community-header {
+  background-color: $light-grey;
+  height: 40px;
+}
+
+.create-community-footer {
+  height: 50px;
+}
+
+.community-form-row {
+  margin-bottom: 15px;
+  padding-left: 0 !important;
+}
+
+.community-form-label {
+  padding-left: 0 !important;
+  padding-top: 5px !important;
+
+  h6 {
+    font-size: 0.85rem !important;
+    font-weight: 500;
+    text-align: left !important;
+  }
+}
+
+.community-form-input {
+  padding-left: 0 !important;
+}
+
+.community-input-text {
+  border-radius: 0 !important;
+  font-size: 0.85rem !important;
+  height: 30px;
+}
+
+.community-input-textarea {
+  border-radius: 0 !important;
+  font-size: 0.85rem !important;
+  min-height: 30px;
+}
+
+.community-form-btns {
+  margin-top: 10px;
+}
+
+.community-btn {
+  float: right;
+  margin-left: 10px;
+}
+
+.community-submit-btn,
+.community-submit-btn:focus {
+  background: $pickled-bluewood;
+  border-radius: 0.1rem !important;
+  color: $white;
+  cursor: pointer;
+
+  &:hover {
+    background: $pickled-bluewood;
+    opacity: 0.9;
+  }
+
+  .fa-sort-desc {
+    margin-left: 5px;
+    vertical-align: top;
+  }
+}
+
+.community-cancel-btn {
+  border-radius: 0.1rem !important;
+}
+
+.community-privacy-dropdown {
+  border-radius: 0.1rem !important;
+  max-width: 250px;
+  top: 26px !important;
+
+  a {
+    font-size: 0.9rem;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+
+    &:active {
+      background-color: transparent;
+    }
+
+    p {
+      color: $grey;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+      margin-left: 20px;
+      white-space: normal;
+    }
+  }
+
+  .fa {
+    margin-right: 5px;
+  }
+
+  .community-privacy-dropdown-header {
+    font-size: 0.85rem;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: left;
+  }
+}
+
+#create-community-title {
+  font-size: 1.15rem;
+  font-weight: 400;
+}

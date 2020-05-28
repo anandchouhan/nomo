@@ -1,0 +1,11 @@
+<div class="trip-wrap">
+  <h2 id= "trip-title" data="<%= @current_user.id %>" class="trip-title username">Upcoming Trips</h2>
+  <div class="clearfix"></div>
+  <ul class="list-unstyled calendar-trips-scroll-list calendar-trip-list my-trips">
+    <%= render 'list', trips: @trips %>
+  </ul>
+
+  <div class="btn-wrap">
+    <%= link_to raw('<i class="fa fa-plus"></i> Add A Trip'), '#', class: "trip-btn show-trips-form-btn add-trip", id: "add-trip-calendar", data: { toggle: "modal", target: "#addTripModal"} %>
+  </div>
+</div>

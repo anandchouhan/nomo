@@ -1,0 +1,6 @@
+<% users.each do |user| %>
+  <option class="user-datalist-item"
+          value="<%= user.name %>"
+          data-user-id="<%= user.id %>">
+  </option>
+<% end %>

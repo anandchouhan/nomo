@@ -1,0 +1,16 @@
+<div class="modal" id="addTripModal" tabindex="-1" role="dialog" aria-labelledby="addTripModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content create-trip-content">
+      <div class="modal-header create-trip-header">
+        <h5 class="modal-title" id="create-trip-title">Add a Trip</h5>
+        <button type="button" class="close d-flex justify-content-start" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <div id="error-message-create"></div>
+        <div class="text-center container">
+          <%= render partial: 'trips/form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

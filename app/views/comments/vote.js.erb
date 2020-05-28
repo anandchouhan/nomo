@@ -1,0 +1,3 @@
+$('.comment-<%=@comment.id%>').empty().append('<%= j render partial: "comments/comment", locals: {comment: @comment} %>')
+NF.Comments.removeDuplicateDetails()
+NF.Comments.init()

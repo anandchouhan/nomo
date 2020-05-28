@@ -1,0 +1,15 @@
+<li>
+  <div class="for-img">
+    <%= user_photo comment.user %>
+  </div>
+
+  <div class="white-chat-outer">
+    <div class="white-chat-box">
+    <div class="white-chat-inner">
+      <span class="for-name"><%= comment.body %></span>
+    </div>
+    <span class="white-time"><%= "#{time_ago_in_words(comment.created_at)} ago" %></span>
+    </div>
+
+  </div>
+</li>

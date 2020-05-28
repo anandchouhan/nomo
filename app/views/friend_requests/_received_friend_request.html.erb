@@ -1,0 +1,12 @@
+<tr data-friend-request-id="<%= friend_request.id %>">
+  <td class="friend-request-pic">
+    <%= user_photo friend_request.sender, class: 'rounded-circle', style: 'height: 35px;' %>
+  </td>
+  <td class="friend-request-username">
+    <b><%= friend_request.sender.name %></b>
+  </td>
+  <td class="text-right friend-request-btns">
+    <%= link_to("Confirm", accept_friend_request_path(friend_request), { method: :post, remote: true, class: 'btn btn-sm btn-default approve-friend-btn approve-friend-request-btn' }) %>
+    <%= link_to("Decline", friend_request, { method: :delete, remote: true, class: 'btn btn-sm decline-friend-btn decline-friend-request' }) %>
+  </td>
+</tr>

@@ -1,0 +1,92 @@
+<%= form_with model: accommodation, url: [accommodation.trip_location, accommodation] do |f| %>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :name, "Hotel Name" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: 'form-control trip-input-text', autocomplete: 'off', required: true %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :arriving_at, "Check In Date" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <input class="arriving-at-accommodation form-control trip-input-text" autocomplete="off" type="text" data-edit="true" value="<%= accommodation.arriving_at.strftime("%m/%d/%Y") %>" required readonly>
+      <input type="hidden" class="accommodation-arriving-at" name="accommodation[arriving_at]" data-edit="true" value="<%= accommodation.arriving_at %>">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :arriving_at_time, "Check In Time" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :arriving_at_time, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :departing_at, "Check Out Date" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <input class="departing-at-accommodation form-control trip-input-text" autocomplete="off" type="text" data-edit="true" value="<%= accommodation.departing_at.strftime("%m/%d/%Y") %>" required readonly>
+      <input type="hidden" class="accommodation-departing-at" name="accommodation[departing_at]" data-edit="true" value="<%= accommodation.departing_at %>">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :departing_at_time, "Check Out Time" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :departing_at_time, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :reservation_number, "Reservation Number" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :reservation_number, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :location_id, "Address" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <div class="container-autocomplete">
+        <input type="text" class="form-control trip-input-text autocomplete-geocode" autocomplete="off" value="<%= accommodation.location.name if accommodation.location %>">
+        <input type="hidden" name="accommodation[location_id]" value="<%= accommodation.location_id if accommodation.location %>">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :description, "Extra Information" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="tar">
+    <%= f.submit "Save", class: "btn btn-sm community-btn community-submit-btn" %>
+  </div>
+
+<% end %>

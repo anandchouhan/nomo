@@ -1,0 +1,24 @@
+
+<div class="d-flex align-items-center">
+  <div class="nf--friends-avtar">
+    <%= user_photo friend, class: 'nf--friends--img' %>
+  </div>
+  <div class="nf--friends-info">
+    <h1><%= friend.name %></h1>
+    <p>
+      <%= friend.location.formatted_address if friend.location && friend.location.formatted_address %>
+    </p>
+  </div>
+  <div class="d-flex align-items-end">
+
+    <% unless current_user.friend_of?(friend) || current_user.friend_request_sent?(friend)%>
+      <div>
+        <%= form_tag(FriendRequest.new, { method: :post, remote: true }) do %>
+          <%= hidden_field_tag(:recipient_user_id, friend.id) %>
+          <%= submit_tag("Add +", { class: "btn--add--friends user-#{friend.id} " }) %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

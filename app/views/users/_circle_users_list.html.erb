@@ -1,0 +1,12 @@
+<ul id="circle-users-list">
+  <% users.each_with_index do |user, index| %>
+    <li class="row cli-<%= cycle('even','odd') %>">
+      <div class="col-3 float-left">
+        <%= user_photo user %>
+      </div>
+      <div class="col-9 float-left">
+        <b><%= user.name %></b>
+      </div>
+    </li>
+  <% end %>
+</ul>

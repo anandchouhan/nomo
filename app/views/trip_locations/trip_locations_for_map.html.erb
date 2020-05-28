@@ -1,0 +1,65 @@
+<div class="container-fluid info-window-trip-locations">
+  
+  <div class="row location-name">
+    <h2><%= @location_name %></h2>
+  </div>
+
+  <% if @user_trip_locations.length > 0 %>
+    <div class="your-trips">
+      <div class="row">
+        <h2 class="your-trips-title">You</h2>
+      </div>
+      <% @user_trip_locations.each do |trip_location| %>
+        <div class="row explorer-itinerary-row">
+          <div class="col-8 col-info">
+            <p class="user-name"><%= trip_location.trip.name %></p>
+            <p class="trip-location-date"><%= trip_location.start_at.strftime("%b %-d") %> - <%= trip_location.end_at.strftime("%b %-d") %></p>
+          </div>
+          <%= link_to "View Trip", trip_path(trip_location.trip), class: "col-4 d-flex justify-content-center align-items-center col-itinerary" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @friends.length > 0 || @friends_trip_locations.length > 0 %>
+    <div class="row">
+      <h2 class="your-friends-trips-title">Other Trips</h2>
+    </div>
+    <% @friends.each do |user| %>
+      <div class="row explorer-itinerary-row">
+        <div class="col-8 col-info">
+          <p class="user-name">
+            <%= link_to user.name.split(" ").map {|w| w.capitalize }.join(" "), user %>
+          </p>
+          <p class="trip-location-date">Currently living here</p>
+        </div>
+      </div>
+    <% end %>
+    <% @friends_trip_locations.each do |trip_location| %>
+      <div class="row explorer-itinerary-row">
+        <div class="col-8 col-info">
+          <p class="user-name"><%= trip_location.trip.name %></p>
+          <p class="trip-location-date"><%= trip_location.start_at.strftime("%b %-d") %> - <%= trip_location.end_at.strftime("%b %-d") %></p>
+          <% participants = trip_location.participants %>
+          <p class="trip-location-date">
+            <% if participants.length == 1 %>
+              <%= link_to participants.first.name, participants.first %> is going
+            <% else %>
+              <% participants.each_with_index do |user, index| %>
+                <% if index < participants.length - 2 %>
+                  <%= link_to user.name, user %>, 
+                <% elsif index == participants.length - 2 %>
+                  <%= link_to user.name, user %> and
+                <% else %>
+                  <%= link_to user.name, user %> are going
+                <% end %>
+              <% end %>
+            <% end %>  
+          </p>
+        </div>
+        <%= link_to "View Trip", trip_path(trip_location.trip), class: "col-4 d-flex justify-content-center align-items-center col-itinerary" %>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>

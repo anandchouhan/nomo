@@ -1,0 +1,62 @@
+@import "config/*";
+
+.info-window-trip-locations {
+  min-width: 260px;
+  max-height: 350px;
+}
+
+.explorer-itinerary-row {
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+
+  .col-info {
+    padding-left: 0;
+  }
+
+  .col-itinerary {
+    background-color: $background-blue;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 4px;
+    color: $white;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .user-name {
+    font-weight: bold;
+  }
+}
+
+.location-name {
+  margin-bottom: 12px;
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
+.your-trips {
+  margin-bottom: 24px;
+
+  .your-trips-title {
+    font-size: 1rem;
+  }
+}
+
+.your-friends-trips-title {
+  font-size: 1rem;
+}
+
+.trip-location-date {
+  color: $grey;
+}
+
+.trip-locations-content {
+  max-height: 300px;
+  overflow-y: auto;
+}

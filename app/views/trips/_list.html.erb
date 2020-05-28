@@ -1,0 +1,14 @@
+<% if trips.present? %>
+  <% trips = trips.sort_by { |trip| trip.trip_locations.first.start_at } %>
+  <% trips.each do |trip| %>
+    <%= render partial: "trip_list_item", locals: {trip: trip} %>
+  <% end %>
+<% else %>
+  <li class="trip-block no-trips-msg"> There are (0) trips.
+    <%= link_to "#", class: "add-trip-link", data: { toggle: "modal", target: "#addTripModal"} do %>
+      <span> Add one now!</span>
+    <% end %>
+  </li>
+<% end %>
+<%= render 'trips/add_trip_modal' %>
+<%= render 'trips/edit_trip_modal' %>

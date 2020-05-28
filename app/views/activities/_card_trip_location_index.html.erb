@@ -1,0 +1,40 @@
+<div class="feed-trip-post clearfix">
+  <div class="white-container w-100 p-0">
+    <div class="trip card">
+      <% trip_location = activity.trackable %>
+
+      <div class="card-block">
+        <h3 class="card-title">
+          <div class="activity-owner-text">
+            <%= link_to trip_location.trip.user do %>
+              <%= user_photo trip_location.trip.user, size: "48x48", class: "rounded-circle activity-user-picture" %>
+            <% end %>
+
+            <span class="activity-user-name">
+              <%= link_to trip_location.trip.user, class: "activity-owner-text" do %>
+                <%= trip_location.trip.user.name %>
+              <% end %>
+
+              <span class="activity-trip-info light-font">
+                Is going to <%= link_to trip_location.location.name, trip_trip_location_path(trip_location.trip, trip_location) %> on <%= trip_location.trip.name %> trip from <%= trip_location.start_at.strftime("%b %d, %Y") %> to <%= trip_location.end_at.strftime("%b %d, %Y") %>
+              </span>
+            </span>
+          </div>
+        </h3>
+
+        <p class="activity-timestamp light-font" data-livestamp="<%= trip_location.created_at.to_time.to_i %>"></p>
+
+        <% if trip_location.trip.description %>
+          <p class="feed-trip-desc" style="font-size:130%" ><%= trip_location.trip.description %></p>
+        <% end %>
+      </div>
+
+      <hr style="margin:0px;" />
+      
+      <div>
+        <%= render partial: "activities/comments", locals: { activity: activity } %>
+      </div>
+
+    </div>
+  </div>
+</div>

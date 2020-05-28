@@ -1,0 +1,57 @@
+@import "config/*";
+
+.calender-popup {
+  background: $white;
+  box-shadow: 0 0 10px $black-alpha-2;
+  float: left;
+  max-width: 250px;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.cal-btn {
+  border: 0 !important;
+  border-radius: 0 !important;
+  font-size: 14px !important;
+  width: 100px !important;
+}
+
+.cal-btn-org-red {
+  background: linear-gradient(to right, $coral-red 0%, $coral-red 42%, $outrageous-orange 100%);
+}
+
+.add-trip-link,
+.add-trip-link:hover,
+.add-trip-link:visited {
+  color: $orange;
+  text-decoration: underline;
+}
+
+.add-trip-modal,
+.edit-trip-modal {
+  h5 {
+    font-weight: $normal;
+    margin-bottom: 10px;
+  }
+
+  input {
+    margin-bottom: 15px;
+
+    &:nth-last-child(3) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.fc-center {
+  color: $white;
+}
+
+#calendar {
+  min-height: 100%;
+  padding: 20px 30px 20px 20px;
+}
+
+#calendar-bg {
+  background: $pickled-bluewood;
+}

@@ -1,0 +1,777 @@
+/*
+Theme Name: eApp - 5 in 1 App Landing Page
+Theme URI: http://live.envalab.com/html/eapp
+Author: ENVALAB
+Author URI: https://themeforest.net/user/envalab/portfolio
+Description: eApp – Creative App Landing Page HTML5 Templateis collection of App marketing pages which are perfect suit for showcase your App or services smart and flexible way. It's not only for a mobile Apps but also for mobile games showcase or any application website showcase. It's include stunning, powerful and unique landing page templates which are perfect to promoting Apps or web services & made for iOS and Android Apps makers.
+Version: 1.0
+*/
+
+/*
+====================================================
+*   eApp DEMO 1 CSS
+*   CSS INDEX
+====================================================
+
+        TOC:
+        0.  RESET CSS
+        1.  HEADER AREA CSS
+        2.  BANNER AREA CSS
+        3.  ABOUT AREA CSS
+        4.  FEATURE AREA CSS
+        5.  TESTIMONIAL AREA CSS
+        6.  SCREENSHOT AREA CSS
+        7.  FEEDBACK AREA CSS
+        8.  PRICING AREA CSS
+        9.  CONTACT AREA CSS
+        10. FOOTER AREA CSS
+        11. SCROLL-TO-TOP AREA CSS
+        12. Pre Loader Style
+
+===================================================================== */
+
+/*----------------------------
+---------- RESET CSS ---------
+----------------------------*/
+.sec-title {
+	margin-bottom: 0;
+}
+.mb-30 {
+	margin-bottom: 30px;
+}
+.mb-50 {
+	margin-bottom: 50px;
+}
+.ptb-100 {
+    padding-top: 110px;
+	padding-bottom: 105px;
+}
+.ptb-80 {
+    padding-top: 80px;
+	padding-bottom: 80px;
+}
+.owl-nav div {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 35px;
+    background: #fff;
+    color: #343948;
+    height: 35px;
+    line-height: 36px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 29px;
+    transition: 0.4s;
+    margin-top: -60px;
+}
+.owl-nav div.owl-next {
+    right: 0;
+    left: auto;
+}
+.appbox-btn {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #fb695a;
+    padding: 10px 30px;
+    display: inline-block;
+    font-weight: 600;
+	cursor: pointer;
+    font-size: 18px;
+	border-radius: 30px;
+}
+.appbox-btn2,
+.appbox-btn:hover {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+.appbox-btn2:hover {
+    background: #ffffff;
+    color: #fb695a;
+}
+.appbox-btn3 {
+    color: #ffffff;
+    border: 1px solid #fb6857;
+	background: #fb6857; /* Old browsers */
+}
+.appbox-btn3:hover {
+    color: #fb6857;
+    border: 1px solid #fb6857;
+}
+
+/*--------------------------------------
+-------- HEADER AREA CSS START --------
+---------------------------------------*/
+.header {
+    position: fixed;
+    top: 0;
+	padding: 30px 0;
+    left: 0;
+	transition: all 0.4s;
+    width: 100%;
+    z-index: 9;
+	max-height: 110px;
+  background: white;
+  /*background: #fb6857;
+  background: -moz-linear-gradient(left, #ff8965 0%, #ff7e78 50%, #ff7092 82%, #ff65a5 100%); 
+  background: -webkit-linear-gradient(left, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);
+  background: linear-gradient(to right, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);*/
+}
+.mainmenu {
+    text-align: right;
+}
+.mainmenu li {
+    display: inline-block;
+    text-transform: uppercase;
+    margin-left: 15px;
+}
+.mainmenu li a {
+  display: inline-block;
+	color: #343948;
+	padding: 5px 0;
+}
+.slicknav_menu {
+	padding: 0;
+  background: transparent;
+}
+.slicknav_menu a.active,
+.mainmenu ul li a:hover,
+.mainmenu ul li a.active {
+	color: #f15f3e;
+}
+.mainmenu {
+    display: block;
+}
+.slicknav_menu {
+	display: none;
+}
+.header.sticky {
+  padding: 10px 0;
+	border-bottom: 1px solid #fff;
+}
+/*--------------------------------------
+--------- HEADER AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+-------- BANNER AREA CSS START --------
+---------------------------------------*/
+.banner-area {
+    padding-top: 100px;
+    padding-bottom: 70px;
+	z-index: 1;
+	position: relative;
+	background: #fb6857; /* Old browsers */
+  background: -moz-linear-gradient(left, #ff8965 0%, #ff7e78 50%, #ff7092 82%, #ff65a5 100%); 
+  background: -webkit-linear-gradient(left, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);
+  background: linear-gradient(to right, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);
+}
+.banner-area::before {
+	content: "";
+	top: 0;
+	left: 0;
+  opacity: 0.07;
+	right: 0;
+	bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+	z-index: -1;
+	position: absolute;
+}
+.single-banner {
+  color: #fff;
+}
+.single-banner h1 {
+    color: #fff;
+    max-width: 540px;
+}
+.single-banner p {
+    margin: 42px 0;
+}
+.single-banner .appbox-btn {
+    margin-top: 15px;
+    margin-right: 15px;
+}
+/*--------------------------------------
+--------- BANNER AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+-------- ABOUT AREA CSS START --------
+---------------------------------------*/
+.about-area {
+	text-align: center;
+}
+.about-area h2,
+.about-area h4,
+.about-area p {
+  color: #343948;
+}
+.about-area .sec-title {
+	margin-bottom: 20px;
+}
+.single-about-box {
+	margin-top: 35px;
+}
+.single-about-box i::before {
+    color: #fe718b;
+    font-size: 60px;
+    transition: all 0.4s;
+    display: block;
+}
+.single-about-box:hover i::before {
+    transform: scale(0.7);
+}
+.single-about-box h4 {
+	margin: 28px 0 20px;
+}
+/*--------------------------------------
+--------- ABOUT AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+-------- FEATURE AREA CSS START --------
+---------------------------------------*/
+.feature-area {
+  padding: 200px 0;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.feature-area::before {
+  content: "";
+  top: 0;
+  left: 0;
+    opacity: 0.95;
+  right: 0;
+  bottom: 0;
+  background: #ff8965;
+  background: -moz-linear-gradient(left, #ff8965 0%, #ff7e78 50%, #ff7092 82%, #ff65a5 100%); 
+  background: -webkit-linear-gradient(left, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);
+  background: linear-gradient(to right, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);
+  z-index: -1;
+  position: absolute;
+}
+.single-feature-box h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.single-feature-box li {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+}
+.feature-box-info {
+    flex: 6;
+}
+.feature-box-icon {
+    flex: 1;
+  font-size: 25px;
+  transition: all 0.4s;
+}
+.single-feature-box h2,
+.single-feature-box h3,
+.single-feature-box h4,
+.single-feature-box {
+  color: #fff;
+}
+.single-feature-box img {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+  bottom: 0;
+  margin: auto;
+}
+.single-feature-box li:hover .feature-box-icon {
+  transform: scale(1.2);
+  color: #343948;
+}
+/*--------------------------------------
+--------- FEATURE AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+-------- OVERVIEW AREA CSS START --------
+---------------------------------------*/
+.single-overview-box h2 {
+    text-transform: uppercase;
+}
+.single-overview-box p {
+	margin-top: 25px;
+}
+.single-overview-box .appbox-btn {
+	margin-top: 30px;
+}
+/*--------------------------------------
+--------- OVERVIEW AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+------ ACTIVITY AREA CSS START -------
+---------------------------------------*/
+.activity-box {
+    padding-top: 60px;
+    padding-bottom: 20px;
+	z-index: 1;
+	position: relative;
+	background: #fff;
+    margin: 0 70px;
+	box-shadow: 0 0 30px #eee;
+}
+.activity-box::before {
+	content: "";
+	top: 0;
+	left: 0;
+    opacity: 0.1;
+	right: 0;
+	bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+	z-index: -1;
+	position: absolute;
+}
+.activity-box-chart {
+	position: relative;
+}
+.activity-box-chart span {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	font-size: 36px;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+.single-activity-box canvas {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.single-activity-box {
+    text-align: center;
+	margin-bottom: 40px;
+}
+.single-activity-box h4 {
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+/*--------------------------------------
+------- ACTIVITY AREA CSS END --------
+---------------------------------------*/
+
+/*--------------------------------------
+-------- SCREENSHOT AREA CSS START --------
+---------------------------------------*/
+.screenshots-area {
+    background: #fb6857;
+}
+.screenshot-area-slider {
+    padding: 0 50px;
+}
+.screenshot-single-slide {
+	position: relative;
+	overflow: hidden;
+}
+.screenshot-overlay {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+	right: 0;
+    transition: all 0.4s;
+}
+.screenshot-single-slide:hover .screenshot-overlay {
+    width: 100%;
+}
+.screenshot-overlay a {
+    background: #ec3851;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    font-size: 18px;
+    color: #fff;
+    line-height: 60px;
+    top: 0;
+    text-align: center;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+.screenshots-area h2,
+.screenshots-area {
+	color: #fff;
+}
+/*--------------------------------------
+--------- SCREENSHOT AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+-------- FEEDBACK AREA CSS START --------
+---------------------------------------*/
+.feedback-area .sec-title h2,
+.feedback-area .sec-title p {
+  color: #343948;
+}
+.feedback-slider-thumb > div {
+    margin: 60px auto 25px;
+    max-width: 50%;
+    background: #f15f3e;
+    text-align: center;
+    padding: 70px 45px 20px;
+    border-radius: 8px;
+    position: absolute;
+    top: -10px;
+    width: 560px;
+    transform: scale(0.65);
+    left: -30px;
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    opacity: .6;
+ /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";*/
+}
+.feedback-slider-thumb > div.thumb-next {
+    left: auto;
+    right: -30px;
+}
+.feedback-slider-thumb > div:hover {
+    opacity: 9;
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";*/
+}
+.author-feedback {
+    padding: 0 120px;
+}
+.feedback-slider .owl-nav div.owl-prev {
+    left: -50%;
+}
+.feedback-slider .owl-nav div.owl-next {
+    right: -50%;
+}
+.feedback-slider {
+    max-width: 50%;
+    margin: auto;
+}
+.author-single-slide {
+    margin: 46px 6px 6px;
+    position: relative;
+    box-shadow: 0 0 10px #aaa;
+    z-index: 1;
+    background: #f15f3e;
+    text-align: center;
+    padding: 55px 35px 15px;
+    border-radius: 8px;
+    min-height: 220px;
+}
+.feedback-area h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+.feedback-area span {
+    font-weight: 300;
+    font-size: 11px;
+}
+.feedback-slider-thumb p ,
+.author-single-slide p {
+    margin: 8px 0 15px;
+}
+.feedback-area h4,
+.feedback-slider-thumb ,
+.author-single-slide {
+    color: #fff;
+}
+.feedback-area .author-rating {
+    color: #ffee58;
+}
+.author-img {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+}
+.author-img img {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    max-height: 100%;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    position: absolute;
+    width: auto !important;
+}
+/*--------------------------------------
+--------- FEEDBACK AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+-------- DOWNLOAD AREA CSS START --------
+---------------------------------------*/
+.download-area {
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    background: #fb6857;
+    background: -moz-linear-gradient(left, #ff8965 0%, #ff7e78 50%, #ff7092 82%, #ff65a5 100%); 
+    background: -webkit-linear-gradient(left, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);
+    background: linear-gradient(to right, #ff8965 0%,#ff7e78 50%,#ff7092 82%,#ff65a5 100%);
+}
+.download-area::after {
+    content: "";
+    right: 0;
+    bottom: -87px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-image: url(<%= asset_path "landing/appbox-img-1/iphone-on-hand-1.png" %>);
+    width: 46%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    background-size: contain;
+}
+.download-area::before {
+    content: "";
+    top: -50px;
+    left: -50px;
+    opacity: 0.4;
+    right: -50px;
+    bottom: -50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+    position: absolute;
+}
+.single-download-box {
+	color: #fff;
+}
+.single-download-box h1 {
+	color: #fff;
+	margin-bottom: 40px;
+}
+.single-download-box h1 span {
+	display: block;
+}
+.single-download-box .appbox-btn {
+	margin-top: 15px;
+	margin-right: 15px;
+}
+/*--------------------------------------
+--------- DOWNLOAD AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+------- SUBSCRIBE AREA CSS START -------
+---------------------------------------*/
+.subscribe-area {
+	padding: 60px 0;
+	text-align: center;
+}
+.single-subscribe-box h4 {
+	font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+.single-subscribe-box h4 span {
+	color: #fb6856;
+    font-weight: 500;
+}
+.single-subscribe-box form {
+    border: 1px solid #fb6856;
+    display: inline-block;
+    border-radius: 30px;
+    position: relative;
+}
+.single-subscribe-box form input[type="email"] {
+	min-width: 420px;
+}
+/*--------------------------------------
+-------- SUBSCRIBE AREA CSS END --------
+---------------------------------------*/
+
+/*--------------------------------------
+--------- FOOTER AREA CSS START --------
+---------------------------------------*/
+.footer {
+	padding: 22px 0;
+	font-size: 12px;
+	color: #fff;
+    z-index: 1;
+    position: relative;
+	background: #343948;
+}
+.footer::before {
+    content: "";
+    left: 0;
+    opacity: 0.4;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+    position: absolute;
+    top: 0px;
+}
+.footer a {
+	color: #fff;
+}
+.footer a:hover {
+	color: #000;
+}
+.footer-content ul {
+	text-align: right;
+}
+.footer-content li {
+    display: inline-block;
+    margin-left: 15px;
+}
+/*--------------------------------------
+---------- FOOTER AREA CSS END ---------
+---------------------------------------*/
+
+.strike {
+  align-items: center;
+  color: rgba(0,0,0,0.25);
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  justify-content: center;
+  margin: 30px auto;
+  position: relative;
+  width: 364px;
+}
+
+.strike::before {
+  border-top: 1px solid rgba(0,0,0,0.25);
+  content: "";
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.strike span {
+  background: #fff;
+  padding: 0 20px;
+  position: relative;
+}
+
+.sign-in-facebook {
+  background: #3b5998;
+  border-radius: 3px;
+  color: #fff;
+  display: flex;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 18px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+  width: 364px;
+  cursor: pointer;
+}
+
+.sign-in-facebook i {
+  border-right: 1px solid rgba(255,255,255,0.25);
+  font-size: 36px;
+  height: 36px;
+  margin: 20px 0;
+  padding-right: 20px;
+  text-align: center;
+  width: 56px;
+}
+
+.sign-in-facebook span {
+  border-left: 1px solid rgba(0,0,0,0.25);
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+/*--------------------------------------
+-------- STATIC AREA CSS START --------
+---------------------------------------*/
+.static-area {
+  padding-top: 100px;
+  padding-bottom: 70px;
+  z-index: 1;
+  position: relative;
+}
+.static-area::before {
+  content: "";
+  top: 0;
+  left: 0;
+  opacity: 0.07;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  position: absolute;
+}
+/*--------------------------------------
+--------- STATIC AREA CSS END ---------
+---------------------------------------*/
+
+/*--------------------------------------
+----- SCROLL-TO-TOP AREA CSS START -----
+---------------------------------------*/
+.scrolltotop {
+    position: fixed;
+    bottom: 30px;
+    text-align: center;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+    display: none;
+    text-decoration: none;
+    border-radius: 100%;
+    color: #fff;
+	font-size: 28px;
+    line-height: 48px;
+	border: 3px solid #fff;
+    background: #f15f3e;
+}
+.scrolltotop:hover {
+	transform: scale(0.9);
+    color: #fff;
+}
+.scrolltotop:focus ,
+.scrolltotop:hover {
+	border: 2px double #fff;
+}
+/*--------------------------------------
+------ SCROLL-TO-TOP AREA CSS END ------
+---------------------------------------*/
+
+/* Pre Loader Style */
+.js div#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 988899;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: #fff url('../img/loader.gif') no-repeat center center;
+}
+/* END of Pre Loader Style */

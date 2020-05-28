@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+  <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Nomo FOMO - Social Travel Network</title>
+  <meta name="description" content="Your ultimate social travel network. See where your friends will be, get notified when your plans intersect, plan trips together and manage your daily travels.">
+  <meta name="author" content="Nomo FOMO">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <%= render partial: "shared/og" %>
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true %>
+  <%= include_gon %>
+  <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= yield :head %>
+</head>
+
+<body class="no-trans">
+  <%= render partial: "shared/flash_messages", flash: flash %>
+
+  <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
+
+  <div class="page-wrapper">
+    <%= render 'shared/menu' %>
+
+    <div id="page-start"></div>
+
+    <%= yield %>
+    
+    <%= render "friend_requests/friend_requests_modal" if user_signed_in? %>
+    <%= render 'communities/create_modal' if user_signed_in? %>
+    <%= render partial: 'shared/video_walkthrough', locals: {viewed: current_user.viewed_walkthrough} if user_signed_in? %>
+
+    <%= render 'shared/footer' if params[:controller] != "onboardings" %>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAPS_API_KEY'] %>&libraries=places&callback=initGoogleMapsAPI&language=en&region=us" async defer></script>
+
+  <script>
+    (function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)}
+    ;a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s
+    ;c.parentNode.insertBefore(a,c)
+    })(window,document,"galite","script","https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js");
+
+    galite('create', 'UA-106577980-1', 'auto');
+    galite('send', 'pageview');
+  </script>
+
+  <% if Rails.env.production? %>
+    <% if user_signed_in? %>
+      <% unless current_user.exclude_analytics %>
+        <!-- Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80739500-3"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-80739500-3');
+          gtag('config', 'UA-80739500-3', {
+            'user_id': '<%= current_user.id %>'
+          });
+        </script>
+        <%= render 'shared/hotjar' %>
+      <% end %>
+    <% elsif request.query_parameters["excludeAnalytics"] != 'true' %>
+      <!-- Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80739500-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-80739500-3');
+      </script>
+      <%= render 'shared/hotjar' %>
+    <% end %>
+  <% end %>
+  
+</body>
+</html>

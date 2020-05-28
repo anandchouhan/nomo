@@ -1,0 +1,71 @@
+<div class="main-content">
+  <div class="container-fluid" style="height: calc(100vh - 67px);">
+    <div class="row h-100">
+      <div class="col h-100">
+        <div id="explorer-filter" style="margin-top: 9px">
+        
+          <%= form_tag "#{explorer_path}", method: "get", class: 'form' do %>
+
+            <div class="row filters_section" style="margin-top: 12px">
+              <div class="col-10">
+                <div class="form-group">
+                  <%= label_tag :dates, "Filter users' locations by travel dates", id: "explorer-filter-label" %>
+                  <div class="row">
+                    <div class="col-5 start-date">
+                      <%= text_field_tag :start_at, nil, class: 'form-control', autocomplete: 'off', placeholder: 'From', id: "start-date-explorer", value: @start_at.strftime("%m/%d/%Y") %>
+                    </div>
+                    <div class="col-5 end-date">
+                      <%= text_field_tag :end_at, nil, class: 'form-control', autocomplete: 'off', placeholder: 'To', id: "end-date-explorer", value: @end_at.strftime("%m/%d/%Y") %>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 12px">
+                    <div class="col-2">
+                      <%= submit_tag "Search", class: "btn btn-primary" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <% if current_user.friends.empty? %>
+            <p style="font-size: 1.1rem;">It looks like you don't have friends on Nomo FOMO. This map is more useful with friends! Try adding more friends.</p>
+            <%= link_to "Find Friends", friend_requests_path, method: :get, remote: true, class: "btn btn-sm btn-nav add-trip-btn mb-3", id: "fr-req", "data-placement": "bottom", "data-popover-content": "#a1","data-toggle": "popover", "data-trigger": "focus", "data-html": "true" %>
+          <% end %>
+        </div>
+
+        <div id="explorer-map" style="height: calc(100vh - 67px);">
+          <div id="map" style="height: calc(100vh - 67px);"></div>
+          <script>
+            startAt = "<%= @start_at.strftime("%m/%d/%Y") %>";
+            endAt = "<%= @end_at.strftime("%m/%d/%Y") %>";
+
+            <% @friends_locations.each do |location| %>
+              var lat = <%= location["lat"] %>;
+              var lng = <%= location["lng"] %>;
+              var locationId = <%= location["id"] %>;
+              addLocation(lat, lng, locationId, "circle");
+            <% end %>
+
+            <% @user_locations.each do |location| %>
+              var lat = <%= location[1]["lat"] %>;
+              var lng = <%= location[1]["lng"] %>;
+              var locationId = <%= location[1]["id"] %>;
+              addLocation(lat, lng, locationId, "user");
+            <% end %>
+
+            <% @user_and_friends_locations.each do |location| %>
+              var lat = <%= location["lat"] %>;
+              var lng = <%= location["lng"] %>;
+              var locationId = <%= location["id"] %>;
+              addLocation(lat, lng, locationId, "circle_and_user");
+            <% end %>
+
+            userId = <%= current_user.id %>;
+            initMap();
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

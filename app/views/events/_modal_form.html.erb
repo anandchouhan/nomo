@@ -1,0 +1,82 @@
+<%= form_with model: event, url: [event.trip_location, event] do |f| %>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :name, "Event Name" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: "form-control trip-input-text" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :location_id, "Address" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <div class="container-autocomplete">
+        <input type="text" class="form-control trip-input-text autocomplete-geocode" autocomplete="off" value="<%= event.location.name if event.location %>">
+        <input type="hidden" name="event[location_id]" value="<%= event.location_id if event.location %>">
+      </div>
+    </div>
+  </div>
+   
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :start_at, "Start Date" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <input class="start-at-event form-control trip-input-text" autocomplete="off" type="text" data-edit="true" value="<%= event.start_at.strftime("%m/%d/%Y") %>" required readonly>
+      <input type="hidden" class="event-start-at" name="event[start_at]" data-edit="true" value="<%= event.start_at %>">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :start_at_time, "Start Time" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_area :start_at_time, class: "col-12 form-control trip-input-text" %>
+    </div>
+  </div>
+   
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :end_at, "End Date" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <input class="end-at-event form-control trip-input-text" autocomplete="off" type="text" data-edit="true" value="<%= event.end_at.strftime("%m/%d/%Y") %>" required readonly>
+      <input type="hidden" class="event-end-at" name="event[start_at]" data-edit="true" value="<%= event.end_at %>">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :end_at_time, "End Time" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_area :end_at_time, class: "col-12 form-control trip-input-text" %>
+    </div>
+  </div>
+   
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :description %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: "col-12 form-control trip-input-text" %>
+    </div>
+  </div>
+
+  <div class="tar">
+    <%= f.submit "Save", class: "btn btn-sm community-btn community-submit-btn" %>
+  </div>
+
+<% end %>

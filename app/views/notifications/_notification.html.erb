@@ -1,0 +1,17 @@
+<div class="row" data-id="<%= notification.id %>">
+  <div class="col-8 d-flex justify-content-start">
+    <% if notification.is_read != true %>
+      <div style="background-color: #35a2da;box-shadow: #35a2da 0 0 1px;" class="trip-notifications-icon"></div>
+    <% end %>
+
+    <img class="notification-img" src="<%= user_photo_url_from_id(notification.sender.id) %>" height="40" width="40">
+
+    <div class="notification-heading"><%= notification.heading.html_safe %>
+      <small class="notification-time"><i class="fa fa-clock-o" aria-hidden="true"></i><%= time_ago_in_words(notification.created_at) %></small>
+    </div>
+  </div>
+
+  <div class="col-sm-4"></div>
+</div>
+
+<hr>

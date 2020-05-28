@@ -1,0 +1,75 @@
+<!-- TODO: add waitlist landing page view here and change the
+route to use waitlists#landing action -->
+<% @waitlist = Waitlist.find_by_email(params[:email]) %>
+<div class="container" style="padding: 10px; margin-top: 20px; margin-bottom: 10px">
+  <% if @email_confirmation %>
+    <h1>Thank you for being part of the Nomo FOMO Community by subscribing to our newsletter!</h1>
+    <div style="padding: 75px">
+      <h1 style="text-align: center">If you haven't already, we invite you to join our waitlist and become one of the earliest users of our product!</h1>
+      <div class="facebook-signin-container">
+        <div class="sign-in-facebook" id="join_waitlist_fb_land">
+          <i class="fa fa-facebook-f"></i>
+          <span>Join the Waitlist</span>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <% if @waitlist %>
+      <br>
+      <% if @waitlist.position <= 0 %>
+        <h1 style="text-align: center">Congrats, you have moved up the waitlist and may now create an account!</h1>
+        <div class="facebook-signin-container" style="margin-bottom: 20px">
+          <a class="sign-in-facebook" href="/users/auth/facebook">
+            <i class="fa fa-facebook-f"></i>
+            <span>Sign Up With Facebook</span>
+          </a>
+        </div>
+      <% else %>
+        <h1>Thank you for being part of the Nomo FOMO Community!</h1>
+        <h4 class="waitlist-position-text">
+          <%= "You are number #{@waitlist.position} out of #{Waitlist.last_position} on the waitlist to get access. Don't forget to share with friends and get access sooner! Check back here anytime to see your position. Thank you!" %>
+        </h4>
+        <div style="text-align: center">
+          <h4 class="share-waitlist-text">Improve your position by signing up your friends!</h4>
+          <br>
+          <p><%= "Your referral link: #{@waitlist.referral_link}" %></p>
+          <p class="share-waitlist-text">Or share on social media:</p>
+          <span>
+            <%= link_to facebook_url(@waitlist), class: "facebook", rel: "noopener", target: "_blank" do %>
+              <span class="fa fa-facebook fa-2x"></span>
+            <% end %>
+            <%= link_to tweet_url(@waitlist), class: "twitter twitter-waitlist", rel: "noopener", target: "_blank" do %>
+              <span class="fa fa-twitter fa-2x"></span>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    <% else %>
+      <div style="padding: 75px">
+        <h1 style="text-align: center">Looks like you haven't joined the waitlist yet.</h1>
+        <div class="facebook-signin-container">
+          <div class="sign-in-facebook" id="join_waitlist_fb_land">
+            <i class="fa fa-facebook-f"></i>
+            <span>Join the Waitlist</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <section class="email-newsletter">
+      <div class="wrapper">
+        <aside>
+          <h2>Join Our Email Newsletter</h2>
+        </aside>
+        <form action="https://nomotravelfomo.us13.list-manage.com/subscribe/post?u=11e21f6b6499ffc397f42a957&amp;id=b1387304b6" method="post">
+          <input type="email" placeholder="Email Address" name="EMAIL" required />
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_11e21f6b6499ffc397f42a957_b1387304b6" tabindex="-1" value=""></div>
+          <input type="submit" value="Join" name="subscribe" class="join-email-newsletter-submit" />
+        </form>
+      </div>
+    </section>
+  <% end %>
+</div>

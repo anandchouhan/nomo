@@ -1,0 +1,69 @@
+<div class="modal" id="tripInvitationModal" tabindex="-1" role="dialog" aria-labelledby="inviteFriends">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="inviteFriends">Invitation Status</h4>
+          </div>
+          <div class="modal-body participants">
+            <div class="row user-list">
+              <div class="col-12">
+                <% if user_signed_in? %>
+                  <h3>Friends</h3>
+                  <ul id="list-friends" class="list-group pv-20">
+                  <% @trip_location.friends_to_invite(current_user).each do |user| %>
+                    <li class="list-group-item d-flex justify-content-between" id="friend-<%= user.id %>">
+                      <%= user.name %>
+                      <%= link_to send_invitation_to_trip_location_path(@trip_location, user), data: { disable_with: "" }, method: :post do %>
+                        <i class="fa fa-user-plus"></i>
+                      <% end %>
+                    </li>
+                  <% end %>
+                  </ul>
+                  <h3>Pending Requests</h3>
+                  <ul id="list-pending-requests" class="list-group pv-20">
+                    <% if @trip_location.trip.user == current_user %>
+                      <% invitations = @trip_location.trip_location_invitations %>
+                    <% else %>
+                      <% invitations = @trip_location.trip_location_invitations.where(sender: current_user) %>
+                    <% end %>
+
+                    <% invitations.each do |invitation| %>
+                      <li class="list-group-item d-flex justify-content-between">
+                        <%= invitation.recipient.name %>
+                        <%= link_to decline_invitation_to_trip_location_path(@trip_location, invitation.recipient), data: { disable_with: "" }, method: :delete do %>
+                          <i class="fa fa-user-times"></i>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <h3>Participants</h3>
+                <ul class="list-group pv-20">
+                  <% @trip_location.participants.each do |participant| %>
+                    <li class="list-group-item d-flex justify-content-between" id="participant-<%= participant.id %>">
+                      <%= participant.name %>
+                      <% if @trip.user == current_user %>
+                        <% if @trip.user != participant %>
+                          <%= link_to remove_user_from_trip_location_path(@trip_location, participant), data: { disable_with: "" }, method: :delete do %>
+                            <i class="fa fa-user-times"></i>
+                          <% end %>
+                        <% end %>
+                      <% elsif current_user == participant %>
+                        <%= link_to remove_user_from_trip_location_path(@trip_location, participant), data: { disable_with: "" }, method: :delete do %>
+                          <i class="fa fa-user-times"></i>
+                        <% end %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

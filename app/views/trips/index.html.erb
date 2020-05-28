@@ -1,0 +1,21 @@
+<div class="main-content">
+  <div class="trips">
+    <div class="trips-section">
+      <div class="row">
+        <div class="col-sm-3 trips-list">
+          <div class="left-bar">
+            <span class="trips-list">
+              <%= render partial: 'calendar_trips_list', locals: { trips: @trips } %>
+            </span>
+          </div>
+        </div>
+        <div class="col-sm-9 trip-details" id="calendar-bg">
+          <div class="right">
+            <div id="trip" class="trip"></div>
+            <div id="calendar" data-user-id="<%= current_user.id %>" class="calendar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

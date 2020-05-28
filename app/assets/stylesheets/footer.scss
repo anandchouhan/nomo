@@ -1,0 +1,127 @@
+@import "config/*";
+@import "mixins/*";
+
+footer {
+  background-color: $gable-green;
+  color: $white;
+  padding: 30px 0;
+
+  .wrapper {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 1500px;
+    width: 100%;
+
+    @include bp(iphone-6-plus-landscape) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 5%;
+
+      .logo {
+        img {
+          width: 50%;
+        }
+      }
+
+      .nav-footer {
+        li {
+          display: inline;
+          padding: 5px;
+        }
+
+        a {
+          color: $white;
+          display: inline;
+          font-family: "Roboto";
+          padding: 15px;
+        }
+    }
+
+      .social {
+        nav {
+          @include bp(iphone-6-plus-landscape) {
+            margin: 0 auto;
+            margin-bottom: 20px;
+          }
+        }
+
+        a {
+          color: $silver;
+          font-size: 24px;
+          margin-right: 20px;
+
+          :hover {
+            color: $white;
+          }
+
+          :nth-last-of-type(1) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    .footer-divider {
+      border-bottom: 1px solid $silver;
+      margin: 30px 0;
+      position: relative;
+      width: 100%;
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: center;
+      margin: 0 5%;
+
+      @include bp(iphone-6-plus-landscape) {
+        flex-direction: column;
+      }
+
+      .copyright {
+        color: $silver;
+        width: 75%;
+
+        @include bp(iphone-6-plus-landscape) {
+          margin: auto;
+          width: 50%;
+        }
+
+        p {
+          font-size: 0.8rem;
+          line-height: 1rem;
+          margin: 0;
+          width: 50%;
+
+          @include bp(iphone-6-plus-landscape) {
+            margin: 0;
+            width: 100%;
+          }
+        }
+      }
+
+      .links {
+        color: $silver;
+        text-align: right;
+        width: 25%;
+
+        @include bp(iphone-6-plus-landscape) {
+          line-height: 22px;
+          margin: auto;
+          width: 50%;
+        }
+
+        a {
+          color: $silver;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

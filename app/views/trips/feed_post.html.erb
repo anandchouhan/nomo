@@ -1,0 +1,59 @@
+<div class="feed-trip-post clearfix">
+  <div class="white-container">
+    <div id="trip_<%= @trip.id %>" class="trip card">
+      <div class="card-block">
+        <h3 class="card-title">
+          <div class="activity-owner-text">
+            <%= link_to @trip.user do %>
+              <%= user_photo @trip.user, size: "48x48", class: "rounded-circle activity-user-picture" %>
+            <% end %>
+
+            <span class="activity-user-name">
+              <%= link_to @trip.user, class: "activity-owner-text" do %>
+                <%= @trip.user.name %>
+              <% end %>
+
+              <span class="activity-trip-info light-font">
+                Booked a <%= link_to(@trip) do %>Trip<% end %>
+              </span>
+            </span>
+          </div>
+
+          <span class="activity-timestamp light-font" data-livestamp="<%= @trip.created_at.to_time.to_i %>"></span>
+        </h3>
+
+        <%= image_tag "booked_a_trip_place_holder.jpg", class:"card-img-top" %>
+
+        <% if @trip.description %>
+          <p class="feed-trip-desc"><%= @trip.description %></p>
+        <% end %>
+      </div>
+      <hr style="margin:0px;" />
+      <div>
+        <% unless @comments.where.not(id: nil, body:nil, user:nil, commentable_type: nil, commentable_id: nil).empty? %>
+          <div class="outer">
+            <ul>
+              <% @grouped_comments.keys.each_with_index do |user,index| %>
+                <% if index%2 ==0 %>
+                  <% @grouped_comments[user].each do |comment| %>
+                    <%= render partial: "trip_feed_comment", locals: { comment: comment } %>
+                  <% end %>
+                <% else %>
+                  <% @grouped_comments[user].each do |comment| %>
+                    <%= render partial: "trip_feed_user_comment", locals: { comment: comment } %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </ul>
+            <%= render partial: "trip_from_feed_comment_form" %>
+          </div>
+        <% else %>
+          <div class="outer">
+            <%= render partial: "trip_from_feed_comment_form" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

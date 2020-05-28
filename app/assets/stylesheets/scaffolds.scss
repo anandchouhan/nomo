@@ -1,0 +1,75 @@
+@import "config/*";
+
+body {
+  background-color: $white;
+  color: $mine-shaft;
+  font-family: 'Roboto', helvetica, arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p,
+ol,
+ul,
+td {
+  font-family: 'Roboto', helvetica, arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: $gallery;
+  font-size: 11px;
+  padding: 10px;
+}
+
+a {
+  color: $orange;
+
+  &:hover {
+    color: $orange-hover;
+  }
+}
+
+div {
+  &.field,
+  &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice,
+#jsnotice {
+  color: $japanese-laurel;
+}
+
+.field-with-errors {
+  background-color: $red;
+  display: table;
+  padding: 2px;
+}
+
+#error-explanation {
+  background-color: $gallery;
+  border: 2px solid $red;
+  margin-bottom: 20px;
+  padding: 7px;
+  padding-bottom: 0;
+  width: 450px;
+
+  h2 {
+    background-color: $guardsmen-red;
+    color: $white;
+    font-size: 12px;
+    font-weight: bold;
+    margin: -7px;
+    margin-bottom: 0;
+    padding: 5px 5px 5px 15px;
+    text-align: left;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}

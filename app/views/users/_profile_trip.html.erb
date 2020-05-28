@@ -1,0 +1,19 @@
+  <div class="profile-trip-card">
+    <li class="trip-block" id="trip-<%= trip.id %>">
+      <a href="<%= trip_path(trip) %>" class="profile-trip-link"></a>
+      <h3 class="trip-name"><strong><%= trip.name %></strong></h3>
+      
+      <% trip.trip_locations.each_with_index do |trip_location, index| %>
+        <p class="trip-location"><%= trip_location.location.city_signature_or_formatted_address %></p>
+        <p class="date">
+          <i class="fa fa-calendar"></i>
+          <%= trip_location.start_at.strftime("%b %d") %> - <%= trip_location.end_at.strftime("%b %d") %>
+        </p>
+      <% end %>
+
+      <% if trip.user == current_user %>
+        <%= link_to 'Edit', edit_trip_path(trip), class: "edit-trip trip-options", remote: true %>
+        <%= link_to 'Delete', trip_path(trip), method: :delete, data: { confirm: 'Are you sure?' }, class: "trip-options" %>
+      <% end %>
+    </li>
+  </div>

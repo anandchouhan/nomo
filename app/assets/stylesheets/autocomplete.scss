@@ -1,0 +1,28 @@
+@import "config/*";
+
+.container-autocomplete {
+  position: relative;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid $grey-autocomplete;
+  border-bottom: 0;
+  border-top: 0;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: $white;
+    border-bottom: 1px solid $grey-autocomplete;
+    text-align: left;
+
+    &:hover {
+      background-color: $lavender;  
+    }
+  }
+}

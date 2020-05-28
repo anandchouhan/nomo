@@ -1,0 +1,19 @@
+<div class="row heading">
+  <div class="col-xs-12"><h1>Trip Invitees</h1></div>
+</div>
+
+<% if invitiees.count > 0 %>
+  <% invitiees.each do |user| %>
+    <div class="row">
+      <div class="col-xs-11 well">
+        <%= user.name %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="row">
+    <div class="col-xs-11 well">
+      No Invites Yet
+    </div>
+  </div>
+<% end %>

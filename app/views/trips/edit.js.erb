@@ -1,0 +1,3 @@
+$('.popover').hide();
+$('.edit-trip-modal').html("<%= j render(partial: 'trips/edit_trip', locals: { trip: @trip }) %>");
+$('#editTripModal').modal('show');

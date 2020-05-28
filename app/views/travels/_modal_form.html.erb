@@ -1,0 +1,149 @@
+<%= form_with model: travel, url: [travel.trip_location, travel] do |f| %>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :name, "Name" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :name, placeholder: "eg. Flight to New York", class: 'form-control trip-input-text', required: true, autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :reservation_number, "Reservation Number" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :reservation_number, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :airline, "Airline" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :airline, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :flight_number, "Flight Number" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :flight_number, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :description, "Extra Information" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <h2>Departure</h2>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :departure_location, "Origin City" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <div class="container-autocomplete">
+        <input type="text" class="form-control trip-input-text autocomplete-places" autocomplete="off" placeholder="Enter a location" value="<%= travel.departure_location.city_signature_or_formatted_address if travel.departure_location %>">
+        <input type="hidden" name="travel[departure_location_id]" value="<%= travel.departure_location_id if travel.departure_location %>">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :departure_airport, "Airport of Departure" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :departure_airport, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :departing_at, "Departure Date" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <input class="departing-at-travel form-control trip-input-text" autocomplete="off" type="text" data-edit="true" value="<%= travel.departing_at.strftime("%m/%d/%Y") %>" required readonly>
+      <input type="hidden" class="travel-departing-at" name="travel[departing_at]" data-edit="true" value="<%= travel.departing_at %>">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :departing_at_time, "Departure Time" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :departing_at_time, class: 'form-control trip-input-text', autocomplete: 'off', placeholder: "E.g. 10:00 a.m. or 15:43" %>
+    </div>
+  </div>
+
+  <h2>Arrival</h2>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :arrival_location_id, "City of Arrival" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <div class="container-autocomplete">
+        <input type="text" class="form-control trip-input-text autocomplete-places" autocomplete="off" placeholder="Enter a location" value="<%= travel.arrival_location.city_signature_or_formatted_address if travel.arrival_location %>">
+        <input type="hidden" name="travel[arrival_location_id]" value="<%= travel.arrival_location_id if travel.arrival_location %>">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :arrival_airport, "Airport of Arrival" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :arrival_airport, class: 'form-control trip-input-text', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :arriving_at, "Arrival Date" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <input class="arriving-at-travel form-control trip-input-text" autocomplete="off" type="text" data-edit="true" value="<%= travel.arriving_at.strftime("%m/%d/%Y") %>" required readonly>
+      <input type="hidden" class="travel-arriving-at" name="travel[arriving_at]" data-edit="true" value="<%= travel.arriving_at %>">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= f.label :arriving_at_time, "Arrival Time" %>
+    </div>
+    
+    <div class="col-sm-10">
+      <%= f.text_field :arriving_at_time, class: 'form-control trip-input-text', autocomplete: 'off', placeholder: "E.g. 10:00 a.m. or 15:43" %>
+    </div>
+  </div>
+
+  <div class="tar">
+    <%= f.submit "Save", class: "btn btn-sm community-btn community-submit-btn" %>
+  </div>
+                  
+<% end %>

@@ -1,0 +1,1214 @@
+// Place all the styles related to the activities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "config/*";
+@import "fonts/*";
+
+.activity-trip-info {
+  font-size: 14px;
+  margin-left: 0.2rem;
+}
+
+.activity-owner-text {
+  color: $black;
+}
+
+.selected-settings-group .light-font {
+  color: $linkedin-blue;
+}
+
+.light-font {
+  color: $grey-16;
+  font-family: $font-roboto;
+  font-weight: $normal !important;
+}
+
+.like-count {
+  @extend .light-font;
+  font-size: 16px;
+}
+
+.activity-user-name {
+  font-size: 16px;
+  font-weight: $normal;
+  left: 5rem;
+  position: absolute;
+  top: 1.6rem;
+}
+
+.share-activity {
+  margin-right: 0.5rem;
+  padding-top: 0 !important;
+}
+
+.activity-card-footer {
+  background-color: $white !important;
+  padding: 0.5rem !important;
+}
+
+.search-box {
+  background-color: transparent;
+  border: solid 1px $black-alpha-2;
+  border-radius: 25px;
+  box-sizing: border-box;
+  color: $grey-14;
+  font-size: 14px;
+  padding: 4px 14px;
+  width: 100%;
+}
+
+.rt-icon-container {
+  padding-top: 0.6rem;
+  padding-right: 1.5rem !important;
+}
+
+.comments-count-text {
+  padding-bottom: 0.5rem;
+  padding-top: 0.3rem;
+}
+
+.user-group-rest {
+  margin-left: -1.75rem;
+}
+
+.user-group-first {
+  margin-left: 1rem;
+}
+
+.existing-comments {
+  padding-right: 1.5rem;
+}
+
+.comments-count {
+  margin-left: 0.8rem;
+}
+
+.show-comments {
+  background: transparent;
+  border: 0;
+  font-size: 14px;
+}
+
+.preferences-link {
+  color: $black;
+  font-size: 14px;
+}
+
+.new-post-oneline {
+  line-height: 0.1 !important;
+}
+
+.form-group {
+  margin-bottom: 20px !important;
+}
+
+.form-group-no-margin {
+  margin-bottom: 0 !important;
+}
+
+.new-post-text-container {
+  padding-top: 0 !important;
+}
+
+.new-post-card-block {
+  background-color: $concrete;
+  padding-bottom: 0.75rem !important;
+  padding-top: 0.75rem !important;
+}
+
+.cities-indications-text {
+  padding-bottom: 5px;
+}
+
+.comment-textarea {
+  font-size: 12px !important;
+  font-style: italic;
+  overflow-x: hidden;
+  resize: none;
+  word-wrap: break-word;
+  border: 1px solid $dusty-gray !important;
+  border-radius: 4px;
+  height: 34px;
+  padding-left: 12px;
+}
+
+.custom-stacked-icons {
+  font-size: small;
+}
+
+.colored-stack {
+  color: $colored-stack;
+}
+
+.comment-upload-buttonset {
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.comment-buttons-col {
+  background: $grey-2;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.comment-textarea-container {
+  background: $white;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+}
+
+.comment-form-row {
+  padding: 10px 15px 5px;
+}
+
+.comment-modal-title {
+  margin-top: 10px;
+}
+
+.comment-list-col {
+  margin-left: 2%;
+}
+
+.comment-list-count {
+  display: table-cell;
+}
+
+#activity-type-toggle {
+  color: $user-name-span;
+}
+
+.toggle-activity-button {
+  margin-right: 10px;
+}
+
+.profile-link-form {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 0;
+}
+
+.activity-picture-form {
+  display: none;
+}
+
+.form-footer-container {
+  left: 36px;
+  padding-left: 0 !important;
+  position: absolute !important;
+}
+
+.upload-picture-activity {
+  margin-right: 10px;
+}
+
+.custom-separator {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.upper-spacer {
+  margin-top: 10px;
+}
+
+.activity-text {
+  border: 0 !important;
+  resize: none;
+}
+
+.activity-form-row {
+  margin-bottom: 10px;
+}
+
+.activity-user-picture {
+  margin-right: 10px;
+}
+
+.link-to-profile {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.attach-picture {
+  color: $like-heart;
+}
+
+.new-post-text {
+  background-color: $concrete !important;
+  border: 0 !important;
+  box-sizing: border-box;
+  height: 42px;
+  line-height: 42px !important;
+  padding: 0 !important;
+  resize: none;
+}
+
+.new-post-link {
+  font-size: 11px;
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  span {
+    align-items: center;
+    background: $red;
+    border-radius: 100%;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    position: static;
+    width: 30px;
+  }
+}
+
+.preferences-modal-row {
+  border-bottom: 1px $white solid;
+  margin-top: 10px;
+}
+
+.preferences-modal-last-row {
+  margin-top: 10px;
+}
+
+.preferences-modal-content {
+  background-color: $grey-2;
+  border: 0;
+}
+
+.no-friends-text {
+  color: $silver-chalice;
+  text-align: center;
+}
+
+.preferences-buttons-container {
+  padding-top: 5px;
+}
+
+.preference-list-container {
+  margin-bottom: 10px;
+}
+
+.default-modal {
+  overflow: auto;
+  padding-right: 14px;
+}
+
+.new-answer-textarea {
+  @extend .light-font;
+  background-color: $grey-12 !important;
+  border: none !important;
+  color: $white;
+  display: block !important;
+  font-size: 12px !important;
+  overflow: hidden;
+  padding-left: 8px !important;
+  padding-top: 0 !important;
+  position: absolute;
+  resize: none;
+  text-align: left;
+  text-overflow: ellipsis;
+  top: 25%;
+  white-space: nowrap;
+  width: 93% !important;
+}
+
+.new-answer-textarea::-webkit-input-placeholder {
+  @extend .light-font;
+  color: $dusty-gray !important;
+}
+
+.btn-add-answer {
+  color: $btn-add-answer;
+  font-size: 25px;
+}
+
+.btn-remove-answer {
+  color: $btn-remove;
+  font-size: 25px;
+}
+
+.submit-new-answer {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 18%;
+}
+
+.add-answer-to-new-poll {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 18%;
+}
+
+.remove-answer-from-new-poll {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 18%;
+}
+
+.poll-existing-answers {
+  margin-bottom: 1rem;
+}
+
+.answer-votes-container {
+  padding-left: 0 !important;
+  padding-right: 0;
+  padding-top: 6px !important;
+}
+
+.answer-votes-text {
+  font-size: 14px;
+  position: relative;
+  top: 20%;
+}
+
+.internal-votes-counter {
+  background-color: $votes-counter !important;
+  height: inherit !important;
+  opacity: 1;
+  width: 100%;
+}
+
+.answer-votes-counter {
+  background-color: $votes-counter !important;
+  height: 30px;
+  margin-bottom: 1rem;
+}
+
+.answer-bar-container {
+  padding-right: 0 !important;
+  padding-top: 6px !important;
+}
+
+.answer-description {
+  color: $black;
+  display: block;
+  font-size: 12px;
+  overflow: hidden;
+  padding-left: 8px;
+  position: absolute;
+  text-align: left;
+  text-overflow: ellipsis;
+  top: 25%;
+  white-space: nowrap;
+  width: 93%;
+}
+
+.answer-customized-progress {
+  background-color: $grey-12 !important;
+  height: 30px;
+  margin-bottom: 1rem;
+}
+
+.answer-internal-bar {
+  background-color: $internal-bar !important;
+  height: inherit !important;
+  opacity: 1;
+}
+
+.new-answer-internal-bar {
+  background-color: $internal-bar;
+  height: inherit;
+  opacity: 0.3;
+}
+
+.custom-control-indicator {
+  height: 22px !important;
+  width: 22px !important;
+}
+
+.answer-checkbox-container {
+  position: absolute;
+  right: -42%;
+  top: 8%;
+}
+
+.comments-modal-reference {
+  color: $grey-11;
+  font-size: 16px;
+  padding-top: 3%;
+}
+
+.post-body {
+  font-size: 14px;
+  font-weight: $normal;
+  hyphens: auto;
+  word-break: break-all;
+}
+
+.poll-title {
+  font-size: 14px;
+  font-weight: $normal;
+  hyphens: auto;
+  word-break: break-all;
+}
+
+.trip-body {
+  font-size: 14px;
+  font-weight: $normal;
+  hyphens: auto;
+  margin-bottom: 1rem;
+}
+
+.feed-trip-desc {
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.like {
+  color: $like-heart;
+  font-size: 20px;
+  margin-left: 0.3rem;
+}
+
+.like-button-container {
+  font-size: 25px;
+  position: absolute;
+  right: 0.5rem;
+  top: 1.2rem;
+}
+
+.activity-timestamp {
+  font-size: 13px;
+  left: 5rem;
+  
+  top: 2.8rem;
+}
+
+.comment-modal-content {
+  background: $grey-2 !important;
+  width: 320px;
+}
+
+.comment-window {
+  background: $white;
+  background-clip: content-box;
+  height: 300px;
+  margin: 0 15px 15px;
+  padding: 0 !important;
+}
+
+.user-comments-count-text {
+  color: $grey-11;
+  padding-top: 8%;
+}
+
+.user-comments-count-circle {
+  background: $comment-count;
+  border-radius: 50%;
+  color: $white;
+  display: inline-block;
+  font-size: 12px;
+  height: 36px;
+  line-height: 2.3rem;
+  text-align: center;
+  width: 36px;
+}
+//*************************************************************************************
+//**** Ing Jeffer Ariza 14/08/2017 ****************************************************
+//**** Modificaciones css: Modal notification setting and privacy, responsive, activiti*
+//**** feed (People), create scrollbar whit css.      *
+//*************************************************************************************
+//*Styles by Jeffer*
+.btn-colors {
+  background-color: $grey-7;
+  color: $black;
+}
+
+.not-text-right {
+  text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  .col-2.not-text-right {
+    margin-left: -25px;
+  }
+
+  .col-3.not-text-right {
+    margin-left: -10px;
+  }
+}
+
+.not-padding-botton {
+  color: $black;
+  padding-bottom: 20px !important;
+}
+
+.not-right {
+  float: right;
+}
+
+.not-border-right {
+  border-color: $grey-7;
+  border-left: 0;
+  border-style: double;
+  border-top: 0;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  width: 100%;
+}
+
+.not-border-botton {
+  border-bottom: 0;
+  border-color: $grey-7;
+  border-left: 0;
+  border-style: double;
+  border-top: 0;
+  padding-bottom: 3px !important;
+  padding-left: 5px !important;
+  width: 100%;
+}
+
+.not-shadow {
+  background-color: $white;
+  box-shadow: -4px 4px 5px 0 $grey-13;
+}
+
+.not-modal-dialog {
+  border-radius: 5px;
+  max-width: 900px !important;
+}
+
+.not-title {
+  color: $black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 27px;
+  font-weight: $normal;
+  letter-spacing: 1pt;
+  line-height: 1;
+  text-align: left;
+  word-spacing: 2pt;
+}
+
+.not-text {
+  color: $notification-title-font;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: $normal;
+  letter-spacing: 1pt;
+  line-height: 1.3;
+  text-align: left;
+  word-spacing: 2pt;
+}
+
+.not-text-gray {
+  color: $notification-body-font;
+}
+
+.custom-select {
+  appearance: none;
+  background-color: $primary-btn-background !important;
+  background-size: 8px 10px;
+  border: none !important;
+  border-radius: 0 !important;
+  color: $white !important;
+  display: inline-block;
+  height: calc(2.25rem + 2px);
+  line-height: 1.25;
+  margin-top: 0 !important;
+  max-width: 100%;
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  vertical-align: middle;
+}
+
+.decoration-none {
+  text-decoration: none !important;
+}
+
+.form-control-2 {
+  background-color: $grey-9 !important;
+}
+
+.modal-body-2 {
+  background-color: $grey-9;
+  border-radius: 5px;
+  flex: 1 1 auto;
+  padding: 15px;
+  position: relative;
+}
+
+.not-scroll {
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.modal-content-2 {
+  margin-top: 90px !important;
+  width: 900px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content-2 {
+    width: 95% !important;
+  }
+}
+
+.img-places {
+  background-color: $white;
+  height: auto;
+  max-width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.border-col {
+  border: 1px solid $grey-7;
+  margin: 0;
+  max-width: 47.9% !important;
+  padding: 0;
+}
+
+.left-place {
+  margin-left: 0;
+}
+
+.right-place {
+  margin-left: 9px;
+}
+
+.cell-right {
+  float: right;
+  padding: 13% 5px 5px;
+  width: 30%;
+}
+
+.cell-left {
+  float: left;
+  padding: 5px;
+  width: 70%;
+}
+
+.margin-botton-city {
+  margin-bottom: -0.1rem;
+}
+
+.text-of-preferences {
+  color: $grey-6;
+  font-size: 12px;
+  margin-bottom: 1rem;
+}
+
+.activitv-feed-prefe {
+  background-color: $grey-2;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 25px;
+}
+
+.card-header-prefe {
+  background-color: $white !important;
+  border-bottom: none !important;
+  border-radius: 5px !important;
+  margin-bottom: 0;
+  padding: 0.75rem 1.25rem;
+}
+
+.card-border-none {
+  border: none !important;
+}
+
+.cont-cities {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.row-cities {
+  margin: 0 !important;
+  padding-bottom: 8px;
+}
+
+.btn-cancel {
+  border: 1px solid;
+  border-color: $grey-5;
+  color: $grey-4;
+  width: 102%;
+}
+
+.btn-done {
+  background-color: $primary-btn-background;
+  border: 1px solid;
+  border-color: $primary-btn-border;
+  color: $primary-btn-color;
+  width: 94%;
+}
+
+.lik-cont {
+  background: $white;
+  background-clip: content-box;
+  border-radius: 5px;
+  height: 300px;
+  padding: 0;
+}
+
+.lik-cont-right {
+  background: $grey-2;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  margin-left: 6px;
+  padding-left: 8px;
+  padding-right: 2px;
+}
+
+.lik-name {
+  float: left;
+  font-size: 13px;
+  font-weight: bold;
+  padding-top: 9px;
+}
+
+.lik-button-friend {
+  float: right;
+  padding: 2.5px;
+}
+
+.lik-heard {
+  left: 62%;
+  position: absolute;
+  top: 58%;
+}
+
+.btn-friend {
+  background-color: $primary-btn-background;
+  border: 1px solid;
+  border-color: $primary-btn-border;
+  color: $primary-btn-color;
+  font-size: 14px;
+  height: 32px;
+}
+
+.lik-more-people {
+  background-color: $like-heart;
+  border-radius: 50%;
+  color: $white;
+  font-size: 22px;
+  height: 48px;
+  left: 60px;
+  padding-left: 5px;
+  padding-top: 5px;
+  position: absolute;
+  top: 1px;
+  width: 48px;
+}
+//* ************************************************************************************
+//* Privacy css active feed people *
+//* ************************************************************************************
+.pso {
+  left: -203px !important;
+  top: 101.6125px !important;
+  width: 543px !important;
+}
+
+.not-scroll-2:focus {
+  overflow-x: "";
+}
+
+.not-scroll-2 {
+  height: 117px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#info {
+  color: $grey-10;
+  font-size: 18px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.scrollbar {
+  float: left;
+  height: 225px;
+  margin-bottom: 10px;
+  overflow-y: scroll;
+  width: 102%;
+}
+
+.force-overflow {
+  min-height: 225px;
+  overflow-x: hidden;
+}
+
+#wrapper {
+  margin: auto;
+  text-align: center;
+  width: 500px;
+}
+
+//  Fomat scroll cdd and STYLE 3 -moz-
+
+::-webkit-scrollbar-track {
+  background-color: $grey-3;
+  box-shadow: inset 0 0 6px $transparent-1;
+}
+
+::-webkit-scrollbar {
+  background-color: $grey-3;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $black;
+}
+
+#style-3::-webkit-scrollbar-track {
+  background-color: $grey-3;
+  box-shadow: inset 0 0 6px $transparent-1;
+}
+
+#style-3::-webkit-scrollbar {
+  background-color: $grey-3;
+  width: 6px;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+  background-color: $black;
+}
+
+#style-3:-moz-scrollbar-track {
+  background-color: $grey-3;
+  box-shadow: inset 0 0 6px $transparent-1;
+}
+
+#style-3:-moz-scrollbar {
+  background-color: $grey-3;
+  width: 6px;
+}
+
+#style-3:-moz-scrollbar-thumb {
+  background-color: $black;
+}
+//* fin css scrollbar
+//* Responsive
+@media screen and (min-width: 320px) {
+  .card {
+    margin-bottom: 15px !important;
+  }
+
+  .alg {
+    margin-left: 225px;
+    margin-top: 70px;
+    max-width: 90%;
+  }
+
+  #mod-row {
+    flex-wrap: nowrap;
+  }
+
+  #col1 {
+    width: 20%;
+  }
+
+  #col2 {
+    width: 60%;
+  }
+
+  #col3 {
+    width: 10%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .alg {
+    margin-left: 424px !important;
+    margin-top: 70px !important;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .card-columns {
+    display: grid !important;
+  }
+
+  .alg {
+    margin-left: 444px !important;
+    margin-top: 70px !important;
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .alg {
+    margin-left: 468px !important;
+    margin-top: 70px !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .alg {
+    margin-left: 423px !important;
+    margin-top: 70px !important;
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .alg {
+    margin-left: 473px !important;
+    margin-top: 70px !important;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  .alg {
+    margin-left: 524px !important;
+    margin-top: 70px !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .alg {
+    margin-left: 370px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .alg {
+    margin-left: 419px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .alg {
+    margin-left: 517px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1320px) {
+  .alg {
+    margin-left: 589px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1420px) {
+  .alg {
+    margin-left: 566px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1520px) {
+  .alg {
+    margin-left: 615px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1620px) {
+  .alg {
+    margin-left: 664px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1720px) {
+  .alg {
+    margin-left: 713px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1820px) {
+  .alg {
+    margin-left: 764px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .alg {
+    margin-left: 813px !important;
+    margin-top: 30px !important;
+  }
+}
+
+//*************************************************************************************
+//**** Ing Jeffer Ariza 14/08/2017 ****************************************************
+//**** Modificaciones css: Modal notification setting and privacy, responsive, activiti*
+//**** feed (People), create scrollbar whit css.      *
+//*************************************************************************************
+.dropdown-toggle::after,
+.dropdown-toggle::before {
+  border: none !important;
+  content: none !important;
+  display: none !important;
+}
+
+[contenteditable]:focus {
+  outline: 0 solid transparent;
+}
+
+.mydropdown {
+  background-color: $grey-2;
+}
+
+.drop-element {
+  border-top: 1px solid $white;
+}
+//IMAGE UPLOADER
+
+.picture-upload-field {
+  display: none;
+}
+
+.custom-file-upload {
+  cursor: pointer;
+  display: inline-block;
+}
+//IMAGE UPLOADER
+//POSTS
+
+.post-share {
+  color: $grey-1;
+  display: inline-block;
+  font-size: 20px;
+  margin-right: 0.7rem;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  top: 33%;
+}
+
+.post-share:focus,
+.post-share:hover {
+  color: $post-option-hover;
+  text-decoration: none;
+}
+//POSTS
+//MENTIONS
+
+.mention-name {
+  font-size: 12px;
+}
+
+.mention-username {
+  color: $grey-1;
+  font-size: 12px;
+}
+
+.mention-image {
+  border-radius: 3px;
+  float: left;
+  height: 20px;
+  margin-right: 5px;
+  width: 20px;
+}
+
+.active .mentio-username {
+  color: $white;
+}
+//MENTIONS
+//ADDED BY JOSEGRE1
+
+.card-img-top {
+  height: auto;
+  width: 100%;
+}
+
+#activity-main {
+  background-color: $activity-background !important;
+  min-height: 82vh;
+  padding-top: 65px !important;
+
+  > .container {
+    padding-top: 65px;
+  }
+}
+
+#unauthorized-window {
+  background-color: $rhino;
+  height: 100%;
+  padding: 10% 30%;
+  width: 100%;
+}
+
+.our-jumbotron {
+  color: $silver-chalice;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+#our-jumbotron > h5 {
+  text-align: center;
+}
+
+#our-jumbotron > h4 {
+  color: $black;
+  text-align: center;
+  text-shadow: 1px 1px $silver-chalice;
+}
+
+.dropdown-container-post {
+  min-width: 200px;
+  text-align: right;
+}
+
+.dropdown-menu-post {
+  right: 0;
+  left: initial !important;
+  width: 7rem;
+  box-shadow: 0 3px 8px $box-shadow-3;
+  
+  a, span {
+    font-size: 0.8em;
+  }
+  
+  span {
+    cursor: pointer;
+  }
+}
+
+.dropdown-toggle-post {
+  padding-right: 0 !important;
+}
+
+#activities-filter-container {
+  width: 100%;
+  background-color: $white;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+#activities-filter-container-label {
+  font-size: 16px;
+  font-weight: $normal;
+}
+
+#new-post-container {
+  background-color: $white;
+  border-radius: 4px;
+}
+
+#new-post-label {
+  font-size: 16px;
+  font-weight: $normal;   
+}
+
+.post-text-area {
+  font-size: 14px !important;
+}
+
+.create-post-btn {
+  width: 100px;
+  background-color: $orange;
+  color: $white;
+  border: 0;
+}

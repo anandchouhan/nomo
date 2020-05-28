@@ -1,0 +1,15 @@
+@import "config/*";
+
+.btn-nav {
+  font-size: 13px !important;
+  margin-right: 10px;
+  margin-top: 7px;
+}
+
+.btn-simple {
+  background-color: $light-grey2;
+  border: 1px solid $silver2 !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+  padding: 7px 15px !important;
+}

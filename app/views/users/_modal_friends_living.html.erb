@@ -1,0 +1,70 @@
+<div id="living-here-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: black;">Friends in <%= @user.location.formatted_address %>     <%= link_to "(edit location) ", my_settings_path %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="activitieClose">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <nav>
+          <ul class="nav nav-pills d-flex justify-content-between" role="tablist">
+            <li class="nav-item" style="width: 50%;">
+              <a class="nav-link text-center active" data-toggle="tab" href="#visiting" role="tab">Visiting</a>
+            </li>
+            <li class="nav-item" style="width: 50%;">
+              <a class="nav-link text-center" data-toggle="tab" href="#living-here" role="tab">Living Here</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="tab-content">
+
+          <section class="tab-pane fade show active" id="visiting" role="tabpanel">
+            <div class="container">
+              <% @friends_visiting.each do |trip_location_participant| %>
+                <div class="row mb-1 mt-1">
+              
+                  <div class="col-6 pl-0 d-flex align-items-center">
+                    <%= link_to trip_location_participant.user do %>
+                      <%= user_photo trip_location_participant.user, size: "36x36", class: "rounded-circle activity-user-picture" %>
+                    <% end %>
+                    <div class="d-flex flex-column">
+                      <%= link_to trip_location_participant.user.name, trip_location_participant.user, class: "text" %>
+                      <span style="color: #a8b6c8"><%= trip_location_participant.trip_location.start_at.strftime("%b %e") %> - <%= trip_location_participant.trip_location.end_at.strftime("%b %e") %></span>
+                    </div>
+                  </div>
+
+                  <div class="col-6 d-flex justify-content-end">
+                    <%= link_to "View Trip", trip_trip_location_path(trip_location_participant.trip_location.trip, trip_location_participant.trip_location), class: "btn btn-sm btn-itinerary" %>
+                  </div>
+                  
+                </div>
+              <% end %>
+            </div>
+          </section>
+
+          <section class="tab-pane fade show" id="living-here" role="tabpanel">
+            <div class="container">
+              <% @friends_living.each do |user| %>
+                <div class="row mb-1 mt-1">
+              
+                  <div class="col-12 pl-0 d-flex align-items-center">
+                    <%= link_to user do %>
+                      <%= user_photo user, size: "36x36", class: "rounded-circle activity-user-picture" %>
+                    <% end %>
+                    <%= link_to user.name, user, class: "text" %>
+                  </div>
+                  
+                </div>
+              <% end %>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

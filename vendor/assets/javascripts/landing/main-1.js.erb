@@ -1,0 +1,86 @@
+(function ($) {
+	"use strict";
+	
+	/*----------------------------
+    START - Slider activation
+    ------------------------------ */
+	
+  var feedbackSlider = $('.feedback-slider');
+  feedbackSlider.owlCarousel({
+    loop:true,
+    dots:true,
+    autoplay: false,
+    autoplayTimeout:4000,
+    nav: false,
+    navText: ["<i class='fas fa-chevron-left'></i>", "<i class='fas fa-chevron-right'></i>"],
+    items: 1,
+    responsive:{
+      768:{
+        nav: true,
+      }
+    }
+  });
+  feedbackSlider.on("translate.owl.carousel", function(){
+    $(".author-single-slide h3").removeClass("animated fadeIn").css("opacity", "0");
+    $(".author-single-slide img, .author-single-slide img, .author-rating").removeClass("animated zoomIn").css("opacity", "0");
+  });
+  feedbackSlider.on("translated.owl.carousel", function(){
+    $(".author-single-slide h3").addClass("animated fadeIn").css("opacity", "1");
+    $(".author-single-slide img, .author-single-slide img, .author-rating").addClass("animated zoomIn").css("opacity", "1");
+  });
+  feedbackSlider.on('changed.owl.carousel', function(property) {
+    var current = property.item.index;
+    var prevRating = $(property.target).find(".owl-item").eq(current).prev().find('.author-single-slide').html();
+    var nextRating = $(property.target).find(".owl-item").eq(current).next().find('.author-single-slide').html();
+    $('.thumb-prev').html(prevRating);
+    $('.thumb-next').html(nextRating);
+  });
+  $('.thumb-next').on('click', function() {
+    feedbackSlider.trigger('next.owl.carousel', [300]);
+    return false;
+  });
+  $('.thumb-prev').on('click', function() {
+    feedbackSlider.trigger('prev.owl.carousel', [300]);
+    return false;
+  });
+
+	/*--------------------------------
+	START - PIE CHART
+	--------------------------------*/
+	$('.activity-box-chart').easyPieChart({
+		animate: 2000,
+		scaleColor: false,
+		lineWidth: 10,
+		barColor: '#ec3851',
+		trackColor: '#e0e0e0',
+		size: 180
+	});
+
+  // initial display
+  $("#leftimg-1, #leftimg-2, #rightimg-1, #rightimg-2").hide();
+  $("#leftimg-1").show();
+
+  // after hover display
+  $(".left-1, .left-2, .right-1, .right-2").hover(function(e) {
+    // hide old images
+    $("#leftimg-1, #leftimg-2, #rightimg-1, #rightimg-2").hide();
+
+    // get current section class
+    var thisClass = $(this).attr("class");
+
+    // conditionally display right image
+    if ('left-1' == thisClass ) {
+      $("#leftimg-1").show();
+    } else if ('left-2' == thisClass ) {
+      $("#leftimg-2").show();
+    } else if ('right-1' == thisClass ) {
+      $("#rightimg-1").show();
+    } else if ('right-2' == thisClass ) {
+      $("#rightimg-2").show();
+    } else {
+      $("#leftimg-1, #leftimg-2, #rightimg-1, #rightimg-2").hide();
+    }
+
+  });
+
+}(jQuery));

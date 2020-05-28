@@ -1,0 +1,152 @@
+// Place all the styles related to the FriendRequests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "config/*";
+//colors
+$black: #000;
+$white: #fff;
+$blue: #4267b2;
+
+.friend-list-modal {
+  margin: 20px 0 0;
+  width: 100%;
+
+  .no-results {
+    margin: 15px 0;
+    padding: 15px 0;
+  }
+
+  .nav-tabs {
+    border-bottom: 0;
+
+    .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+      border-bottom: 2px solid $black;
+    }
+
+    .nav-item {
+      width: 100%;
+
+      a {
+        color: $black;
+        font-weight: 600;
+        display: initial;
+        font-size: 16px;
+      }
+    }
+
+    .nav-link {
+      border: 0;
+    }
+  }
+
+  .facbook-content {
+    margin: 40px 0 0;
+
+    ul > li {
+      padding: 10px 0;
+    }
+
+    .media-body {
+      padding: 15px 0;
+    }
+
+    .profile-img {
+      width: 20%;
+      object-fit: cover;
+    }
+
+    .profile-title {
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .btn-blue {
+      color: $white;
+      font-size: 11px;
+      border-radius: 0;
+      padding: 4px 7px;
+      font-weight: 700;
+      background-color: $blue;
+      margin: 9px 0;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
+
+#friend-requests-modal {
+
+  .modal-dialog,
+  .modal-content {
+    height: 80%;
+  }
+
+  .modal-body {
+    overflow-y: scroll;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  nav {
+    a {
+      border-radius: 8px;
+      text-transform: none;
+      margin-top: 9px;
+      background-color: $grey-trip-sections-nav-pills-background;
+      color: $grey-trip-sections-nav-pills-text;
+
+      &.active {
+        background-color: $white;
+        border: solid 2px $orange-trip-sections-nav-pills-text;
+        color: $orange-trip-sections-nav-pills-text;
+      }
+    }
+  }
+  
+  .tab-content {
+    
+    .invite-title {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+
+    .referral-link-title {
+      font-size: 1.1em;
+    }
+
+    .referral-link {
+      background-color: $grey-trip-sections-nav-pills-background;
+      border-radius: 8px;
+      width: 100%;
+      display: inline-block;
+    }
+
+    .reject-friend-btn {
+      background-color: $green-trip-sections-nav-pills-text;
+      border-radius: 8px;
+      padding-top: 8px;
+      color: $white;
+    }
+
+    .cancel-friend-btn {
+      background-color: $grey-nav-pills;
+      border-radius: 8px;
+      padding-top: 8px;
+      color: $white;
+    }
+
+    .approve-friend-btn {
+      background-color: $orange;
+      border-radius: 8px;
+      padding-top: 8px;
+      color: $white;
+    }
+  }
+}

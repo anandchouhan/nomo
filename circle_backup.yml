@@ -1,0 +1,17 @@
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: nomofomo-production
+  staging:
+    branch: develop
+    heroku:
+      appname: nomofomo-qa
+database:
+  override:
+    - bundle exec rake db:drop
+    - bundle exec rake db:create RAILS_ENV=test
+    - bundle exec rake db:migrate RAILS_ENV=test
+test:
+  override:
+    - bundle exec rake nomofomo:all

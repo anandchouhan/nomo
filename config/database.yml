@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: nomofomo_development
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+
+

@@ -1,0 +1,11 @@
+<tr data-friend-request-id="<%= friend_request.id %>">
+  <td class="friend-invite-pic">
+    <%= user_photo friend_request.recipient, class: "rounded-circle", height: '35px' %>
+  </td>
+  <td class="user-name">
+    <b><%= friend_request.recipient.name %></b>
+  </td>
+  <td class="text-right align-middle cancel-pending-btn">
+    <%= link_to("Cancel", friend_request, { method: :delete, remote: true, class: "cancel-request-btn btn btn-sm cancel-friend-btn cancel-sent-friend-request" }) %>
+  </td>
+</tr>

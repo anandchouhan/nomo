@@ -1,0 +1,478 @@
+@import "config/*";
+@import "mixins/*";
+
+.main-content {
+  overflow: hidden;
+}
+
+.navbar {
+  padding-left: 1rem !important;
+}
+
+.navbar-nav-left {
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+.watch-video {
+  color: $white;
+  font-size: 1.15em;
+  margin-left: 40px;
+
+  i {
+    border: 1px solid $white;
+    border-radius: 100%;
+    padding: 10px;
+  }
+}
+
+.navbar-toggler {
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+.nav-logo {
+  font-family: "Cinzel", "Times New Roman", serif;
+  font-size: 1.15em !important;
+  letter-spacing: 10px;
+  margin-bottom: 1rem !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-top: 1rem !important;
+  padding: 0;
+}
+
+.slider-widget {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.slider-inner {
+  display: inline-block;
+  max-width: 940px;
+  width: 100%;
+}
+
+.slider {
+  background: linear-gradient(to right, $dodger-blue 0%, $thunder 100%);
+}
+
+.notification-list {
+  height: 575px;
+  overflow: auto;
+
+  .unread {
+    background: $cerulean none repeat scroll 0 0;
+    color: $mine-shaft;
+    margin-bottom: 5px;
+    padding: 5px;
+
+    a {
+      background: none;
+      color: $white;
+      padding-left: 5px;
+    }
+  }
+}
+
+.lshift {
+  margin-left: 10px;
+}
+
+.invites {
+  li {
+    border: 0;
+    padding: 0;
+  }
+
+  #friends {
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    .friend-list-item {
+      border: 0;
+      padding: 5px 5px 5px 0;
+    }
+
+    li:hover {
+      cursor: pointer;
+    }
+  }
+
+  .fb-friends-list {
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    .fb-friend {
+      padding: 30px;
+    }
+  }
+
+  .pending-invites,
+  .connected-friends-list {
+    display: block;
+    max-height: 300px;
+    overflow: auto;
+    overflow-x: hidden;
+    width: 100%;
+
+    tr {
+      display: table;
+      width: 100%;
+
+      .user-name {
+        border: 0;
+        display: inline-block;
+        float: left;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.pending-requests {
+  display: block;
+  max-height: 300px;
+  overflow: auto;
+  overflow-x: hidden;
+  width: 100%;
+
+  tr {
+    display: table;
+    width: 100%;
+
+    .friend-request-username {
+      border: 0;
+      display: inline-block;
+      float: left;
+      margin-left: 5px;
+      margin-top: 10px;
+    }
+  }
+}
+
+.pending-invites-li,
+.pending-requests-li {
+  padding-right: 15px !important;
+}
+
+.pending-requests-li {
+  padding-left: 15px !important;
+}
+
+.connected-friends-list {
+  max-height: 200px !important;
+
+  .connected-friend-pic {
+    border: 0 !important;
+    float: left;
+  }
+}
+
+.searched-user-pic {
+  padding-left: 0 !important;
+}
+
+.new-user-link,
+.new-user-link:hover {
+  color: inherit;
+  padding-left: 0 !important;
+  text-decoration: inherit;
+
+  .col-3 {
+    padding-left: 0;
+
+    img {
+      float: left;
+    }
+  }
+}
+
+.new-user-name {
+  display: block;
+  right: 43px;
+  top: 8px;
+}
+
+.bday .date-select {
+  display: inline-block;
+}
+
+#circle-users-list {
+  li:hover {
+    background-color: $grey;
+    cursor: pointer;
+  }
+}
+
+.sign-up-form {
+  padding-top: 20px;
+}
+
+.social-settings,
+.social-settings-header {
+  margin-top: 10px;
+}
+
+.social-settings-header {
+  font-size: 1.3rem;
+  font-weight: $normal;
+}
+
+.social-settings-desc {
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.social-connect-btn {
+  color: $white;
+  cursor: pointer;
+  margin-top: 5px;
+  width: 100%;
+
+  &:hover {
+    filter: brightness(110%);
+  }
+
+  i {
+    margin-right: 15px;
+  }
+}
+
+.link-fb {
+  background-color: $chambray;
+}
+
+@media screen and (max-width: 768px) {
+  .link-fb {
+    width: auto;
+  }
+}
+
+.link-linkedin {
+  background-color: $linkedin-blue;
+  margin-top: 20px;
+}
+
+.link-google {
+  background-color: $blue;
+  margin: 20px 0;
+}
+
+.unlink-time-msg {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+  padding-top: 7px;
+  text-align: center;
+}
+
+.unlink-li-msg,
+.unlink-google-msg {
+  padding-top: 22px;
+}
+
+#social-settings {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #social-settings {
+    padding-bottom: 35px;
+  }
+}
+
+li .profile-pic-link,
+li .user-dropdown {
+  display: inline-block;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+.friend-request-pic {
+  border: 0 !important;
+  float: left;
+  padding-left: 1px !important;
+  text-align: left;
+}
+
+.friend-invite-pic {
+  border: 0 !important;
+  display: inline-block;
+  float: left;
+  margin-left: 4px;
+}
+
+.friend-request-btns {
+  border: 0 !important;
+  vertical-align: middle !important;
+
+  .approve-friend-btn {
+    background-color: $facebook-blue;
+    color: $white;
+    margin-right: 5px;
+
+    &:hover {
+      filter: brightness(110%);
+    }
+  }
+
+  .decline-friend-btn {
+    background-color: $alto;
+    border: 0.5px solid $black-alpha-2;
+    color: $black;
+    font-weight: 500;
+  }
+}
+
+.cancel-friend-btn,
+.community-cancel-btn {
+  background-color: $alto;
+  border: 0.5px solid $black-alpha-2 !important;
+  color: $black;
+  font-weight: 500 !important;
+
+  &:hover {
+    background-color: $alto !important;
+    color: $black !important;
+  }
+}
+
+.add-connected-btn {
+  background-color: $facebook-blue;
+  color: $white;
+  margin-right: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $facebook-blue !important;
+    color: $white !important;
+    filter: brightness(110%);
+  }
+}
+
+.add-connected-friend,
+.add-searched-friend,
+.cancel-pending-btn {
+  border: 0 !important;
+  padding-right: 1.14rem !important;
+}
+
+.connected-prov-div {
+  padding-left: 4px !important;
+
+  .connected-prov-link {
+    color: inherit;
+    display: inline-block;
+    text-decoration: none;
+
+    &:first-child {
+      float: left;
+      margin-left: 15px;
+    }
+
+    &:nth-child(3) {
+      float: right;
+    }
+
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    &:active,
+    &:focus,
+    &:visited {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+}
+
+.search-contacts {
+  margin-top: 15px;
+}
+
+.social-friends {
+  padding-right: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .navbar-left {
+    margin-left: 20px;
+    margin-top: 1.1rem !important;
+  }
+}
+
+.select-notification {
+  background-color: $pickled-bluewood;
+  border: 0;
+  border-color: $btn-theme;
+  border-radius: 3px;
+  color: $white;
+  float: right;
+  height: 25px;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  #explorer-filter {
+    position: absolute;
+    width: 400px;
+    
+    min-width: 400px;
+    
+    z-index: 10;
+    background-color: $white;
+  }
+
+  #explorer-map {
+    z-index: 5;
+  }
+
+  #explorer-filter-label {
+    font-size: 16px;
+  }
+}
+
+#living-here-modal {
+  margin-bottom: 20px;
+
+  .text {
+    font-size: 14px;
+  }
+
+  nav {
+    a {
+      border-radius: 8px;
+      text-transform: none;
+      margin-top: 9px;
+      background-color: $grey-trip-sections-nav-pills-background;
+      color: $grey-trip-sections-nav-pills-text;
+
+      &.active {
+        background-color: $white;
+        border: solid 2px $orange-trip-sections-nav-pills-text;
+        color: $orange-trip-sections-nav-pills-text;
+      }
+    }
+  }
+  
+  .tab-content {
+    height: 150px;
+    overflow-y: scroll;
+
+    .btn-remove {
+      background-color: $orange-trip-sections-nav-pills-text;
+      border-radius: 8px;
+      padding-top: 8px;
+    }
+
+    .btn-itinerary {
+      background-color: $orange;
+      border-radius: 8px;
+      padding-top: 8px;
+      color: $white;
+    }
+  }
+}

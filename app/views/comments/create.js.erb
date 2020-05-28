@@ -1,0 +1,14 @@
+<% if @comment.commentable_type == "TripLocation" %>
+  // Check if the comment does not exist.
+  // This comment can exists if the ActionCable was the first to receive the new comment.
+  if ($("span[data-comment-id='<%= @comment.id %>']").length === 0) {
+    $('div.comments div.messages-block').prepend('<span class="comment-<%= @comment.id %>"><%= j render partial: "trip_locations/comment", locals: { comment: @comment } %></span>');
+    $('#trip-comment-area').val('');
+  }
+<% elsif @comment.commentable_type == "Activity" %>
+  $(".comment-textarea[data-activity-id='<%= @comment.commentable_id %>']").val('');
+
+  var wrapper = $(".comments-wrapper[data-activity-id='<%= @comment.commentable_id %>']");
+  wrapper.append('<%= j render partial: "activities/comment_user", locals: { comment: @comment } %>');
+  wrapper.animate({scrollTop: wrapper.get(0).scrollHeight}, 'slow');
+<% end %>

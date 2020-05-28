@@ -1,0 +1,18 @@
+<div class="post_comments modal default-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content comment-modal-content">
+      <div class="modal-title comment-modal-title">
+        <%= render partial: "comments/form", locals: { user: current_user, activity: commentable } %>
+        <% unless comments.where.not(id: nil, body:nil, user:nil, commentable_type: nil, commentable_id: nil).empty? %>
+          <div class="comment-window modal-body scrollable">
+           <div id="comments_wrapper">
+              <% comments.where.not(id: nil, body:nil, user:nil, commentable_type: nil, commentable_id: nil).order(created_at: :desc).each do |comment| %>
+                <%= render partial: "comments/show", locals: { comment: comment } %>
+              <% end %>
+           </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

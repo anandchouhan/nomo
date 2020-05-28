@@ -1,0 +1,5 @@
+$('.edit-trip-modal').html("<%= j render(partial: 'events/modal_form', locals: { event: @event }) %>");
+$('#editTripModal').modal('show');
+
+setDatetimePickerStartAtEvent(true);
+setDatetimePickerEndAtEvent(true, '<%= @event.end_at.strftime("%Y/%m/%d") %>');

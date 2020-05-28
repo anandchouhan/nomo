@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: nomofomo_development
+  host: db
+  username: postgres
+  password:
+
+test:
+  <<: *default
+  database: nomofomo_test
+  host: db
+  username: postgres
+  password:
+
+production:
+  <<: *default
+  database: nomofomo_production
+  username: nomofomo
+  password: <%= ENV['NOMOFOMO_DATABASE_PASSWORD'] %>

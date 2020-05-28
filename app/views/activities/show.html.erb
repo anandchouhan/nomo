@@ -1,0 +1,5 @@
+<% if @activity.trackable_type == "TripLocation" %>
+  <%= render "activities/card_trip_location_show", activity: @activity %>
+<% elsif @activity.trackable_type == "Post" %>
+  <%= render "activities/card_post_show", activity: @activity %>
+<% end %>

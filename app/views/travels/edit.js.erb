@@ -1,0 +1,5 @@
+$('.edit-trip-modal').html("<%= j render(partial: 'travels/modal_form', locals: { travel: @travel }) %>");
+$('#editTripModal').modal('show');
+
+setDatetimePickerDepartingAtTravel(true);
+setDatetimePickerArrivingAtTravel(true, '<%= @travel.departing_at.strftime("%Y/%m/%d") %>');

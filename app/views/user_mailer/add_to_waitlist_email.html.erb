@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title></title>
+
+  <style type="text/css">
+  </style>    
+</head>
+<body style="margin:0; padding:0; background-color:#F2F2F2;">
+  <center>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F2F2F2">
+        <tr>
+          <td style="padding: 50px; background-color: #fff; font-size: 16px;">
+            <p><img src="https://s3.us-east-2.amazonaws.com/nomofomo-assets/emails/square-logo+copy.png" alt="Nomo_FOMO_logo" width="42" height="42" align="topright"></p>
+
+            <h2 style="font-size: 22px; font-weight: 700; font-family: 'Roboto', serif;">Hi <%= @waitlist.name || 'there'%>, </h2>
+
+            <p>Thanks for joining the Nomo FOMO beta waiting list!</p>
+            <p>We’ll be sure to send you an invitation as soon as possible so you can sign up to start having no more fear of missing out on a potential meetup with your friends. In the meantime, let your friends know so that they can join you on Nomo FOMO too.</p>
+
+            <h3 style="font-size: 20px; font-family: 'Roboto', serif; font-weight: 400;">Want to get in sooner?</h3>
+            <p style="margin-bottom: 0;">Share it with 3 or more friends to move up your spot on our waiting list and get access earlier.</p>
+            <p style="margin-bottom: 10;">
+                <%= link_to "https://www.facebook.com/dialog/feed?app_id=660780480720000&display=popup&caption=I%20just%20signed%20up%20for%20Nomo%20FOMO%2C%20a%20social%20travel%20platform%2C%20join%20me!&link=https%3A%2F%2Fnomo-fomo.com%2F%3Frefcode%3D#{@waitlist.id}&redirect_uri=https%3A%2F%2Fwww.waitlisted.co%2Fsocial%2Ffb", style: "text-decoration: none; background-color: #3b5998; color: #fff; padding: 10px;" do %>
+                  <i class="fa fa-facebook" style="color: #fff; margin-top: 10px;"></i>
+                  Invite on Facebook
+                <% end %>
+              </p>
+              <p style="font-color: white">    . </p>
+              <p>
+                <%= link_to "https://twitter.com/intent/tweet?text=I%20just%20signed%20up%20for%20Nomo%20FOMO%2C%20a%20social%20travel%20platform%2C%20join%20me%21&url=https%3A%2F%2Fnomo-fomo.com%2F%3Frefcode%3D#{@waitlist.id}&original_referer=https%3A%2F%2Fstorage.googleapis.com%2Fwaitlisted-embed-index%2Fproduction%2Findex.html%3Forigin%3Dhttps%253A%252F%252Fnomo-fomo.com%252F%26domain%3Dnomo-fomo.app.waitlisted.co", style: "text-decoration: none; background-color: #00aced; color: #fff; padding: 10px;" do %>
+                  <i class="fa fa-twitter" style="color: #fff; margin-top: 10px;"></i>
+                  Invite on Twitter
+                <% end %>
+            </p>
+            <p style="clear: both;">or share your unique link on your website, blog or other favorite service:</p>
+            <p><%= link_to "https://nomo-fomo.com/?refcode=#{@waitlist.id}", "https://nomo-fomo.com/?refcode=#{@waitlist.id}" %></p>
+            <h3 style="font-size: 20px; font-family: 'Roboto', serif; font-weight: 400;">In the meantime...</h3>
+            <p style="margin-bottom: 0;">Follow us on <%= link_to "Twitter", '#', style: "color: #00aced;" %> and <%= link_to "Facebook", '#', style: "color: #3b5998;" %> to keep up to date on the latest news and info.</p>
+            <p style="margin-top: 20px;">Thank you for joining us and happy planning! </p>
+            <p style="font-size: 28px; font-weight: 400; font-style: italic; font-family: 'Kaushan Script', cursive; margin-bottom: 0;">The Nomo FOMO Team</p>
+            <p style="font-style: italic;">Building you your ultimate social travel network</p>
+          </td>
+        </tr>
+    </table>
+  </center>
+</body>
+</html>

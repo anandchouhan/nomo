@@ -1,0 +1,24 @@
+window.NF = do (NF = window.NF || {}) ->
+
+  NF.Communities =
+    init: ->
+      @privacyChange()
+
+    privacyChange: ->
+      $('.modal').on 'click', '.community-privacy-dropdown .dropdown-item', (e) ->
+        if $(this).find('i').hasClass('fa-globe')
+          $('#communityPrivacyDropdown').html('<i class="fa fa-globe" aria-hidden="true"></i> Public <i class="fa fa-sort-desc" aria-hidden="true">')
+          $('.community-form-privacy').val("public")
+        if $(this).find('i').hasClass('fa-unlock-alt')
+          $('#communityPrivacyDropdown').html('<i class="fa fa-unlock-alt" aria-hidden="true"></i> Closed <i class="fa fa-sort-desc" aria-hidden="true">')
+          $('.community-form-privacy').val("closed")
+        if $(this).find('i').hasClass('fa-lock')
+          $('#communityPrivacyDropdown').html('<i class="fa fa-lock" aria-hidden="true"></i> Secret <i class="fa fa-sort-desc" aria-hidden="true">')
+          $('.community-form-privacy').val("secret")
+
+
+  return NF
+
+
+$(document).ready ->
+  NF.Communities.init()

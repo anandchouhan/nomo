@@ -1,0 +1,99 @@
+<div id="tripPrivacy" class="modal default-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm position-absolute">
+    <form id="tripPrivacyContent" class="modal-content preferences-modal-content">
+      <div class="modal-body" id="mod-body-public">
+        <div class="privacy-switchers-group">
+          <div class="row preferences-modal-row">
+            <div class="col-sm-1 col-md-1">
+              <i class="fa fa-globe"></i>
+            </div>
+            <div class="col-sm-8 col-md-8">
+              <p><strong>Friend of Friends</strong><br>
+                Visible to my friends or their friends on Nomo FOMO
+              </p>
+            </div>
+            <div class="col-sm-2 col-md-2">
+              <input value="public" name="privacy_setting" type="checkbox" class="js-switch activity-privacy-option" onchange="window.tripPrivacy(<%=params[:id]%>, 'FriendsOfFriends')" <%= if @trip.privacy_settings == 'FriendsOfFriends' then "checked" end %> />
+            </div>
+          </div>
+          <div class="row preferences-modal-row">
+            <div class="col-sm-1 col-md-1">
+              <i class="fa fa-users"></i>
+            </div>
+            <div class="col-sm-8 col-md-8">
+              <p><strong>My Network</strong><br>
+              My friends from Nomo FOMO
+              </p>
+            </div>
+            <div class="col-sm-2 col-md-2">
+              <input value="friends" name="privacy_setting" type="checkbox" class="js-switch activity-privacy-option" onchange="window.tripPrivacy(<%=params[:id]%>, 'MyNetwork')" <%= if @trip.privacy_settings == 'MyNetwork' then "checked" end %>/>
+            </div>
+          </div>
+          <div class="row preferences-modal-last-row">
+            <div class="col-sm-1 col-md-1">
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="col-sm-8 col-md-8">
+              <p><strong>Private trip</strong><br>
+              For me and my guests
+              </p>
+            </div>
+            <div class="col-sm-2 col-md-2">
+              <input value="just_me" name="privacy_setting" type="checkbox" class="js-switch activity-privacy-option" onchange="window.tripPrivacy(<%=params[:id]%>, 'JustMe')" <%= if @trip.privacy_settings == 'JustMe' then "checked" end %>/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body display-none" id="mod-body-people">
+        <div class="row" >
+          <div class="col-sm-8 col-md-8">
+              <h4><strong>Friends/Circles</strong></h4>
+           </div>
+        </div>
+        <div id="friends_activity_privacy" class="list">
+          <div class="row pt-05rem">
+            <div class="col-sm-6 col-md-6">
+              <input class="search search-box" placeholder="Search" />
+            </div>
+            <div class="col-sm-6 col-md-6 privacy-searchbox-container">
+               <label class="pr-10"><p class="fs-14">All Friends</p></label>
+               <input id="privacy_all_friends" type="checkbox" class="js-switch custom-js-switch friend-checker" checked="" data-switchery="true">
+            </div>
+          </div>
+          <div class = "custom-privacy-list list-elements scrollable">
+            <% current_user.circles.where(created_by_system: false).uniq.each do |circle| %>
+              <div id="circle_<%= circle.id %>" class="circle row pt-10">
+                <div class="col-2 pr-0">
+                  <%= image_tag "https://via.placeholder.com/34x34", size: "34x34", class: "rounded-circle mr-10" %>
+                </div>
+                <div class="col-7 pt-1">
+                  <i class="fa fa-users mr-10"></i>
+                  <span class="name fs-14"><%= circle.name %></span>
+                </div>
+                <div class="col-3 privacy-element-switch">
+                  <input id="<%= circle.id %>" name="circle[<%= circle.id %>]" value="true" type="checkbox" class="js-switch circle-checker display-none" data-switchery="true">
+                </div>
+              </div>
+            <% end %>
+            <hr>
+            <% current_user.default_circle.friends.uniq.each do |friend| %>
+              <div id="friend_<%= friend.id %>" class="friend row pt-10">
+                <div class="col-2 pr-0">
+                  <%= user_photo friend, size: "34x34", class: "rounded-circle mr-10"%>
+                </div>
+                <div class="col-7 pt-1">
+                  <i class="fa fa-user mr-10"></i>
+                  <span class="name fs-14"><%= friend.name %></span>
+                </div>
+                <div class="col-3 privacy-element-switch">
+                  <input id="<%= friend.id %>" name="user[<%= friend.id %>]" value="true" type="checkbox" class="js-switch friend-checker display-none" checked data-switchery="true">
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-sm pull-right" href="javascript:display_people()">Done</a>
+      </div>
+    </form>
+  </div>
+</div>

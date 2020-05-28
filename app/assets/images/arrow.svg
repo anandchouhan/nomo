@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="52px" viewBox="0 0 100 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Splash" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="Initial-Screen" transform="translate(-670.000000, -894.000000)" stroke="#FFFFFF" stroke-width="3">
+            <g id="learn-more" transform="translate(659.000000, 849.000000)">
+                <g id="arrow" transform="translate(13.000000, 47.000000)">
+                    <path d="M0.489518593,0.199820536 L47.865742,47.8649233" id="Line"></path>
+                    <path d="M48.1986095,0.199820536 L95.5748329,47.8649233" id="Line-Copy" transform="translate(71.886721, 24.032372) scale(-1, 1) translate(-71.886721, -24.032372) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

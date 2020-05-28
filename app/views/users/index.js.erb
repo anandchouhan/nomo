@@ -1,0 +1,8 @@
+
+$('#userInvitationModal .modal-body .friends').html('<%= j render "circles/invite_user_form" %>')
+$('#jsnotice').html('<%= j render partial: "shared/flash_messages", flash: flash %>');
+$('.profile .request').empty().html('<button class="btn btn-default disabled"><i class="fa fa-user-plus"></i> Request Sent</button>');
+
+<%= flash.clear %>
+
+NF.Circles.lookup()

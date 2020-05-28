@@ -1,0 +1,30 @@
+<% if notifications.count > 0 %>
+  <div>
+      <% notifications.each do |notification| %>
+        <% if notification.sender.present? %>
+              <div class="notification-item" data-id="<%= notification.id %>">
+                  <div class="notifications-wrapper">
+                      <img class="notification-img" src="<%= user_photo_url_from_id(notification.sender.id) %>" height="40" width="40">
+                      <div class="notification-heading"><%= notification.heading.html_safe %>
+                          <br>
+                          <small class="notification-time"><i class="fa fa-clock-o" aria-hidden="true"></i><%= time_ago_in_words(notification.created_at) %></small>
+                      </div>
+                      <% if notification.is_read != true %>
+                          <span class="badge notification-unread"> </span>
+                      <% end %>
+                  </div>
+              </div>
+        <% end %>      
+      <% end %>
+  </div>
+<% else %>
+    <div class="notification-item">
+        <div class="notifications-wrapper">
+            <div class="notification-heading"><p>No new Notifications</p></div>
+        </div>
+    </div>
+<% end %>
+
+<div id="notification-footer" class="notification-content">
+  <a href="/notifications">See All</a>
+</div>

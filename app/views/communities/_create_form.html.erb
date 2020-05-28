@@ -1,0 +1,61 @@
+<%= form_for(@community = Community.new, method: "POST", url: communities_url, html: { class: 'form' }) do |f| %>
+  <div class="col-sm-12 community-form-row">
+    <div class="control-group">
+      <div class="row">
+        <div class="col-sm-3 community-form-label">
+          <h6>Name</h6>
+        </div>
+        <div class="col-sm-9 community-form-input">
+          <%= f.text_field :name, class: 'form-control community-input-text', autocomplete: 'off', required: true %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 community-form-row">
+    <div class="control-group">
+      <div class="row">
+        <div class="col-sm-3 community-form-label">
+          <h6>Description</h6>
+        </div>
+        <div class="col-sm-9 community-form-input">
+          <%= f.text_area :description, class: 'form-control community-input-textarea', autocomplete: 'off' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :privacy, value: "public", class: "community-form-privacy" %>
+
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-12 community-form-btns">
+        <%= f.submit "Create Community", class: "btn btn-sm community-btn community-submit-btn" %>
+        <button type="button" class="btn btn-sm community-btn community-cancel-btn" data-dismiss="modal" aria-label="Close">Cancel</button>
+        <div class="dropdown">
+          <button class="btn btn-sm community-btn community-submit-btn dropdown-toggle" type="button" id="communityPrivacyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-globe" aria-hidden="true"></i> Public <i class="fa fa-sort-desc" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown-menu community-privacy-dropdown" aria-labelledby="communityPrivacyDropdown">
+            <h6 class="community-privacy-dropdown-header">Who should see this?</h6>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-globe" aria-hidden="true"></i> Public
+              <div class="article">
+                <p>Anyone can see the group, its members and their posts.</p>
+              </div>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-unlock-alt" aria-hidden="true"></i> Closed
+              <p>Anyone can find the group and see who's in it. Only members can see posts.</p>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-lock" aria-hidden="true"></i> Secret
+              <p>Only members can find the group and see posts.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

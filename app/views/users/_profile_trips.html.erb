@@ -1,0 +1,41 @@
+<div class="trip-wrap profiles">
+  <div class="clearfix trips-title">
+    <h2 class="trip-title-profile">Trips</h2>
+    <% if @user == current_user %>
+      <div class = "profile-new-trip">
+        <%= link_to raw('<i class="fa fa-plus"></i> Add A Trip'), trips_path, class: "btn btn-primary btn-sm new-trip mr-1", id: "add-trip-profile", data: { toggle: "modal", target: "#addTripModal"} %>
+      </div>
+    <% end %>
+  </div>
+  <div class="clearfix">
+  </div>
+    <% if user_signed_in? %>
+      <ul class="list-unstyled calendar-trips-scroll-list calendar-trip-list my-trips">
+        <% trips = @user.upcoming_trips.sort_by { |trip| trip.trip_locations.first.start_at } %>
+        <% trips_reversed = trips %>
+        <% quantity = 0 %>
+        <% trips_reversed.each do |trip| %>
+          <% if trip.can_see?(current_user) %>
+            <% quantity = quantity + 1 %>
+            <%= render partial: 'profile_trip', locals: {trip: trip} %>
+          <% end %>
+        <% end %>
+
+        <% if quantity == 0 %>
+          <div class="text-center pv-10 no-trips-msg">
+            <p>There are (0) Trips for <%= @user.name %></p>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="text-center pv-10">
+        <p class="private-trips-msg">
+          My travel plans are currently private. <%= link_to "Create an account", new_waitlist_path, data: { toggle: "modal", target: "#waitlistModal" } %> to add me and view my upcoming trips.
+        </p>
+      </div>
+    <% end %>
+</div>
+<% if user_signed_in? %>
+  <%= render 'trips/add_trip_modal' %>
+  <%= render 'trips/edit_trip_modal' %>
+<% end %>

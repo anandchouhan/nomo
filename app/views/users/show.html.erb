@@ -1,0 +1,75 @@
+<div class="main-content profile">
+  <% if !user_signed_in? %>
+    <div id="authentication-box">
+      <p><%= @user.name %> is on Nomo FOMO</p>
+      <p>To connect with <%= @user.name %>, Sign Up for Nomo FOMO today</p>
+
+      <%= link_to "Login with Facebook", "/users/auth/facebook", class: "sign-in-facebook-simple" %>
+
+      <p class="authentication-box-separator">or</p>
+
+      <%= link_to "Sign-Up It's Free", new_waitlist_path, data: { toggle: "modal", target: "#waitlistModal" }, class: "sign-up-simple" %>
+    </div>
+  <% end %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3" id="user-trips">
+        <%= render 'profile_navigation' %>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="right-content">
+          <div class="map-wrap">
+            <div id="<%= "map-bg" if !@location %>">
+              <% if @user.location || @user_locations.length > 0 %>
+                <div id="map" style="height: 350px; width: 100%;"></div>
+
+                <% user_locations = Hash.new %>
+                <% user_locations[@user.location.id] = @user.location if @user.location %>
+                <% @user_locations.each do |location| %>
+                  <% user_locations[location.id] = location %>
+                <% end %>
+
+                <script>
+                  <% user_locations.each do |_, location| %>
+                    var lat = <%= location.lat %>;
+                    var lng = <%= location.lng %>;
+                    var locationId = <%= location.id %>;
+                    addLocation(lat, lng, locationId, "user_profile");
+                  <% end %>
+                  
+                  userId = <%= @user.id %>;
+                  initMap();
+                </script>
+              <% elsif current_user == @user %>
+                <div class="text-center add-location">
+                  Add your current location in your <%= link_to "settings", my_settings_path %>
+                </div>
+              <% else %>
+                <div class="text-center add-location">
+                  <%= "#{@user.name}" %> has not entered a location.
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="row comments-row">
+            <div class="col-sm-12">
+              <div id="tripsContainer" class="click-reveal-element">
+                <%= render 'users/profile_trips' %>
+              </div>
+
+              <div id="friendsContainer" style="display:none;" class="click-reveal-element">
+                <%= render 'users/profile_friends' %>
+              </div>
+
+              <div class="trips-details quote-block">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+@import "../config/*";
+@import "../mixins/*";
+
+.say-nomo {
+  align-items: center;
+  background: center center url("https://s3.us-east-2.amazonaws.com/nomofomo-assets/static/images/lake.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: $white;
+  display: flex;
+  height: 964px;
+  text-align: center;
+  width: 100%;
+
+  @include bp(iphone-5-landscape) {
+    height: auto;
+    padding: 100px 0;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 {
+    font-family: $font-brandon;
+    font-size: 96px;
+    font-weight: bold;
+    line-height: 1.1;
+    margin: 0 0 70px;
+
+    @include bp(ipad-mini) {
+      font-size: 64px;
+    }
+
+    @include bp(iphone-5-landscape) {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    @include bp(iphone-5) {
+      font-size: 32px;
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  a {
+    background: $outrageous-orange;
+    border-radius: 8px;
+    color: $white;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 100;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    width: 350px;
+
+    @include bp(ipad-mini) {
+      font-size: 36px;
+    }
+
+    @include bp(iphone-5-landscape) {
+      font-size: 24px;
+      height: 75px;
+      line-height: 75px;
+      width: 100%;
+    }
+
+    @include bp(iphone-5) {
+      height: 60px;
+      line-height: 60px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: $orange-hover;
+      border-color: $orange-hover;
+      color: $white;
+    }
+  }
+}

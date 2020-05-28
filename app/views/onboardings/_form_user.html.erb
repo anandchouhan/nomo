@@ -1,0 +1,40 @@
+<%= form_for(user, :url => onboarding_path(user), remote: true, html: { id: "onboarding-user-form" }) do |f| %>
+  <div class="modal-body center">
+    <% if user.errors.any? %>
+      <div id="error-explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row" style="margin-bottom: 16px;">
+      <div class="control-group">
+        <%= f.label :email, "Confirm your email" %>
+        <%= f.text_field :email, class: "form-control", autocomplete: "off" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="control-group">
+        <%= f.label :location, "Where are you currently living?", class: "control-label"%> 
+
+        <div class="location">
+          <div class="container-autocomplete">
+            <input type="text" class="form-control autocomplete-places" autocomplete="off" placeholder="Current location" value="<%= user.location.city_signature_or_formatted_address if !user.location.nil? %>">
+            <input type="hidden" name="user[location_id]" value="<%= user.location.id if !user.location.nil? %>">
+          </div>
+        </div>
+        <small  class="form-text text-muted">You can always change this later in your profile settings.</small>
+      </div>
+    </div>
+
+  </div>
+   <div class="progress--next--btn"> 
+    <%= f.submit "Continue", class: "onboardingFormUserButton btn btn-primary "%>
+  </div>
+<% end %>

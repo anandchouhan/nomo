@@ -1,0 +1,12 @@
+<ul>
+   <li class="participant-photo" data-id="<%= trip.user.id %>" ><div class="parti-img" ><%= user_photo trip.user %></div></li>
+  <% trip.participants.each do |user| %>
+    <li class="participant-photo" data-id="<%= user.id %>"><div class="parti-img" ><%= user_photo user %></div></li>
+  <% end %>
+  <li>
+    <a data-toggle="modal" class="add-friends-to-trip" data-target="#tripInvitationModal">
+      <div class="parti-img">+</div>
+    </a>
+  </li>
+  <%= render 'invitation_modal', trip: trip %>
+</ul>

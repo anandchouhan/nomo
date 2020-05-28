@@ -1,0 +1,30 @@
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <table width="75%" style="max-width: 764px; margin: 50px auto;" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="padding: 25px 0; background-color: #fff; text-align: center;">
+            <%= link_to image_tag('https://s3.us-east-2.amazonaws.com/nomofomo-assets/static/images/nomofomo-logo-black.png', height: '50'), root_url, target: :_blank %>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-image: url(<%= image_path "https://s3.us-east-2.amazonaws.com/nomofomo-assets/emails/comment.png" %>); background-repeat: no-repeat; background-size: cover; background-position: center top; height: 200px; text-align: center;">
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 50px; background-color: #fff; font-size: 16px;">
+            <p>Hi <%= @user.name %>,</p>
+            <p>[If email is triggered after one person comments on an activity] [username of person who wrote the comment] commented on your [insert activity- have activity be a link that you can go back to see what they liked] [If more than one person is included in the email for a set of comments to an activity or activities] You have [X] number of comments on [insert activity- have the activity be a link that you can go back to see what they commented on]</p>
+            <p>Happy Exploring!</p>
+            <p style="font-size: 28px; font-weight: 400; font-style: italic; font-family: 'Kaushan Script', cursive; margin-bottom: 0;">The Nomo FOMO Team</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center; padding: 25px 0 0; font-size: 14px;">
+            <p><a href="[[UNSUB_LINK_EN]]">Click Here to Unsubscribe</a></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

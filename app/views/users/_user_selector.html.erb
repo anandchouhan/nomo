@@ -1,0 +1,34 @@
+<div class="container">
+  <div class='row'>
+    <div class='col-12'>
+      <%= text_field_tag :name, nil,
+                placeholder: "Search for friends",
+                class: 'form-control search',
+                autocomplete: :off,
+                list: "friends" %>
+
+      <%= hidden_field_tag :user_id, '', id: 'user-id', class: 'user-id' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group" id="friends"></ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 connected-prov-div">
+      <div style="display: inline-block; /* DELETE WHEN ADDING GOOGLE BACK */">
+        <a href="/search_friends/facebook" data-remote="true" class="connected-prov-link">
+          <p><strong>Facebook Friends</strong></p>
+        </a>
+        <!-- <a href="/search_friends/linkedin" data-remote="true" class="connected-prov-link">
+          <p><strong>LinkedIn Contacts</strong></p>
+        </a> -->
+<!--         <a href="/search_friends/google" data-remote="true" class="connected-prov-link">
+          <p><strong>Google Contacts</strong></p>
+        </a> -->
+      </div>
+      <%= render(partial: "users/connected_friends", locals: { friends: @facebook, current_user: current_user }) %>
+    </div>
+  </div>
+</div>

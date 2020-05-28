@@ -1,0 +1,77 @@
+@import "../config/*";
+
+.learn-more {
+  align-items: center;
+  background: url("https://s3.us-east-2.amazonaws.com/nomofomo-assets/static/images/maptwo.jpg") no-repeat;
+  background-size: 100% auto;
+  color: $white;
+  display: flex;
+  height: 700px;
+  justify-content: center;
+  text-align: center;
+}
+
+.watch-video {
+  background: none;
+  border: 1px solid $white;
+  border-radius: 4px;
+  color: $white;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: $normal;
+  letter-spacing: 2px;
+  padding: 10px 30px;
+  text-decoration: none;
+}
+
+
+.request-invite {
+  background: $outrageous-orange;
+  border: 0;
+  border-radius: 4px;
+  color: $white;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: $normal;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+//waitlist modal css
+.waitlist-modal {
+
+  .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+  
+@media screen and (max-width: 667px) {
+   
+  .waitlist-modal {
+
+    .modal-dialog {
+      width: 100%;
+      margin: 0;
+      max-width: 490px;
+    }
+
+    .facebook-signin-container {
+      width: 100%;
+      margin: auto;
+    }
+
+    .sign-in-facebook {
+      width: 100% !important;
+      font-size: 17px;
+      max-width: 364px;
+    }
+  }
+
+  .login-modal-logo {
+    width: 100%;
+    max-width: 95%;
+  } 
+}

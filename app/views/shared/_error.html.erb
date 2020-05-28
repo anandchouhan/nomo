@@ -1,0 +1,12 @@
+<div id="flash" class="flash" role="alert">
+  <div class="titlebar">
+    <span id='close' class="pull-right" style="padding-right:2vh" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
+  </div>
+  <p><%= message %></p>
+</div>
+
+<script>
+setTimeout(function() {
+  $('#flash').fadeOut('fast');
+}, 5000);
+</script>

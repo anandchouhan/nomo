@@ -1,0 +1,35 @@
+<div class="modal waitlist-modal" id="waitlistModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center pv-40">
+        <div class="wlist-text">
+          <h1>Join the waitlist</h1>
+          <p>Get on the list today, get an invitation and become one of the earliest users of our product!</p>
+        </div>
+
+        <div class="facebook-signin-container">
+          <div class="sign-in-facebook" id="join_waitlist_fb">
+            <i class="fa fa-facebook-f"></i>
+            <span>Join the Waitlist</span>
+          </div>
+        </div>
+        <!-- 
+        <%#= form_for(:waitlist, url: join_waitlist_path, html: {class: "waitlist-form"}, remote: true) do |f| %>
+          <div class="field">
+            <%#= f.text_field :name, placeholder: "Name", class: "form-control custom wlist-email" %>
+            <%#= f.email_field :email, placeholder: "Email Address", class: "form-control custom wlist-email" %>
+            <%#= f.hidden_field :referred_by %>
+            <%#= hidden_field_tag 'referred_by', @referrer_id  %>
+          </div>
+
+          <div class="actions">
+            <%#= f.submit 'Submit', class: 'btn btn-info login-button' %>
+          </div>
+        <%# end %> -->
+        <div style="padding-top: 20px">
+          <a href="#" data-toggle="modal" data-target="#waitlistPositionModal" data-dismiss="modal">I am already on the waitlist, I want to check my place.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

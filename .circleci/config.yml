@@ -1,0 +1,61 @@
+---
+version: 2
+jobs:
+  build:
+    working_directory: ~/nomofomo
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          PGHOST: localhost
+          PGUSER: nomofomo
+          RAILS_ENV: test
+      - image: postgres:9.6
+        environment:
+          POSTGRES_USER: nomofomo
+          POSTGRES_DB: nomofomo_test
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: nomofomo-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # NPM install dependencies
+      - run: npm install
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: nomofomo-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+          - node_modules
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Setup the database
+      - run: bundle exec rake db:setup
+
+      # Run the tests
+      - run: bundle exec rake nomofomo:all
+
+      # Add ssh keys
+      - add_ssh_keys:
+          fingerprints:
+            - "31:14:d1:c4:89:4c:3d:f0:2c:b8:97:94:d2:d6:75:6d"
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: nomofomo-production
+  staging:
+    branch: develop
+    heroku:
+      appname: nomofomo-qa

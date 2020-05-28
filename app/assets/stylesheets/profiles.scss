@@ -1,0 +1,428 @@
+@import "config/*";
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/opensans-regular-webfont.woff2") format("woff2"),
+    url("/assets/opensans-regular-webfont.woff") format("woff");
+  font-weight: $normal;
+  font-style: normal;
+}
+
+//.popover {
+//  min-width: 10px !important;
+//  overflow: hidden;
+//  overflow-x: hidden;
+//}
+
+.main-content {
+  min-height: 90vh;
+  position: relative;
+
+  .left-bar {
+    background: $gable-green;
+    margin: 0 -15px;
+    min-height: 90vh;
+  }
+
+  .user-detail {
+    margin: 0 -20px;
+    padding: 30px 0;
+  }
+
+  .right-content {
+    background: $mystic;
+    margin: 0 -15px;
+    min-height: 90vh;
+    padding: 30px;
+  }
+}
+
+.right .comment {
+  padding: 0 !important;
+}
+
+.trip .right .messages-block,
+.trips-details .right .messages-block {
+  padding: 20px !important;
+}
+
+.user-detail {
+  .avatar {
+    color: $white;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+
+  .line-btn {
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 6px 20px;
+  }
+
+  .avatar-details {
+    float: none;
+    height: 50%;
+    margin: 0 auto 20px;
+    text-align: center;
+    width: 70%;
+
+    .name {
+      font-size: 25px;
+      margin-bottom: 2%;
+      padding-top: 10%;
+    }
+  }
+
+  .bio {
+    p {
+      font-size: 1em;
+    }
+  }
+}
+
+.profile-links {
+  ul {
+    li {
+      text-indent: 30px;
+
+      span {
+        color: $white;
+        cursor: pointer;
+        display: block;
+        font-size: 1.3em;
+        padding: 25px 0;
+
+        &:hover, &.active {
+          background-color: $gable-green-highlight;
+        }
+      }
+    }
+  }
+}
+
+.map-detail {
+  ul {
+    overflow: hidden;
+  }
+
+  li {
+    color: $white;
+    font-size: 13px;
+    padding: 5px 0;
+    white-space: nowrap;
+
+    .number {
+      display: inline-block;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 10px;
+      font-style: italic;
+      text-align: center;
+      width: 0;
+    }
+
+    .h-icn {
+      display: inline-block;
+      text-align: center;
+      width: 30px;
+    }
+  }
+
+  .more {
+    bottom: 20px;
+    color: $white;
+    font-size: 10px;
+    letter-spacing: 1px;
+    position: absolute;
+    right: 15px;
+  }
+}
+
+.trip-wrap {
+  background: $white;
+
+  .trip-title {
+    border-bottom: solid 1px $gallery;
+    color: $mine-shaft;
+    font-size: 26px;
+    font-weight: $normal;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .trip-title-profile {
+    color: $mine-shaft;
+    float: left;
+    font-size: 26px;
+    font-weight: $normal;
+    margin: 0;
+    padding: 20px;
+    width: 50%;
+  }
+
+  .trips-title {
+    border-bottom: solid 1px $gallery;
+  }
+
+  .profile-new-trip {
+    float: right;
+    width: 50%;
+
+    .btn.btn-primary.btn-sm.new-trip {
+      background-color: $orange;
+      border: 0;
+      float: right;
+      margin-right: 10px !important;
+    }
+  }
+
+  .trip-block {
+    border-bottom: solid 1px $gallery;
+    padding: 20px;
+
+    .trip-name {
+      color: $mine-shaft;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 20px;
+      margin: 0 0 2px;
+    }
+
+    .trip-location {
+      color: $mine-shaft;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 0 0 2px;
+    }
+
+    .date {
+      color: $mine-shaft;
+      font-size: 14px;
+      font-weight: $normal;
+      margin: 0 0 10px;
+    }
+
+    .duration {
+      color: $cod-gray;
+      font-size: 12px;
+      font-weight: $normal;
+      margin: 0;
+      padding-bottom: 10px;
+    }
+  }
+
+  h2 {
+    float: left;
+    width: calc(100% - 100px);
+  }
+
+  .btn.btn-primary.btn-sm {
+    margin-top: 20px;
+  }
+}
+
+.map-wrap {
+  margin: 0 0 30px;
+
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  .map-detail {
+    background: $pickled-bluewood;
+    float: left;
+    min-height: 350px;
+    padding: 20px 20px 40px;
+    position: relative;
+    width: 33.3333%;
+  }
+
+  #fact-alert {
+    color: $white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 0.55rem;
+  }
+}
+
+.quote-block {
+  margin: 0 0 30px;
+  padding: 20px;
+
+  .comments-row {
+    background: $pickled-blue;
+
+  }
+
+  .sub-line {
+    color: $dusty-gray;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 1px;
+    margin: 0 0 10px;
+  }
+
+  .quote-line {
+    color: $mine-shaft;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .quote-text {
+    color: $mine-shaft;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12px;
+    font-weight: $normal;
+    letter-spacing: 1px;
+    margin: 0 0 20px;
+  }
+}
+
+.fix-img {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#user-trips {
+  background-color: $gable-green;
+}
+
+.red {
+  color: $red;
+}
+
+.trips {
+  .selected {
+    background-color: $alto;
+  }
+}
+
+.profile {
+  .right {
+    background: $pickled-blue;
+    padding-left: 1px;
+    padding-top: 1px;
+
+    .poll {
+      background-color: $white;
+      margin-bottom: 40px;
+      padding: 20px;
+    }
+
+    .comment {
+      background-color: $white;
+      padding: 20px;
+    }
+  }
+
+  .left {
+    background: $white;
+  }
+
+  #friends-container, #about-container {
+    .heading {
+      color: $white;
+      font-size: 110%;
+      font-weight: $normal;
+      height: 75px;
+      line-height: 75px;
+      padding: 0 10px;
+
+      h4 {
+        line-height: 75px;
+        margin: 0;
+      }
+    }
+
+    .friend-list, .bio-section {
+      background-color: $white;
+      min-height: 200px;
+      overflow-y: scroll;
+    }
+
+    .bio-section {
+      overflow-y: unset;
+    }
+  }
+
+  #activity-main {
+    background-color: transparent !important;
+    padding: 0 !important;
+  }
+}
+
+#map-bg {
+  background: linear-gradient($black-alpha-7, $black-alpha-7), url("map-bg.png") no-repeat;
+  background-size: cover;
+  display: inline;
+  float: left;
+  height: 350px;
+  width: 100%;
+}
+
+.add-location {
+  color: $white;
+  font-weight: $normal;
+  margin-top: 150px;
+
+  a {
+    color: inherit;
+    font-style: italic;
+    text-decoration: underline;
+
+    &:visited,
+    &:hover,
+    &:active {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+}
+
+.blue {
+  background: $pickled-bluewood;
+}
+
+@media (max-width: 736px) {
+  .map-wrap {
+    .map {
+      display: none;
+    }
+
+    .map-detail {
+      width: 100%;
+    }
+  }
+
+  #map-bg {
+    width: 100%;
+  }
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 200px;
+
+  > a,
+  > i {
+    margin-right: 10px;
+  }
+}
+
+.profile-trip-card {
+  position: relative;
+}
+
+.profile-trip-link {
+  height: 70%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 55%;
+}

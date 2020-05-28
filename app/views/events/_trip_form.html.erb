@@ -1,0 +1,82 @@
+<%= form_with model: event, url: [@trip_location, event] do |f| %>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :name, "Event Name" %>
+    </div>
+    
+    <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :location_id, "Address" %>
+    </div>
+    
+    <div class="col-sm-8">
+      <div class="container-autocomplete">
+        <input type="text" class="form-control trip-input-text autocomplete-geocode" autocomplete="off">
+        <input type="hidden" name="event[location_id]">
+      </div>
+    </div>
+  </div>
+   
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :start_at, "Start Date" %>
+    </div>
+    
+    <div class="col-sm-8">
+      <input class="start-at-event form-control" autocomplete="off" type="text" data-edit="false" required readonly>
+      <input type="hidden" class="event-start-at" name="event[start_at]" data-edit="false">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :start_at_time, "Start Time" %>
+    </div>
+    
+    <div class="col-sm-8">
+      <%= f.text_field :start_at_time, class: 'form-control', autocomplete: 'off', placeholder: "E.g. 10:00 a.m. or 15:43" %>
+    </div>
+  </div>
+   
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :end_at, "End Date" %>
+    </div>
+    
+    <div class="col-sm-8">
+      <input class="end-at-event form-control" autocomplete="off" type="text" data-edit="false" required readonly>
+      <input type="hidden" class="event-end-at" name="event[end_at]" data-edit="false">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :end_at_time, "End Time" %>
+    </div>
+    
+    <div class="col-sm-8">
+      <%= f.text_field :end_at_time, class: 'form-control', autocomplete: 'off', placeholder: "E.g. 10:00 a.m. or 15:43" %>
+    </div>
+  </div>
+   
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :description %>
+    </div>
+    
+    <div class="col-sm-8">
+      <%= f.text_area :description, class: "col-12 form-control" %>
+    </div>
+  </div>
+
+  <div class="tar">
+    <%= f.submit "Add Event", class: "btn btn-primary" %>
+  </div>
+
+<% end %>

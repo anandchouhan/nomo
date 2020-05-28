@@ -1,0 +1,5 @@
+<ul>
+  <% @notifications.each do |notification| %>
+    <li class="<%= notification.is_read ? '' : 'unread' %>" data-id="<%= notification.id %>"><%= notification.heading.html_safe %></li>
+  <% end unless @notifications.blank? %>
+</ul>

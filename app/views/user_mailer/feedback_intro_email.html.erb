@@ -1,0 +1,32 @@
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <table width="75%" style="max-width: 764px; margin: 50px auto;" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="padding: 25px 0; background-color: #fff; text-align: center;">
+            <%= link_to image_tag('https://s3.us-east-2.amazonaws.com/nomofomo-assets/static/images/nomofomo-logo-black.png', height: '50'), root_url, target: :_blank %>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-image: url(<%= image_path "https://s3.us-east-2.amazonaws.com/nomofomo-assets/emails/feeback.png" %>); background-repeat: no-repeat; background-size: cover; background-position: center top; height: 300px; text-align: center;">
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 50px; background-color: #fff; font-size: 16px;">
+            <p>Hi <%= @user.name %>,</p>
+            <p>We are so happy to have you as part of our community, and thus, we are always striving to enhance your experience. Nomo FOMO is just beginning and we’ve got some learning to do.</p>
+            <p>That’s where YOU come in. Yes, you <%= @user.name %>! Let us know how we can make your social travel experience better.</p>
+            <p>If you have a burning question, want to share an awesome idea, or just want to tell us how your experience is going, hit the feedback button on our platform (or the one below)!</p>
+            <a href="https://nomo-fomo.zendesk.com/hc/en-us" style="background-color: #f15f3e; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;" rel="nofollow">Feedback</a>
+            <p style="font-size: 28px; font-weight: 400; font-style: italic; font-family: 'Kaushan Script', cursive; margin-bottom: 0;">The Nomo FOMO Team</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center; padding: 25px 0 0; font-size: 14px;">
+            <p><a href="[[UNSUB_LINK_EN]]">Click Here to Unsubscribe</a></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

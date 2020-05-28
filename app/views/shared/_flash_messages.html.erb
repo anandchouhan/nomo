@@ -1,0 +1,13 @@
+<% flash.each do |type, message| %>
+  <div id="flash" class="flash" role="alert">
+    <span id='close-notification' class="pull-right">x</span>
+
+    <p><%= message %></p>
+  </div>
+<% end %> 
+
+<script>
+setTimeout(function() {
+  $('#flash').fadeOut('fast');
+}, 5000);
+</script>

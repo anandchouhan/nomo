@@ -1,0 +1,65 @@
+<footer class="footer">
+  <div class="wrapper">
+    <div class="top">
+      <div class="logo">
+        <img src="https://s3.us-east-2.amazonaws.com/nomofomo-assets/static/images/squared-white.svg" alt="Nomo FOMO">
+      </div>
+
+      <div class="nav-footer">
+        <ul>
+          <li>
+            <% if request.query_parameters["excludeAnalytics"] == 'true' %>
+              <a target="_blank" href="/about?excludeAnalytics=true">ABOUT</a>
+            <% else %>
+              <a target="_blank" href="/about">ABOUT</a>
+            <% end %>
+          </li>
+          <li>
+            <a target="_blank" href="https://nomo-fomo.zendesk.com/hc/en-us/sections/115000745594-FAQ" >FAQs</a>
+          </li>
+
+          <li>
+            <a target="_blank" href="https://trello.com/b/ALkK1bMt/nomo-fomo-roadmap">UPCOMING FEATURES</a>
+          </li>
+
+          <li>
+            <a target="_blank" href="https://medium.com/@NomoFOMO">BLOG</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="social">
+        <nav>
+          <a href="https://www.facebook.com/nomofomoapp/" rel="noopener" target="_blank" class="facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+
+          <a href="https://twitter.com/nomofomo" rel="noopener" target="_blank" class="twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+
+          <a href="https://www.instagram.com/nomofomoapp/" rel="noopener" target="_blank" class="instagram">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="bottom">
+      <div class="copyright">
+        <p>&copy; 2017 Nomo FOMO, Inc. All Rights Reserved.</p>
+
+        <p>
+          Bringing your social &amp; travel life together
+        </p>
+      </div>
+
+      <div class="links">
+        <%= link_to "Terms and Conditions", terms_and_conditions_url, target: :_blank %> |
+        <%= link_to "Privacy Policy", privacy_url, target: :_blank %>
+      </div>
+    </div>
+  </div>
+</footer>

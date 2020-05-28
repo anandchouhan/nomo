@@ -1,0 +1,87 @@
+<div class="itinerary-item row">
+
+  <div class="col-2 date-label">
+    <p><%= travel.departing_at.strftime("%d") if travel.departing_at %></p>
+    <p><%= travel.departing_at.strftime("%B") if travel.departing_at %></p>
+  </div>
+
+  <div class="col-1 d-flex align-items-center">
+    <p class="dates-separator">-</p>
+  </div>
+
+  <div class="col-2 date-label">
+    <p><%= travel.arriving_at.strftime("%d") if travel.arriving_at %></p>
+    <p><%= travel.arriving_at.strftime("%B") if travel.arriving_at %></p>
+  </div>
+
+  <div class="col-7">
+    <% if @trip.user == current_user %>
+      <span class="float-right">
+        <%= link_to edit_trip_location_travel_path(@trip_location, travel), remote: true, class: "mr-10 float-left" do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to trip_location_travel_path(@trip_location, travel), method: :delete, class: "float-right" do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </span>
+    <% end %>
+
+    <h3 class="block-name">
+      Flight from <%= travel.departure_location.name if travel.departure_location %> to <%= travel.arrival_location.name if travel.arrival_location %>
+    </h3>
+
+    <button class="fake-link" data-toggle="collapse" data-target="#flight-details<%= index %>">See flight details</button>
+
+    <div id="flight-details<%= index %>" class="collapse">
+      <div class="pv-10">
+        <p class="fwb">
+          Departure
+        </p>
+
+        <p>
+          <% unless travel.departure_airport.nil? %>
+            <%= travel.departure_airport %> <br>
+          <% end %>
+
+          <%= travel.departing_at.strftime("%m/%d/%y") if travel.departing_at %> <br>
+          <%= travel.departing_at_time if travel.departing_at_time %>
+        </p>
+
+        <p class="fwb">
+          Arrival
+        </p>
+
+        <p>
+          <% unless travel.arrival_airport.nil? %>
+            <%= travel.arrival_airport %> <br>
+          <% end %>
+
+          <%= travel.arriving_at.strftime("%m/%d/%y") if travel.arriving_at %> <br>
+          <%= travel.arriving_at_time if travel.arriving_at_time %>
+        </p>
+
+        <p class="fwb">Details</p>
+
+        <p>
+          <% unless travel.reservation_number.nil? %>
+            Reservation number: <%= travel.reservation_number %> <br>
+          <% end %>
+
+          <% unless travel.airline.nil? %>
+            Airline: <%= travel.airline %> <br>
+          <% end %>
+
+          <% unless travel.flight_number.nil? %>
+            Flight Number: <%= travel.flight_number %> <br>
+          <% end %>
+        </p>
+
+        <% unless travel.description.nil? %>
+          <p><%= travel.description %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

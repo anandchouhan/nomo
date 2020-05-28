@@ -1,0 +1,5 @@
+<% if @parent.is_a? Trip %>
+  $('.comments').empty().append('<%= j render partial: 'trips/comments', locals: {comments: @comments, trip: @parent} %>')
+<% else %>
+  $('.comments').empty().append('<%= j render partial: 'profiles/comments', locals: {comments: @comments, profile: @parent} %>')
+<% end %>

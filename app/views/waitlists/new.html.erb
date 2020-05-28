@@ -1,0 +1,15 @@
+<section class="join-waitlist">
+  <h1>Join The Waitlist</h1>
+  <p>Get on the list today, get an invitation and become one of the earliest users of our product!</p>
+  <%= form_for(:waitlist, url: join_waitlist_path) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, placeholder: "Email Address", class: "form-control custom wlist-email" %>
+      <%= f.hidden_field :referred_by %>
+      <%= hidden_field_tag 'referred_by', @referrer_id  %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Submit', class: 'btn btn-info login-button' %>
+    </div>
+  <% end %>
+</section>

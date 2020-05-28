@@ -1,0 +1,247 @@
+<div id="trip-spacer" class="trip">
+  <div class="trip-show row trip-bg">
+    <div class="col-sm-6 offset-sm-1">
+
+      <div class="trip-details-section" style="margin-bottom: 20px;">
+        <div class="row">
+          <div class="col-sm-4">
+            <h2>
+              <strong style="font-weight: bold;"><%= @trip.name %></strong>
+            </h2>
+            <h3><i class="fa fa-location-arrow mr-2"></i><%= @trip_location.location.formatted_address %></h3>
+          </div>
+
+          <% if user_signed_in? %>
+            <div class="col-sm-8">
+              <div class="d-flex flex-right">
+                <div class="trip-status">
+                  <% if current_user == @trip.user %>
+                    <%= link_to edit_trip_path(@trip), class: "mr-10 float-left", remote: true do %>
+                      <button class="btn btn-sm btn-simple">
+                        <i class="fa fa-pencil small-spaced"></i> <span style="font-size: 13px;">Edit</span>
+                      </button>
+                    <% end %>
+
+                    <%= link_to trip_path(@trip), method: :delete, class: "float-right" do %>
+                      <button class="btn btn-sm btn-simple">
+                        <i class="fa fa-trash"></i> <span style="font-size: 13px;">Delete</span>
+                      </button>
+                    <% end %>
+                  <% elsif @trip_location.invited?(current_user) %>
+                    <div class="owner-invite-text">
+                      <div class="trip-owner-img">
+                        <%= user_photo @trip.user %>
+                      </div>
+                      <span><b><%= @trip.user.name %></b> invited you to the city <%= @trip_location.location.name %></span>
+                    </div>
+
+                    <%= link_to accept_invitation_to_trip_location_path(@trip_location, current_user), method: :post do %>
+                      <button type="button" class="btn btn-secondary btn-sm trip-status-btn">
+                        <span><i class="fa fa-check" aria-hidden="true"></i> Going</span>
+                      </button>
+                    <% end %>
+
+                    <%= link_to decline_invitation_to_trip_location_path(@trip_location, current_user), data: { disable_with: "" }, method: :delete do %>
+                      <button type="button" class="btn btn-secondary btn-sm trip-status-btn">
+                        <span><i class="fa fa-times" aria-hidden="true"></i> Can't Go</span>
+                      </button>
+                    <% end %>
+                  <% elsif !@trip_location.participant?(current_user) %>
+                    <% if current_user.has_requested_to_join?(@trip_location) %>
+                      <%= link_to decline_request_to_join_to_trip_location_path(@trip_location, current_user), method: :delete do %>
+                        <div id="reqtojoinbtn">
+                          <button type="button" class="btn btn-sm btn-nav add-trip-btn cancel-friend-btn">
+                            <span><i class="fa fa-user-times" aria-hidden="true"></i> Cancel Request to Join</span>
+                          </button>
+                        </div>
+                      <% end %>
+                    <% else %>
+                      <%= link_to send_request_to_join_to_trip_location_path(@trip_location, current_user), method: :post do %>
+                        <div id="reqtojoinbtn">
+                          <button type="button" class="btn btn-sm btn-nav add-trip-btn">
+                            <span><i class="fa fa-user-plus" aria-hidden="true"></i> Request to Join</span>
+                          </button>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="strike"><span></span></div>
+
+        <div class="trip-description">
+          <% if @trip.description.present? %>
+            <div class="col-12">
+              <div class="row">
+                <p><%= @trip.description %></p>
+              </div>
+            </div>
+          <% elsif current_user == @trip.user %>
+            <p>
+              <%= link_to "Add a description", edit_trip_path(@trip), remote: true %> of your event.
+            </p>
+          <% end %>
+        </div>
+        <div class="trip-description">
+          <h2>Locations</h2>
+
+          <div class="container trip-locations-content">
+            <% @trip.trip_locations.each do |trip_location| %>
+              <div class="itinerary-item row">
+                <div class="col-2 date-label">
+                  <p><%= trip_location.start_at.strftime("%d") %></p>
+                  <p><%= trip_location.start_at.strftime("%B") %></p>
+                </div>
+
+                <div class="col-1 d-flex align-items-center">
+                  <p class="dates-separator">-</p>
+                </div>
+
+                <div class="col-2 date-label">
+                  <p><%= trip_location.end_at.strftime("%d") %></p>
+                  <p><%= trip_location.end_at.strftime("%B") %></p>
+                </div>
+
+                <div class="col-6">
+                  <h3 class="block-name">
+                    <%= trip_location.location.city_signature_or_formatted_address %>
+                  </h3>
+                </div>
+
+                <div class="col-1 d-flex align-items-center">
+                  <%= link_to trip_trip_location_path(@trip, trip_location) do %>
+                    <% if @trip_location == trip_location %>
+                      <i class="fa fa-check-square fa-2x"></i>
+                    <% else %>
+                      <i class="fa fa-square fa-2x"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% if @trip_location.can_see?(current_user) %>
+        <div class="trip-details-section" style="margin-bottom: 20px;">
+          <div class="trip-forms">
+            <h2>Add to trip</h2>
+
+            <p style="color: red">Already have something booked?</p>
+            <p>Forward your confirmation emails to <a href="mailto:rsvp@nomo-fomo.com">rsvp@nomo-fomo.com</a> and we’ll add them for you!</p>
+            <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link" id="pills-accommodation-tab" data-toggle="tab" href="#accommodation" role="tab" aria-controls="accommodation" aria-selected="true">+ Accommodation</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" id="pills-travel-tab" data-toggle="tab" href="#travel" role="tab" aria-controls="travel" aria-selected="false">+ Travel</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" id="pills-event-tab" data-toggle="tab" href="#event" role="tab" aria-controls="event" aria-selected="false">+ Event</a>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+              <div class="accomodations tab-pane fade show" id="accommodation" role="tabpanel" aria-labelledby="accommodation-tab">
+                <h3>Add Accommodation Details</h3>
+                <%= render partial: 'accommodations/trip_form', locals: { accommodation: Accommodation.new } %>
+              </div>
+
+              <div class="travel tab-pane fade" id="travel" role="tabpanel" aria-labelledby="travel-tab">
+                <h3>Add Travel Details</h3>
+                <%= render partial: 'travels/trip_form', locals: { travel: Travel.new } %>
+              </div>
+
+              <div class="events tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab">
+                <h3>Add an event to your trip</h3>
+                <%= render partial: 'events/trip_form', locals: { event: Event.new } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @trip_location.can_see?(current_user) && (@trip_location.accommodations.any? || @trip_location.travels.any? || @trip_location.events.any?) %>
+        <div class="trip-details-section" style="margin-bottom: 20px">
+          <h3>Itinerary</h3>
+
+          <% @trip_location.accommodations.each_with_index do |accommodation, index| %>
+            <%= render partial: "trip_locations/list_item_accommodation", locals: { accommodation: accommodation, index: index } %>
+          <% end %>
+
+          <% @trip_location.travels.each_with_index do |travel, index| %>
+            <%= render partial: "trip_locations/list_item_travel", locals: { travel: travel, index: index } %>
+          <% end %>
+
+          <% @trip_location.events.each_with_index do |event, index| %>
+            <%= render partial: "trip_locations/list_item_event", locals: { event: event, index: index } %>
+          <% end %>
+
+        </div>
+      <% end %>
+
+    </div>
+
+    <div class="col-sm-4">
+
+      <% if @trip_location.can_see?(current_user) %>
+        <article id="trip-participants-article" class="trip-details-section">
+          <%= render "trip_locations/section_participants" %>
+        </article>
+
+        <div class="trip-details-section" style="margin-bottom: 20px">
+          <div class="comments-row">
+            <div class="col-sm-12 comments">
+              <%= render partial: 'trip_locations/comments' %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+
+        <div class="trip-details-section" style="margin-bottom: 20px">
+          <div class="participant-list">
+
+            <h2>Who's going?</h2>
+            <p>
+              <em>
+                <span><%= @trip_location.trip_location_participants.length %> Going</span> |
+                <span id="quantity-trip-invited"><%= @trip_location.trip_location_invitations.length %> Invited</span>
+              </em>
+            </p>
+
+            <ul>
+              <% @trip_location.participants.each do |user| %>
+                <li class="participant" data-id="<%= user.id %>">
+                  <div class="parti-img" >
+                    <%= user_photo user %>
+                  </div>
+
+                  <div class="dib"><%= user.name %></div>
+                </li>
+              <% end %>
+            </ul>
+
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+  <%= render 'trips/edit_trip_modal' %>
+</div>
+
+<script>
+  subscribeToTripLocationChannel(<%= @trip_location.id %>);
+</script>
+
+<%= render 'trip_locations/modal_invitation' %>

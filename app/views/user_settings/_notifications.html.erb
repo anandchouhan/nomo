@@ -1,0 +1,177 @@
+<%= form_tag user_settings_path, method: "put" do %>
+  <div class="row pt-20 mb-05rem">
+    <div class="col-8">
+      <h1 class="not-title">Notifications</h1>
+    </div>
+    <div class="col-4">
+      <input type="submit" class="btn-theme-bg pull-right" value="Save">
+    </div>
+  </div>
+  <div class="container-fluid not-shadow not-scroll scrollable">
+    <h6 class="settings-category-title">Email</h6>
+    <p class="not-text not-text-gray">
+      To disable a specific email notification, click the link to unsubscribe at the end of this email.
+    </p>
+    <div class="switchers-container">
+      <div class="switchers-group">
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Friend requests</label>
+          <div class="col-3 not-text-right">
+            <% friend_requests = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_FRIEND_REQUESTS).take %>
+            <input type="hidden" name="user_settings[0][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_FRIEND_REQUESTS %>">
+            <% if friend_requests.nil? %>
+              <input name="user_settings[0][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[0][id]" value="<%= friend_requests.id %>">
+              <input name="user_settings[0][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if friend_requests.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Friend confirmations</label>
+          <div class="col-3 not-text-right">
+            <% friend_confirmations = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_FRIEND_CONFIRMATIONS).take %>
+            <input type="hidden" name="user_settings[1][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_FRIEND_CONFIRMATIONS %>">
+            <% if friend_confirmations.nil? %>
+              <input name="user_settings[1][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[1][id]" value="<%= friend_confirmations.id %>">
+              <input name="user_settings[1][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if friend_confirmations.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Friend from Facebook joins Nomo FOMO</label>
+          <div class="col-3 not-text-right">
+            <% friend_from_facebook_joins_the_platform = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_FRIEND_FROM_FACEBOOK_JOINS_THE_PLATFORM).take %>
+            <input type="hidden" name="user_settings[2][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_FRIEND_FROM_FACEBOOK_JOINS_THE_PLATFORM %>">
+            <% if friend_from_facebook_joins_the_platform.nil? %>
+              <input name="user_settings[2][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[2][id]" value="<%= friend_from_facebook_joins_the_platform.id %>">
+              <input name="user_settings[2][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if friend_from_facebook_joins_the_platform.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Likes in my activity</label>
+          <div class="col-3 not-text-right">
+            <% likes_in_my_activity = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_LIKES_IN_MY_ACTIVITY).take %>
+            <input type="hidden" name="user_settings[3][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_LIKES_IN_MY_ACTIVITY %>">
+            <% if likes_in_my_activity.nil? %>
+              <input name="user_settings[3][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group">
+            <% else %>
+              <input type="hidden" name="user_settings[3][id]" value="<%= likes_in_my_activity.id %>">
+              <input name="user_settings[3][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if likes_in_my_activity.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Comments on my activity</label>
+          <div class="col-3 not-text-right">
+            <% comments_on_my_activity = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_COMMENTS_ON_MY_ACTIVITY).take %>
+            <input type="hidden" name="user_settings[4][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_COMMENTS_ON_MY_ACTIVITY %>">
+            <% if comments_on_my_activity.nil? %>
+              <input name="user_settings[4][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[4][id]" value="<%= comments_on_my_activity.id %>">
+              <input name="user_settings[4][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if comments_on_my_activity.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Trip invitations</label>
+          <div class="col-3 not-text-right">
+            <% trip_invitations = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_TRIP_INVITATIONS).take %>
+            <input type="hidden" name="user_settings[7][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_TRIP_INVITATIONS %>">
+            <% if trip_invitations.nil? %>
+              <input name="user_settings[7][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[7][id]" value="<%= trip_invitations.id %>">
+              <input name="user_settings[7][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if trip_invitations.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Comments on a trip</label>
+          <div class="col-3 not-text-right">
+            <% comments_on_a_trip = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_COMMENTS_ON_TRIP).take %>
+            <input type="hidden" name="user_settings[9][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_COMMENTS_ON_TRIP %>">
+            <% if comments_on_a_trip.nil? %>
+              <input name="user_settings[9][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[9][id]" value="<%= comments_on_a_trip.id %>">
+              <input name="user_settings[9][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if comments_on_a_trip.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">New event, accommodation or transportation gets added in my trips</label>
+          <div class="col-3 not-text-right">
+            <% new_activity_in_my_trips = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_NEW_ACTIVITY_IN_MY_TRIPS).take %>
+            <input type="hidden" name="user_settings[10][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_NEW_ACTIVITY_IN_MY_TRIPS %>">
+            <% if new_activity_in_my_trips.nil? %>
+              <input name="user_settings[10][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[10][id]" value="<%= new_activity_in_my_trips.id %>">
+              <input name="user_settings[10][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if new_activity_in_my_trips.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Someone joins my trips</label>
+          <div class="col-3 not-text-right">
+            <% updates_of_your_trips = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_UPDATES_OF_YOUR_TRIPS).take %>
+            <input type="hidden" name="user_settings[12][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_UPDATES_OF_YOUR_TRIPS %>">
+            <% if updates_of_your_trips.nil? %>
+              <input name="user_settings[12][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[12][id]" value="<%= updates_of_your_trips.id %>">
+              <input name="user_settings[12][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if updates_of_your_trips.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Friends who will be in a place that you just scheduled or arrived</label>
+          <div class="col-3 not-text-right">
+            <% friends_who_will_be_in_a_place_that_you_scheduled = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_FRIENDS_WHO_WILL_BE_IN_A_PLACE_THAT_YOU_SCHEDULED).take %>
+            <input type="hidden" name="user_settings[13][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_FRIENDS_WHO_WILL_BE_IN_A_PLACE_THAT_YOU_SCHEDULED %>">
+            <% if friends_who_will_be_in_a_place_that_you_scheduled.nil? %>
+              <input name="user_settings[13][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[13][id]" value="<%= friends_who_will_be_in_a_place_that_you_scheduled.id %>">
+              <input name="user_settings[13][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if friends_who_will_be_in_a_place_that_you_scheduled.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <label class="col-9 col-form-label not-text-gray">Friends who will be comming to the city I'm currently living in</label>
+          <div class="col-3 not-text-right">
+            <% friends_who_will_be_coming_to_the_city_im_living_in = user.user_settings.where(key: UserSetting::NOTIFICATION_EMAIL_FRIENDS_WHO_WILL_BE_COMING_TO_THE_CITY_IM_LIVING_IN).take %>
+            <input type="hidden" name="user_settings[14][key]" value="<%= UserSetting::NOTIFICATION_EMAIL_FRIENDS_WHO_WILL_BE_COMING_TO_THE_CITY_IM_LIVING_IN %>">
+            <% if friends_who_will_be_coming_to_the_city_im_living_in.nil? %>
+              <input name="user_settings[14][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" checked>
+            <% else %>
+              <input type="hidden" name="user_settings[14][id]" value="<%= friends_who_will_be_coming_to_the_city_im_living_in.id %>">
+              <input name="user_settings[14][value]" type="checkbox" class="js-switch scheduled-trips-switchers-group" <%= "checked" if friends_who_will_be_coming_to_the_city_im_living_in.value == "on" %>>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <input type="hidden" name="user_id" value="<%= user.id %>">
+<% end %>

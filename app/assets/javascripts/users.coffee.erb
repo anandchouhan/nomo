@@ -1,0 +1,137 @@
+window.NF = do (NF = window.NF || {}) ->
+
+  NF.User =
+    init: ->
+      @autoplayModal()
+
+      if ($(window).width() > 992)
+        $('.collapsable-filters').removeClass('collapse');
+
+      $('.show-filters').click ->
+        $('.collapsable-filters').collapse('toggle');
+
+      $('body').prepend('<div id="fb-root"></div>')
+      $.ajax
+        url: "#{window.location.protocol}//connect.facebook.net/en_US/sdk.js"
+        dataType: 'script'
+
+      window.fbAsyncInit = ->
+        FB.init
+          appId: '<%=ENV['FACEBOOK_APP_ID']%>'
+          version: 'v2.8'
+          status: true
+          xfbml: true
+          cookie: true
+        # fb_settings = 'user_friends, email, user_about_me, user_birthday, user_events, user_hometown, user_likes, user_location, user_photos, user_posts, user_relationships, user_tagged_places, user_videos, user_website, user_work_history, read_insights, '
+        @fb_settings = 'user_friends, email, user_hometown, user_location, publish_actions, user_about_me, user_birthday, user_education_history, user_relationship_details, user_relationships, user_religion_politics, user_tagged_places, user_website, user_work_history, manage_pages, rsvp_events, user_events, user_managed_groups'
+
+        $('#sign_in_fb').click NF.User.signinwithfb
+        $('#sign_out').click NF.User.signout
+        $('.share_trip').click NF.User.share_link
+        $('.invite_fb_friends').click NF.User.invitefbfriends
+
+    autoplayModal: ->
+      sourceVideo = $('#vimeoPlayer').attr('src');
+      $('#videoModal').on 'show.bs.modal', (e) ->
+        $('#vimeoPlayer').attr('src', sourceVideo + '?autoplay=1')
+
+      $('#videoModal').on 'hidden.bs.modal', (e) ->
+        $('#vimeoPlayer').attr('src', '')
+        $('#vimeoPlayer').attr('src', sourceVideo)
+
+    signinwithfb: (e) ->
+      e.preventDefault()
+      FB.login (response) ->
+        if (response.authResponse)
+          window.location = "/auth/facebook/callback"
+      ,
+      scope: NF.User.fb_settings
+      return_scopes: true
+
+    signout: (e) ->
+      FB.getLoginStatus (response) ->
+        FB.logout() if response.authResponse
+      true
+
+    share_link: (e) ->
+      link =  $('.share_trip').data('trip-url')
+      #link = "https://developers.facebook.com/docs/sharing/reference/feed-dialog"
+      console.log(link)
+      FB.ui {
+        #method: 'feed'
+        #link: link
+        #name:  $('.share_trip').data('trip-name')
+
+        method: 'share',
+        href: link;
+        title: $('.share_trip').data('trip-name')
+
+        caption: 'NOMOFOMO'
+        #picture: 'http://www.hyperarts.com/_img/TabPress-LOGO-Home.png'
+        description: $('.share_trip').data('trip-desc')
+      }, (response) ->
+
+    invitefbfriends: (e) ->
+      #FB.ui {
+      #  method: 'apprequests'
+      #  message: 'I am inviting you to join me on NOMOFOMO'
+      #}
+
+      FB.ui({
+        method: 'share',
+        caption: 'NOMOFOMO'
+        href: $('.invite_fb_friends').data('link')
+        description: $('.invite_fb_friends').data('description')
+      });
+
+  return NF
+
+$(document).ready ->
+
+  NF.User.init()
+
+  google.maps.event.trigger map, 'resize'
+
+# public_profile
+# user_friends
+# email
+# user_about_me
+# user_actions.books
+# user_actions.fitness
+# user_actions.music
+# user_actions.news
+# user_actions.video
+# user_actions:{app_namespace}
+# user_birthday
+# user_education_history
+# user_events
+# user_games_activity
+# user_hometown
+# user_likes
+# user_location
+# user_managed_groups
+# user_photos
+# user_posts
+# user_relationships
+# user_relationship_details
+# user_religion_politics
+# user_tagged_places
+# user_videos
+# user_website
+# user_work_history
+# read_custom_friendlists
+# read_insights
+# read_audience_network_insights
+# read_page_mailboxes
+# manage_pages
+# publish_pages
+# publish_actions
+# rsvp_event
+# pages_show_list
+# pages_manage_cta
+# pages_manage_instant_articles
+# ads_read
+# ads_management
+# business_management
+# pages_messaging
+# pages_messaging_phone_number
