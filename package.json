@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "at.js": "^1.5.3",
-    "bootstrap-select": "^1.12.4",
+    "bootstrap-select": "^1.13.6",
     "jquery": "^1.7.0",
     "jquery-autosize": "^1.18.18",
     "jquery-serializejson": "^2.8.1",
